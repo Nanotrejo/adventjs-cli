@@ -5,15 +5,8 @@
       "label": "tsc: build current file",
       "type": "shell",
       "command": "${workspaceFolder}/node_modules/.bin/tsc",
-      "args": [
-        "${file}",
-        "--outDir",
-        "${fileDirname}/dist",
-        "--sourceMap"
-      ],
-      "problemMatcher": [
-        "$tsc"
-      ],
+      "args": ["${file}", "--outDir", "${fileDirname}/dist", "--sourceMap"],
+      "problemMatcher": ["$tsc"],
       "group": "build",
       "presentation": {
         "reveal": "silent"
@@ -29,9 +22,7 @@
         "${workspaceFolder}/dist",
         "--sourceMap"
       ],
-      "problemMatcher": [
-        "$tsc"
-      ],
+      "problemMatcher": ["$tsc"],
       "group": "build",
       "presentation": {
         "reveal": "silent"

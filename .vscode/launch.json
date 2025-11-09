@@ -10,12 +10,8 @@
       "request": "launch",
       "program": "${workspaceFolder}/dist/index.js",
       "preLaunchTask": "tsc: build index.ts",
-      "args": [
-        "init"
-      ],
-      "outFiles": [
-        "${workspaceFolder}/dist/**/*.js"
-      ]
+      "args": ["init"],
+      "outFiles": ["${workspaceFolder}/dist/**/*.js"]
     },
     {
       "name": "Debug: g <day>",
@@ -23,13 +19,8 @@
       "request": "launch",
       "program": "${workspaceFolder}/dist/index.js",
       "preLaunchTask": "tsc: build index.ts",
-      "args": [
-        "g",
-        "1"
-      ],
-      "outFiles": [
-        "${workspaceFolder}/dist/**/*.js"
-      ]
+      "args": ["g", "1"],
+      "outFiles": ["${workspaceFolder}/dist/**/*.js"]
     }
   ]
 }

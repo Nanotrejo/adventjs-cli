@@ -4,17 +4,13 @@
   "editor.insertSpaces": true,
   "editor.detectIndentation": false,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "eslint.validate": [
-    "typescript",
-    "javascript"
-  ],
+  "eslint.validate": ["typescript", "javascript"],
   "files.exclude": {
     "dist": true,
     "node_modules": true
   },
-  "cSpell.userWords": [
-    "adventjs",
-    "cli",
-    "nvmrc"
-  ]
+  "cSpell.userWords": ["adventjs", "cli", "nvmrc"],
+  "[jsonc]": {
+    "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
+  }
 }
