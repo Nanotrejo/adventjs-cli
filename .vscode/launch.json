@@ -5,13 +5,30 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "TypeScript Debug",
+      "name": "Debug: init",
       "type": "node",
       "request": "launch",
-      "program": "${workspaceFolder}/src/index.ts",
+      "program": "${workspaceFolder}/dist/index.js",
       "preLaunchTask": "tsc: build index.ts",
+      "args": [
+        "init"
+      ],
       "outFiles": [
-        "${fileDirname}/dist/**/*.js" // Points to the compiled JavaScript file in the dist folder of the current file's directory
+        "${workspaceFolder}/dist/**/*.js"
+      ]
+    },
+    {
+      "name": "Debug: g <day>",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceFolder}/dist/index.js",
+      "preLaunchTask": "tsc: build index.ts",
+      "args": [
+        "g",
+        "1"
+      ],
+      "outFiles": [
+        "${workspaceFolder}/dist/**/*.js"
       ]
     }
   ]
