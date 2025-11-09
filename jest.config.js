@@ -1,6 +1,21 @@
 module.exports = {
-  testMatch: ['**/*.spec.ts', '**/*.spec.js'],
   preset: 'ts-jest',
+  extensionsToTreatAsEsm: ['.ts'],
   testEnvironment: 'node',
-  transform: {},
+  testMatch: ['**/*.spec.ts', '**/*.spec.js'],
+  moduleNameMapper: {
+    '^@app/(.*)$': '<rootDir>/src/$1',
+    '^(\\.{1,2}/.*)\\.js$': '$1',
+  },
+  transform: {
+    '^.+\\.tsx?$': [
+      'ts-jest',
+      {
+        useESM: true,
+        tsconfig: {
+          module: 'esnext',
+        },
+      },
+    ],
+  },
 };

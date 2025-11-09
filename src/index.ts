@@ -1,4 +1,3 @@
-#!/usr/bin/env node
 import { Command } from 'commander';
 import { APP_DESCRIPTION, APP_NAME, APP_VERSION } from './schema/app.schema';
 import { ALL_COMMANDS } from './schema/command.schema';

@@ -12,5 +12,6 @@
   "cSpell.userWords": ["adventjs", "cli", "nvmrc"],
   "[jsonc]": {
     "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
-  }
+  },
+  "jest.runMode": "on-demand"
 }

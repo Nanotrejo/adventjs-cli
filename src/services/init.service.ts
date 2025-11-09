@@ -1,9 +1,9 @@
 import chalk from 'chalk';
 import inquirer from 'inquirer';
 import { DependenciesAnswer, TestsAnswer, VscodeAnswer, YearAnswer } from '../schema/answer.schema';
-import { devDependencies } from '../schema/dependencies.schema';
 import { exec } from 'child_process';
 import { writeFileSync } from 'fs';
+import { DEV_DEPENDENCIES } from '../schema/dependencies.schema';
 import { CONFIG_FILE } from '../schema/app.schema';
 
 export { handleInit };
@@ -46,22 +46,54 @@ const handleInit = async (): Promise<void> => {
 
   console.log(chalk.green('✅ Configuration saved to adventjs-cli.json:'), config);
 
-  if (dependencies) {
-    console.log(chalk.blue('Installing dependencies... (this may take a few moments)'));
+  _generateGitignore();
+  _generateEslintConfig();
+  _generatePrettierConfig();
 
-    exec(
-      `npm install --save-dev ${devDependencies.join(' ')}`,
-      (error: Error | null, stdout: string, stderr: string): void => {
-        if (error) {
-          console.error(chalk.red(`❌ Error installing dependencies: ${error.message}`));
-          return;
-        }
-        if (stderr) {
-          console.error(chalk.yellow(`stderr: ${stderr}`));
-          return;
-        }
-        console.log(chalk.green('✅ Dependencies installed successfully'));
-      },
-    );
+  _installDependencies(dependencies);
+  _generateVscodeConfig(vscode);
+  _generateReadme(year);
+  _generateTestsConfig(tests);
+};
+
+const _installDependencies = (shouldInstall: boolean): void => {
+  if (!shouldInstall) {
+    return;
+  }
+  console.log(chalk.blue('Installing dependencies... (this may take a few moments)'));
+
+  exec(
+    `npm install --save-dev ${DEV_DEPENDENCIES.join(' ')}`,
+    (error: Error | null, stdout: string, stderr: string): void => {
+      if (error) {
+        console.error(chalk.red(`❌ Error installing dependencies: ${error.message}`));
+        return;
+      }
+      if (stderr) {
+        console.error(chalk.yellow(`stderr: ${stderr}`));
+        return;
+      }
+      console.log(chalk.green('✅ Dependencies installed successfully'));
+    },
+  );
+};
+
+const _generateVscodeConfig = (shouldGenerate: boolean): void => {
+  if (!shouldGenerate) {
+    return;
   }
 };
+
+const _generateReadme = (year: string): void => {};
+
+const _generateTestsConfig = (shouldGenerate: boolean): void => {
+  if (!shouldGenerate) {
+    return;
+  }
+};
+
+const _generateGitignore = (): void => {};
+
+const _generateEslintConfig = (): void => {};
+
+const _generatePrettierConfig = (): void => {};

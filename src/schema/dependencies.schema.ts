@@ -9,11 +9,11 @@ const _eslintDevDependencies = [
 ];
 const _typescriptDevDependencies = ['typescript', 'ts-node'];
 
-const devDependencies = [
+const DEV_DEPENDENCIES = [
   ..._testsDevDependencies,
   ..._prettierDevDependencies,
   ..._eslintDevDependencies,
   ..._typescriptDevDependencies,
 ];
 
-export { devDependencies };
+export { DEV_DEPENDENCIES };
