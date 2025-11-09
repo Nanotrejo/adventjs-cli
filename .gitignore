@@ -42,3 +42,6 @@ jest-coverage/
 *.seed
 *.tgz
 *.orig
+
+# CLI config files
+adventjs-cli.json

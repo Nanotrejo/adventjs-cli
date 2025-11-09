@@ -1,19 +1,20 @@
 {
-  // Format on save
   "editor.formatOnSave": true,
   "editor.tabSize": 2,
   "editor.insertSpaces": true,
   "editor.detectIndentation": false,
-  // Default formatter for all files
   "editor.defaultFormatter": "esbenp.prettier-vscode",
-  // Make ESLint validate TypeScript and JavaScript
   "eslint.validate": [
     "typescript",
     "javascript"
   ],
-  // Exclude build and node_modules from VS Code
   "files.exclude": {
     "dist": true,
     "node_modules": true
-  }
+  },
+  "cSpell.userWords": [
+    "adventjs",
+    "cli",
+    "nvmrc"
+  ]
 }
