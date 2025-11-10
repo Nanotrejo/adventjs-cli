@@ -13,6 +13,7 @@ import {
   copyFromTemplates,
   copyFromTemplatesWithReplacement,
   createRootFolder,
+  getRootFolderName,
 } from './file.service';
 import { isDev } from './dev.service';
 import { generateConfig } from './config.service';
@@ -84,6 +85,8 @@ const handleInit = async (): Promise<void> => {
   }
 
   _installDependencies(dependencies);
+  console.log(chalk.bold.green('🎉 Your AdventJS project is ready! Happy coding!'));
+  console.log(chalk.bold.green('🚀 To get started, cd ' + getRootFolderName(year)));
 };
 
 const _installDependencies = (shouldInstall: boolean): void => {
