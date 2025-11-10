@@ -1,0 +1,4006 @@
+<html lang="en" style="">
+
+<head>
+  <meta charset="utf-8" data-next-head="">
+  <meta name="viewport" content="initial-scale=1.0, width=device-width" data-next-head="">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="msapplication-TileColor" content="#0a6f40">
+  <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+  <meta name="theme-color" content="#0a6f40">
+  <meta property="og:type" content="website" data-next-head="">
+  <link rel="preload" as="image" href="/bg.webp" fetchpriority="high" data-next-head="">
+  <link rel="preload" as="image" href="/bg-challenge.webp" fetchpriority="high" data-next-head="">
+  <title data-next-head="">AdventJS | 4: JavaScript/TypeScript/Python: 🎄 Decorating the Christmas tree</title>
+  <meta property="og:title" content="AdventJS | 4: JavaScript/TypeScript/Python: 🎄 Decorating the Christmas tree"
+    data-next-head="">
+  <meta name="description" content="Solve the challenge 4 with JavaScript or TypeScript and get a score!"
+    data-next-head="">
+  <meta property="og:image" content="https://adventjs.dev/og/en/og-04.webp" data-next-head="">
+  <meta name="twitter:card" content="summary_large_image" data-next-head="">
+  <link rel="preload" href="/_next/static/media/d3ebbfd689654d3a-s.p.woff2" as="font" type="font/woff2"
+    crossorigin="anonymous" data-next-font="size-adjust">
+  <link rel="preload" href="/_next/static/media/37786be940ec402b-s.p.woff2" as="font" type="font/woff2"
+    crossorigin="anonymous" data-next-font="size-adjust">
+  <link rel="preload" href="/_next/static/media/be955174636e5369-s.p.woff2" as="font" type="font/woff2"
+    crossorigin="anonymous" data-next-font="size-adjust">
+  <link rel="preload" href="/_next/static/css/ddee721fe6ac60d5.css" as="style">
+  <link rel="stylesheet" href="/_next/static/css/ddee721fe6ac60d5.css" data-n-g=""><noscript data-n-css=""></noscript>
+  <script defer="" nomodule="" src="/_next/static/chunks/polyfills-42372ed130431b0a.js" type="text/javascript"></script>
+  <script src="/_next/static/chunks/webpack-fbb920bddf9bf0a6.js" defer="" type="text/javascript"></script>
+  <script src="/_next/static/chunks/framework-9da48a9773424ee1.js" defer="" type="text/javascript"></script>
+  <script src="/_next/static/chunks/main-28db34d2e3eae1b0.js" defer="" type="text/javascript"></script>
+  <script src="/_next/static/chunks/pages/_app-05c2e71060e3d7cc.js" defer="" type="text/javascript"></script>
+  <script src="/_next/static/chunks/a4e58a00-137a92fd7ae0abfb.js" defer="" type="text/javascript"></script>
+  <script src="/_next/static/chunks/975-49e0be3bfbb8df95.js" defer="" type="text/javascript"></script>
+  <script src="/_next/static/chunks/360-b7a7d4d6f4365f7e.js" defer="" type="text/javascript"></script>
+  <script src="/_next/static/chunks/946-e153fffa8c669083.js" defer="" type="text/javascript"></script>
+  <script src="/_next/static/chunks/539-100a961bd72bcaa1.js" defer="" type="text/javascript"></script>
+  <script src="/_next/static/chunks/479-92dc983d248045a2.js" defer="" type="text/javascript"></script>
+  <script src="/_next/static/chunks/550-62e813a048346d00.js" defer="" type="text/javascript"></script>
+  <script src="/_next/static/chunks/pages/challenges/2024/%5Bid%5D-75c63abca705d4a4.js" defer=""
+    type="text/javascript"></script>
+  <script src="/_next/static/-prHNHI1LNrTIm4n5YtBw/_buildManifest.js" defer="" type="text/javascript"></script>
+  <script src="/_next/static/-prHNHI1LNrTIm4n5YtBw/_ssgManifest.js" defer="" type="text/javascript"></script>
+  <style id="react-tooltip-core-styles" type="text/css">
+    :root {
+      --rt-color-white: #fff;
+      --rt-color-dark: #222;
+      --rt-color-success: #8dc572;
+      --rt-color-error: #be6464;
+      --rt-color-warning: #f0ad4e;
+      --rt-color-info: #337ab7;
+      --rt-opacity: 0.9;
+      --rt-transition-show-delay: 0.15s;
+      --rt-transition-closing-delay: 0.15s
+    }
+
+    .core-styles-module_tooltip__3vRRp {
+      position: absolute;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      opacity: 0;
+      will-change: opacity
+    }
+
+    .core-styles-module_fixed__pcSol {
+      position: fixed
+    }
+
+    .core-styles-module_arrow__cvMwQ {
+      position: absolute;
+      background: inherit
+    }
+
+    .core-styles-module_noArrow__xock6 {
+      display: none
+    }
+
+    .core-styles-module_clickable__ZuTTB {
+      pointer-events: auto
+    }
+
+    .core-styles-module_show__Nt9eE {
+      opacity: var(--rt-opacity);
+      transition: opacity var(--rt-transition-show-delay)ease-out
+    }
+
+    .core-styles-module_closing__sGnxF {
+      opacity: 0;
+      transition: opacity var(--rt-transition-closing-delay)ease-in
+    }
+  </style>
+  <style id="react-tooltip-base-styles" type="text/css">
+    .styles-module_tooltip__mnnfp {
+      padding: 8px 16px;
+      border-radius: 3px;
+      font-size: 90%;
+      width: max-content
+    }
+
+    .styles-module_arrow__K0L3T {
+      width: 8px;
+      height: 8px
+    }
+
+    [class*='react-tooltip__place-top']>.styles-module_arrow__K0L3T {
+      transform: rotate(45deg)
+    }
+
+    [class*='react-tooltip__place-right']>.styles-module_arrow__K0L3T {
+      transform: rotate(135deg)
+    }
+
+    [class*='react-tooltip__place-bottom']>.styles-module_arrow__K0L3T {
+      transform: rotate(225deg)
+    }
+
+    [class*='react-tooltip__place-left']>.styles-module_arrow__K0L3T {
+      transform: rotate(315deg)
+    }
+
+    .styles-module_dark__xNqje {
+      background: var(--rt-color-dark);
+      color: var(--rt-color-white)
+    }
+
+    .styles-module_light__Z6W-X {
+      background-color: var(--rt-color-white);
+      color: var(--rt-color-dark)
+    }
+
+    .styles-module_success__A2AKt {
+      background-color: var(--rt-color-success);
+      color: var(--rt-color-white)
+    }
+
+    .styles-module_warning__SCK0X {
+      background-color: var(--rt-color-warning);
+      color: var(--rt-color-white)
+    }
+
+    .styles-module_error__JvumD {
+      background-color: var(--rt-color-error);
+      color: var(--rt-color-white)
+    }
+
+    .styles-module_info__BWdHW {
+      background-color: var(--rt-color-info);
+      color: var(--rt-color-white)
+    }
+  </style>
+  <link as="script" rel="prefetch" href="/_next/static/chunks/814-7a2ccea7e0e0441d.js">
+  <link as="script" rel="prefetch" href="/_next/static/chunks/223-f246490ed4251f00.js">
+  <link as="script" rel="prefetch" href="/_next/static/chunks/622-4f253558e2f537c7.js">
+  <link as="script" rel="prefetch" href="/_next/static/chunks/63-ffad29781f925fa9.js">
+  <link as="script" rel="prefetch" href="/_next/static/chunks/pages/index-a5753feba5ea22e6.js">
+  <script async="async" type="text/javascript"
+    src="https://cdn.jsdelivr.net/npm/monaco-editor@0.43.0/min/vs/editor/editor.main.js"></script>
+  <link rel="stylesheet" type="text/css" data-name="vs/editor/editor.main"
+    href="https://cdn.jsdelivr.net/npm/monaco-editor@0.43.0/min/vs/editor/editor.main.css">
+  <script async="async" type="text/javascript"
+    src="https://cdn.jsdelivr.net/npm/monaco-editor@0.43.0/min/vs/editor/editor.main.nls.js"></script>
+  <script async="async" type="text/javascript"
+    src="https://cdn.jsdelivr.net/npm/monaco-editor@0.43.0/min/vs/basic-languages/python/python.js"></script>
+  <style type="text/css" media="screen" class="monaco-colors">
+    .codicon-add:before {
+      content: '\ea60';
+    }
+
+    .codicon-plus:before {
+      content: '\ea60';
+    }
+
+    .codicon-gist-new:before {
+      content: '\ea60';
+    }
+
+    .codicon-repo-create:before {
+      content: '\ea60';
+    }
+
+    .codicon-lightbulb:before {
+      content: '\ea61';
+    }
+
+    .codicon-light-bulb:before {
+      content: '\ea61';
+    }
+
+    .codicon-repo:before {
+      content: '\ea62';
+    }
+
+    .codicon-repo-delete:before {
+      content: '\ea62';
+    }
+
+    .codicon-gist-fork:before {
+      content: '\ea63';
+    }
+
+    .codicon-repo-forked:before {
+      content: '\ea63';
+    }
+
+    .codicon-git-pull-request:before {
+      content: '\ea64';
+    }
+
+    .codicon-git-pull-request-abandoned:before {
+      content: '\ea64';
+    }
+
+    .codicon-record-keys:before {
+      content: '\ea65';
+    }
+
+    .codicon-keyboard:before {
+      content: '\ea65';
+    }
+
+    .codicon-tag:before {
+      content: '\ea66';
+    }
+
+    .codicon-tag-add:before {
+      content: '\ea66';
+    }
+
+    .codicon-tag-remove:before {
+      content: '\ea66';
+    }
+
+    .codicon-git-pull-request-label:before {
+      content: '\ea66';
+    }
+
+    .codicon-person:before {
+      content: '\ea67';
+    }
+
+    .codicon-person-follow:before {
+      content: '\ea67';
+    }
+
+    .codicon-person-outline:before {
+      content: '\ea67';
+    }
+
+    .codicon-person-filled:before {
+      content: '\ea67';
+    }
+
+    .codicon-git-branch:before {
+      content: '\ea68';
+    }
+
+    .codicon-git-branch-create:before {
+      content: '\ea68';
+    }
+
+    .codicon-git-branch-delete:before {
+      content: '\ea68';
+    }
+
+    .codicon-source-control:before {
+      content: '\ea68';
+    }
+
+    .codicon-mirror:before {
+      content: '\ea69';
+    }
+
+    .codicon-mirror-public:before {
+      content: '\ea69';
+    }
+
+    .codicon-star:before {
+      content: '\ea6a';
+    }
+
+    .codicon-star-add:before {
+      content: '\ea6a';
+    }
+
+    .codicon-star-delete:before {
+      content: '\ea6a';
+    }
+
+    .codicon-star-empty:before {
+      content: '\ea6a';
+    }
+
+    .codicon-comment:before {
+      content: '\ea6b';
+    }
+
+    .codicon-comment-add:before {
+      content: '\ea6b';
+    }
+
+    .codicon-alert:before {
+      content: '\ea6c';
+    }
+
+    .codicon-warning:before {
+      content: '\ea6c';
+    }
+
+    .codicon-search:before {
+      content: '\ea6d';
+    }
+
+    .codicon-search-save:before {
+      content: '\ea6d';
+    }
+
+    .codicon-log-out:before {
+      content: '\ea6e';
+    }
+
+    .codicon-sign-out:before {
+      content: '\ea6e';
+    }
+
+    .codicon-log-in:before {
+      content: '\ea6f';
+    }
+
+    .codicon-sign-in:before {
+      content: '\ea6f';
+    }
+
+    .codicon-eye:before {
+      content: '\ea70';
+    }
+
+    .codicon-eye-unwatch:before {
+      content: '\ea70';
+    }
+
+    .codicon-eye-watch:before {
+      content: '\ea70';
+    }
+
+    .codicon-circle-filled:before {
+      content: '\ea71';
+    }
+
+    .codicon-primitive-dot:before {
+      content: '\ea71';
+    }
+
+    .codicon-close-dirty:before {
+      content: '\ea71';
+    }
+
+    .codicon-debug-breakpoint:before {
+      content: '\ea71';
+    }
+
+    .codicon-debug-breakpoint-disabled:before {
+      content: '\ea71';
+    }
+
+    .codicon-debug-hint:before {
+      content: '\ea71';
+    }
+
+    .codicon-primitive-square:before {
+      content: '\ea72';
+    }
+
+    .codicon-edit:before {
+      content: '\ea73';
+    }
+
+    .codicon-pencil:before {
+      content: '\ea73';
+    }
+
+    .codicon-info:before {
+      content: '\ea74';
+    }
+
+    .codicon-issue-opened:before {
+      content: '\ea74';
+    }
+
+    .codicon-gist-private:before {
+      content: '\ea75';
+    }
+
+    .codicon-git-fork-private:before {
+      content: '\ea75';
+    }
+
+    .codicon-lock:before {
+      content: '\ea75';
+    }
+
+    .codicon-mirror-private:before {
+      content: '\ea75';
+    }
+
+    .codicon-close:before {
+      content: '\ea76';
+    }
+
+    .codicon-remove-close:before {
+      content: '\ea76';
+    }
+
+    .codicon-x:before {
+      content: '\ea76';
+    }
+
+    .codicon-repo-sync:before {
+      content: '\ea77';
+    }
+
+    .codicon-sync:before {
+      content: '\ea77';
+    }
+
+    .codicon-clone:before {
+      content: '\ea78';
+    }
+
+    .codicon-desktop-download:before {
+      content: '\ea78';
+    }
+
+    .codicon-beaker:before {
+      content: '\ea79';
+    }
+
+    .codicon-microscope:before {
+      content: '\ea79';
+    }
+
+    .codicon-vm:before {
+      content: '\ea7a';
+    }
+
+    .codicon-device-desktop:before {
+      content: '\ea7a';
+    }
+
+    .codicon-file:before {
+      content: '\ea7b';
+    }
+
+    .codicon-file-text:before {
+      content: '\ea7b';
+    }
+
+    .codicon-more:before {
+      content: '\ea7c';
+    }
+
+    .codicon-ellipsis:before {
+      content: '\ea7c';
+    }
+
+    .codicon-kebab-horizontal:before {
+      content: '\ea7c';
+    }
+
+    .codicon-mail-reply:before {
+      content: '\ea7d';
+    }
+
+    .codicon-reply:before {
+      content: '\ea7d';
+    }
+
+    .codicon-organization:before {
+      content: '\ea7e';
+    }
+
+    .codicon-organization-filled:before {
+      content: '\ea7e';
+    }
+
+    .codicon-organization-outline:before {
+      content: '\ea7e';
+    }
+
+    .codicon-new-file:before {
+      content: '\ea7f';
+    }
+
+    .codicon-file-add:before {
+      content: '\ea7f';
+    }
+
+    .codicon-new-folder:before {
+      content: '\ea80';
+    }
+
+    .codicon-file-directory-create:before {
+      content: '\ea80';
+    }
+
+    .codicon-trash:before {
+      content: '\ea81';
+    }
+
+    .codicon-trashcan:before {
+      content: '\ea81';
+    }
+
+    .codicon-history:before {
+      content: '\ea82';
+    }
+
+    .codicon-clock:before {
+      content: '\ea82';
+    }
+
+    .codicon-folder:before {
+      content: '\ea83';
+    }
+
+    .codicon-file-directory:before {
+      content: '\ea83';
+    }
+
+    .codicon-symbol-folder:before {
+      content: '\ea83';
+    }
+
+    .codicon-logo-github:before {
+      content: '\ea84';
+    }
+
+    .codicon-mark-github:before {
+      content: '\ea84';
+    }
+
+    .codicon-github:before {
+      content: '\ea84';
+    }
+
+    .codicon-terminal:before {
+      content: '\ea85';
+    }
+
+    .codicon-console:before {
+      content: '\ea85';
+    }
+
+    .codicon-repl:before {
+      content: '\ea85';
+    }
+
+    .codicon-zap:before {
+      content: '\ea86';
+    }
+
+    .codicon-symbol-event:before {
+      content: '\ea86';
+    }
+
+    .codicon-error:before {
+      content: '\ea87';
+    }
+
+    .codicon-stop:before {
+      content: '\ea87';
+    }
+
+    .codicon-variable:before {
+      content: '\ea88';
+    }
+
+    .codicon-symbol-variable:before {
+      content: '\ea88';
+    }
+
+    .codicon-array:before {
+      content: '\ea8a';
+    }
+
+    .codicon-symbol-array:before {
+      content: '\ea8a';
+    }
+
+    .codicon-symbol-module:before {
+      content: '\ea8b';
+    }
+
+    .codicon-symbol-package:before {
+      content: '\ea8b';
+    }
+
+    .codicon-symbol-namespace:before {
+      content: '\ea8b';
+    }
+
+    .codicon-symbol-object:before {
+      content: '\ea8b';
+    }
+
+    .codicon-symbol-method:before {
+      content: '\ea8c';
+    }
+
+    .codicon-symbol-function:before {
+      content: '\ea8c';
+    }
+
+    .codicon-symbol-constructor:before {
+      content: '\ea8c';
+    }
+
+    .codicon-symbol-boolean:before {
+      content: '\ea8f';
+    }
+
+    .codicon-symbol-null:before {
+      content: '\ea8f';
+    }
+
+    .codicon-symbol-numeric:before {
+      content: '\ea90';
+    }
+
+    .codicon-symbol-number:before {
+      content: '\ea90';
+    }
+
+    .codicon-symbol-structure:before {
+      content: '\ea91';
+    }
+
+    .codicon-symbol-struct:before {
+      content: '\ea91';
+    }
+
+    .codicon-symbol-parameter:before {
+      content: '\ea92';
+    }
+
+    .codicon-symbol-type-parameter:before {
+      content: '\ea92';
+    }
+
+    .codicon-symbol-key:before {
+      content: '\ea93';
+    }
+
+    .codicon-symbol-text:before {
+      content: '\ea93';
+    }
+
+    .codicon-symbol-reference:before {
+      content: '\ea94';
+    }
+
+    .codicon-go-to-file:before {
+      content: '\ea94';
+    }
+
+    .codicon-symbol-enum:before {
+      content: '\ea95';
+    }
+
+    .codicon-symbol-value:before {
+      content: '\ea95';
+    }
+
+    .codicon-symbol-ruler:before {
+      content: '\ea96';
+    }
+
+    .codicon-symbol-unit:before {
+      content: '\ea96';
+    }
+
+    .codicon-activate-breakpoints:before {
+      content: '\ea97';
+    }
+
+    .codicon-archive:before {
+      content: '\ea98';
+    }
+
+    .codicon-arrow-both:before {
+      content: '\ea99';
+    }
+
+    .codicon-arrow-down:before {
+      content: '\ea9a';
+    }
+
+    .codicon-arrow-left:before {
+      content: '\ea9b';
+    }
+
+    .codicon-arrow-right:before {
+      content: '\ea9c';
+    }
+
+    .codicon-arrow-small-down:before {
+      content: '\ea9d';
+    }
+
+    .codicon-arrow-small-left:before {
+      content: '\ea9e';
+    }
+
+    .codicon-arrow-small-right:before {
+      content: '\ea9f';
+    }
+
+    .codicon-arrow-small-up:before {
+      content: '\eaa0';
+    }
+
+    .codicon-arrow-up:before {
+      content: '\eaa1';
+    }
+
+    .codicon-bell:before {
+      content: '\eaa2';
+    }
+
+    .codicon-bold:before {
+      content: '\eaa3';
+    }
+
+    .codicon-book:before {
+      content: '\eaa4';
+    }
+
+    .codicon-bookmark:before {
+      content: '\eaa5';
+    }
+
+    .codicon-debug-breakpoint-conditional-unverified:before {
+      content: '\eaa6';
+    }
+
+    .codicon-debug-breakpoint-conditional:before {
+      content: '\eaa7';
+    }
+
+    .codicon-debug-breakpoint-conditional-disabled:before {
+      content: '\eaa7';
+    }
+
+    .codicon-debug-breakpoint-data-unverified:before {
+      content: '\eaa8';
+    }
+
+    .codicon-debug-breakpoint-data:before {
+      content: '\eaa9';
+    }
+
+    .codicon-debug-breakpoint-data-disabled:before {
+      content: '\eaa9';
+    }
+
+    .codicon-debug-breakpoint-log-unverified:before {
+      content: '\eaaa';
+    }
+
+    .codicon-debug-breakpoint-log:before {
+      content: '\eaab';
+    }
+
+    .codicon-debug-breakpoint-log-disabled:before {
+      content: '\eaab';
+    }
+
+    .codicon-briefcase:before {
+      content: '\eaac';
+    }
+
+    .codicon-broadcast:before {
+      content: '\eaad';
+    }
+
+    .codicon-browser:before {
+      content: '\eaae';
+    }
+
+    .codicon-bug:before {
+      content: '\eaaf';
+    }
+
+    .codicon-calendar:before {
+      content: '\eab0';
+    }
+
+    .codicon-case-sensitive:before {
+      content: '\eab1';
+    }
+
+    .codicon-check:before {
+      content: '\eab2';
+    }
+
+    .codicon-checklist:before {
+      content: '\eab3';
+    }
+
+    .codicon-chevron-down:before {
+      content: '\eab4';
+    }
+
+    .codicon-drop-down-button:before {
+      content: '\eab4';
+    }
+
+    .codicon-chevron-left:before {
+      content: '\eab5';
+    }
+
+    .codicon-chevron-right:before {
+      content: '\eab6';
+    }
+
+    .codicon-chevron-up:before {
+      content: '\eab7';
+    }
+
+    .codicon-chrome-close:before {
+      content: '\eab8';
+    }
+
+    .codicon-chrome-maximize:before {
+      content: '\eab9';
+    }
+
+    .codicon-chrome-minimize:before {
+      content: '\eaba';
+    }
+
+    .codicon-chrome-restore:before {
+      content: '\eabb';
+    }
+
+    .codicon-circle:before {
+      content: '\eabc';
+    }
+
+    .codicon-circle-outline:before {
+      content: '\eabc';
+    }
+
+    .codicon-debug-breakpoint-unverified:before {
+      content: '\eabc';
+    }
+
+    .codicon-circle-slash:before {
+      content: '\eabd';
+    }
+
+    .codicon-circuit-board:before {
+      content: '\eabe';
+    }
+
+    .codicon-clear-all:before {
+      content: '\eabf';
+    }
+
+    .codicon-clippy:before {
+      content: '\eac0';
+    }
+
+    .codicon-close-all:before {
+      content: '\eac1';
+    }
+
+    .codicon-cloud-download:before {
+      content: '\eac2';
+    }
+
+    .codicon-cloud-upload:before {
+      content: '\eac3';
+    }
+
+    .codicon-code:before {
+      content: '\eac4';
+    }
+
+    .codicon-collapse-all:before {
+      content: '\eac5';
+    }
+
+    .codicon-color-mode:before {
+      content: '\eac6';
+    }
+
+    .codicon-comment-discussion:before {
+      content: '\eac7';
+    }
+
+    .codicon-compare-changes:before {
+      content: '\eafd';
+    }
+
+    .codicon-credit-card:before {
+      content: '\eac9';
+    }
+
+    .codicon-dash:before {
+      content: '\eacc';
+    }
+
+    .codicon-dashboard:before {
+      content: '\eacd';
+    }
+
+    .codicon-database:before {
+      content: '\eace';
+    }
+
+    .codicon-debug-continue:before {
+      content: '\eacf';
+    }
+
+    .codicon-debug-disconnect:before {
+      content: '\ead0';
+    }
+
+    .codicon-debug-pause:before {
+      content: '\ead1';
+    }
+
+    .codicon-debug-restart:before {
+      content: '\ead2';
+    }
+
+    .codicon-debug-start:before {
+      content: '\ead3';
+    }
+
+    .codicon-debug-step-into:before {
+      content: '\ead4';
+    }
+
+    .codicon-debug-step-out:before {
+      content: '\ead5';
+    }
+
+    .codicon-debug-step-over:before {
+      content: '\ead6';
+    }
+
+    .codicon-debug-stop:before {
+      content: '\ead7';
+    }
+
+    .codicon-debug:before {
+      content: '\ead8';
+    }
+
+    .codicon-device-camera-video:before {
+      content: '\ead9';
+    }
+
+    .codicon-device-camera:before {
+      content: '\eada';
+    }
+
+    .codicon-device-mobile:before {
+      content: '\eadb';
+    }
+
+    .codicon-diff-added:before {
+      content: '\eadc';
+    }
+
+    .codicon-diff-ignored:before {
+      content: '\eadd';
+    }
+
+    .codicon-diff-modified:before {
+      content: '\eade';
+    }
+
+    .codicon-diff-removed:before {
+      content: '\eadf';
+    }
+
+    .codicon-diff-renamed:before {
+      content: '\eae0';
+    }
+
+    .codicon-diff:before {
+      content: '\eae1';
+    }
+
+    .codicon-discard:before {
+      content: '\eae2';
+    }
+
+    .codicon-editor-layout:before {
+      content: '\eae3';
+    }
+
+    .codicon-empty-window:before {
+      content: '\eae4';
+    }
+
+    .codicon-exclude:before {
+      content: '\eae5';
+    }
+
+    .codicon-extensions:before {
+      content: '\eae6';
+    }
+
+    .codicon-eye-closed:before {
+      content: '\eae7';
+    }
+
+    .codicon-file-binary:before {
+      content: '\eae8';
+    }
+
+    .codicon-file-code:before {
+      content: '\eae9';
+    }
+
+    .codicon-file-media:before {
+      content: '\eaea';
+    }
+
+    .codicon-file-pdf:before {
+      content: '\eaeb';
+    }
+
+    .codicon-file-submodule:before {
+      content: '\eaec';
+    }
+
+    .codicon-file-symlink-directory:before {
+      content: '\eaed';
+    }
+
+    .codicon-file-symlink-file:before {
+      content: '\eaee';
+    }
+
+    .codicon-file-zip:before {
+      content: '\eaef';
+    }
+
+    .codicon-files:before {
+      content: '\eaf0';
+    }
+
+    .codicon-filter:before {
+      content: '\eaf1';
+    }
+
+    .codicon-flame:before {
+      content: '\eaf2';
+    }
+
+    .codicon-fold-down:before {
+      content: '\eaf3';
+    }
+
+    .codicon-fold-up:before {
+      content: '\eaf4';
+    }
+
+    .codicon-fold:before {
+      content: '\eaf5';
+    }
+
+    .codicon-folder-active:before {
+      content: '\eaf6';
+    }
+
+    .codicon-folder-opened:before {
+      content: '\eaf7';
+    }
+
+    .codicon-gear:before {
+      content: '\eaf8';
+    }
+
+    .codicon-gift:before {
+      content: '\eaf9';
+    }
+
+    .codicon-gist-secret:before {
+      content: '\eafa';
+    }
+
+    .codicon-gist:before {
+      content: '\eafb';
+    }
+
+    .codicon-git-commit:before {
+      content: '\eafc';
+    }
+
+    .codicon-git-compare:before {
+      content: '\eafd';
+    }
+
+    .codicon-git-merge:before {
+      content: '\eafe';
+    }
+
+    .codicon-github-action:before {
+      content: '\eaff';
+    }
+
+    .codicon-github-alt:before {
+      content: '\eb00';
+    }
+
+    .codicon-globe:before {
+      content: '\eb01';
+    }
+
+    .codicon-grabber:before {
+      content: '\eb02';
+    }
+
+    .codicon-graph:before {
+      content: '\eb03';
+    }
+
+    .codicon-gripper:before {
+      content: '\eb04';
+    }
+
+    .codicon-heart:before {
+      content: '\eb05';
+    }
+
+    .codicon-home:before {
+      content: '\eb06';
+    }
+
+    .codicon-horizontal-rule:before {
+      content: '\eb07';
+    }
+
+    .codicon-hubot:before {
+      content: '\eb08';
+    }
+
+    .codicon-inbox:before {
+      content: '\eb09';
+    }
+
+    .codicon-issue-closed:before {
+      content: '\eba4';
+    }
+
+    .codicon-issue-reopened:before {
+      content: '\eb0b';
+    }
+
+    .codicon-issues:before {
+      content: '\eb0c';
+    }
+
+    .codicon-italic:before {
+      content: '\eb0d';
+    }
+
+    .codicon-jersey:before {
+      content: '\eb0e';
+    }
+
+    .codicon-json:before {
+      content: '\eb0f';
+    }
+
+    .codicon-bracket:before {
+      content: '\eb0f';
+    }
+
+    .codicon-kebab-vertical:before {
+      content: '\eb10';
+    }
+
+    .codicon-key:before {
+      content: '\eb11';
+    }
+
+    .codicon-law:before {
+      content: '\eb12';
+    }
+
+    .codicon-lightbulb-autofix:before {
+      content: '\eb13';
+    }
+
+    .codicon-link-external:before {
+      content: '\eb14';
+    }
+
+    .codicon-link:before {
+      content: '\eb15';
+    }
+
+    .codicon-list-ordered:before {
+      content: '\eb16';
+    }
+
+    .codicon-list-unordered:before {
+      content: '\eb17';
+    }
+
+    .codicon-live-share:before {
+      content: '\eb18';
+    }
+
+    .codicon-loading:before {
+      content: '\eb19';
+    }
+
+    .codicon-location:before {
+      content: '\eb1a';
+    }
+
+    .codicon-mail-read:before {
+      content: '\eb1b';
+    }
+
+    .codicon-mail:before {
+      content: '\eb1c';
+    }
+
+    .codicon-markdown:before {
+      content: '\eb1d';
+    }
+
+    .codicon-megaphone:before {
+      content: '\eb1e';
+    }
+
+    .codicon-mention:before {
+      content: '\eb1f';
+    }
+
+    .codicon-milestone:before {
+      content: '\eb20';
+    }
+
+    .codicon-git-pull-request-milestone:before {
+      content: '\eb20';
+    }
+
+    .codicon-mortar-board:before {
+      content: '\eb21';
+    }
+
+    .codicon-move:before {
+      content: '\eb22';
+    }
+
+    .codicon-multiple-windows:before {
+      content: '\eb23';
+    }
+
+    .codicon-mute:before {
+      content: '\eb24';
+    }
+
+    .codicon-no-newline:before {
+      content: '\eb25';
+    }
+
+    .codicon-note:before {
+      content: '\eb26';
+    }
+
+    .codicon-octoface:before {
+      content: '\eb27';
+    }
+
+    .codicon-open-preview:before {
+      content: '\eb28';
+    }
+
+    .codicon-package:before {
+      content: '\eb29';
+    }
+
+    .codicon-paintcan:before {
+      content: '\eb2a';
+    }
+
+    .codicon-pin:before {
+      content: '\eb2b';
+    }
+
+    .codicon-play:before {
+      content: '\eb2c';
+    }
+
+    .codicon-run:before {
+      content: '\eb2c';
+    }
+
+    .codicon-plug:before {
+      content: '\eb2d';
+    }
+
+    .codicon-preserve-case:before {
+      content: '\eb2e';
+    }
+
+    .codicon-preview:before {
+      content: '\eb2f';
+    }
+
+    .codicon-project:before {
+      content: '\eb30';
+    }
+
+    .codicon-pulse:before {
+      content: '\eb31';
+    }
+
+    .codicon-question:before {
+      content: '\eb32';
+    }
+
+    .codicon-quote:before {
+      content: '\eb33';
+    }
+
+    .codicon-radio-tower:before {
+      content: '\eb34';
+    }
+
+    .codicon-reactions:before {
+      content: '\eb35';
+    }
+
+    .codicon-references:before {
+      content: '\eb36';
+    }
+
+    .codicon-refresh:before {
+      content: '\eb37';
+    }
+
+    .codicon-regex:before {
+      content: '\eb38';
+    }
+
+    .codicon-remote-explorer:before {
+      content: '\eb39';
+    }
+
+    .codicon-remote:before {
+      content: '\eb3a';
+    }
+
+    .codicon-remove:before {
+      content: '\eb3b';
+    }
+
+    .codicon-replace-all:before {
+      content: '\eb3c';
+    }
+
+    .codicon-replace:before {
+      content: '\eb3d';
+    }
+
+    .codicon-repo-clone:before {
+      content: '\eb3e';
+    }
+
+    .codicon-repo-force-push:before {
+      content: '\eb3f';
+    }
+
+    .codicon-repo-pull:before {
+      content: '\eb40';
+    }
+
+    .codicon-repo-push:before {
+      content: '\eb41';
+    }
+
+    .codicon-report:before {
+      content: '\eb42';
+    }
+
+    .codicon-request-changes:before {
+      content: '\eb43';
+    }
+
+    .codicon-rocket:before {
+      content: '\eb44';
+    }
+
+    .codicon-root-folder-opened:before {
+      content: '\eb45';
+    }
+
+    .codicon-root-folder:before {
+      content: '\eb46';
+    }
+
+    .codicon-rss:before {
+      content: '\eb47';
+    }
+
+    .codicon-ruby:before {
+      content: '\eb48';
+    }
+
+    .codicon-save-all:before {
+      content: '\eb49';
+    }
+
+    .codicon-save-as:before {
+      content: '\eb4a';
+    }
+
+    .codicon-save:before {
+      content: '\eb4b';
+    }
+
+    .codicon-screen-full:before {
+      content: '\eb4c';
+    }
+
+    .codicon-screen-normal:before {
+      content: '\eb4d';
+    }
+
+    .codicon-search-stop:before {
+      content: '\eb4e';
+    }
+
+    .codicon-server:before {
+      content: '\eb50';
+    }
+
+    .codicon-settings-gear:before {
+      content: '\eb51';
+    }
+
+    .codicon-settings:before {
+      content: '\eb52';
+    }
+
+    .codicon-shield:before {
+      content: '\eb53';
+    }
+
+    .codicon-smiley:before {
+      content: '\eb54';
+    }
+
+    .codicon-sort-precedence:before {
+      content: '\eb55';
+    }
+
+    .codicon-split-horizontal:before {
+      content: '\eb56';
+    }
+
+    .codicon-split-vertical:before {
+      content: '\eb57';
+    }
+
+    .codicon-squirrel:before {
+      content: '\eb58';
+    }
+
+    .codicon-star-full:before {
+      content: '\eb59';
+    }
+
+    .codicon-star-half:before {
+      content: '\eb5a';
+    }
+
+    .codicon-symbol-class:before {
+      content: '\eb5b';
+    }
+
+    .codicon-symbol-color:before {
+      content: '\eb5c';
+    }
+
+    .codicon-symbol-customcolor:before {
+      content: '\eb5c';
+    }
+
+    .codicon-symbol-constant:before {
+      content: '\eb5d';
+    }
+
+    .codicon-symbol-enum-member:before {
+      content: '\eb5e';
+    }
+
+    .codicon-symbol-field:before {
+      content: '\eb5f';
+    }
+
+    .codicon-symbol-file:before {
+      content: '\eb60';
+    }
+
+    .codicon-symbol-interface:before {
+      content: '\eb61';
+    }
+
+    .codicon-symbol-keyword:before {
+      content: '\eb62';
+    }
+
+    .codicon-symbol-misc:before {
+      content: '\eb63';
+    }
+
+    .codicon-symbol-operator:before {
+      content: '\eb64';
+    }
+
+    .codicon-symbol-property:before {
+      content: '\eb65';
+    }
+
+    .codicon-wrench:before {
+      content: '\eb65';
+    }
+
+    .codicon-wrench-subaction:before {
+      content: '\eb65';
+    }
+
+    .codicon-symbol-snippet:before {
+      content: '\eb66';
+    }
+
+    .codicon-tasklist:before {
+      content: '\eb67';
+    }
+
+    .codicon-telescope:before {
+      content: '\eb68';
+    }
+
+    .codicon-text-size:before {
+      content: '\eb69';
+    }
+
+    .codicon-three-bars:before {
+      content: '\eb6a';
+    }
+
+    .codicon-thumbsdown:before {
+      content: '\eb6b';
+    }
+
+    .codicon-thumbsup:before {
+      content: '\eb6c';
+    }
+
+    .codicon-tools:before {
+      content: '\eb6d';
+    }
+
+    .codicon-triangle-down:before {
+      content: '\eb6e';
+    }
+
+    .codicon-triangle-left:before {
+      content: '\eb6f';
+    }
+
+    .codicon-triangle-right:before {
+      content: '\eb70';
+    }
+
+    .codicon-triangle-up:before {
+      content: '\eb71';
+    }
+
+    .codicon-twitter:before {
+      content: '\eb72';
+    }
+
+    .codicon-unfold:before {
+      content: '\eb73';
+    }
+
+    .codicon-unlock:before {
+      content: '\eb74';
+    }
+
+    .codicon-unmute:before {
+      content: '\eb75';
+    }
+
+    .codicon-unverified:before {
+      content: '\eb76';
+    }
+
+    .codicon-verified:before {
+      content: '\eb77';
+    }
+
+    .codicon-versions:before {
+      content: '\eb78';
+    }
+
+    .codicon-vm-active:before {
+      content: '\eb79';
+    }
+
+    .codicon-vm-outline:before {
+      content: '\eb7a';
+    }
+
+    .codicon-vm-running:before {
+      content: '\eb7b';
+    }
+
+    .codicon-watch:before {
+      content: '\eb7c';
+    }
+
+    .codicon-whitespace:before {
+      content: '\eb7d';
+    }
+
+    .codicon-whole-word:before {
+      content: '\eb7e';
+    }
+
+    .codicon-window:before {
+      content: '\eb7f';
+    }
+
+    .codicon-word-wrap:before {
+      content: '\eb80';
+    }
+
+    .codicon-zoom-in:before {
+      content: '\eb81';
+    }
+
+    .codicon-zoom-out:before {
+      content: '\eb82';
+    }
+
+    .codicon-list-filter:before {
+      content: '\eb83';
+    }
+
+    .codicon-list-flat:before {
+      content: '\eb84';
+    }
+
+    .codicon-list-selection:before {
+      content: '\eb85';
+    }
+
+    .codicon-selection:before {
+      content: '\eb85';
+    }
+
+    .codicon-list-tree:before {
+      content: '\eb86';
+    }
+
+    .codicon-debug-breakpoint-function-unverified:before {
+      content: '\eb87';
+    }
+
+    .codicon-debug-breakpoint-function:before {
+      content: '\eb88';
+    }
+
+    .codicon-debug-breakpoint-function-disabled:before {
+      content: '\eb88';
+    }
+
+    .codicon-debug-stackframe-active:before {
+      content: '\eb89';
+    }
+
+    .codicon-circle-small-filled:before {
+      content: '\eb8a';
+    }
+
+    .codicon-debug-stackframe-dot:before {
+      content: '\eb8a';
+    }
+
+    .codicon-debug-stackframe:before {
+      content: '\eb8b';
+    }
+
+    .codicon-debug-stackframe-focused:before {
+      content: '\eb8b';
+    }
+
+    .codicon-debug-breakpoint-unsupported:before {
+      content: '\eb8c';
+    }
+
+    .codicon-symbol-string:before {
+      content: '\eb8d';
+    }
+
+    .codicon-debug-reverse-continue:before {
+      content: '\eb8e';
+    }
+
+    .codicon-debug-step-back:before {
+      content: '\eb8f';
+    }
+
+    .codicon-debug-restart-frame:before {
+      content: '\eb90';
+    }
+
+    .codicon-call-incoming:before {
+      content: '\eb92';
+    }
+
+    .codicon-call-outgoing:before {
+      content: '\eb93';
+    }
+
+    .codicon-menu:before {
+      content: '\eb94';
+    }
+
+    .codicon-expand-all:before {
+      content: '\eb95';
+    }
+
+    .codicon-feedback:before {
+      content: '\eb96';
+    }
+
+    .codicon-git-pull-request-reviewer:before {
+      content: '\eb96';
+    }
+
+    .codicon-group-by-ref-type:before {
+      content: '\eb97';
+    }
+
+    .codicon-ungroup-by-ref-type:before {
+      content: '\eb98';
+    }
+
+    .codicon-account:before {
+      content: '\eb99';
+    }
+
+    .codicon-git-pull-request-assignee:before {
+      content: '\eb99';
+    }
+
+    .codicon-bell-dot:before {
+      content: '\eb9a';
+    }
+
+    .codicon-debug-console:before {
+      content: '\eb9b';
+    }
+
+    .codicon-library:before {
+      content: '\eb9c';
+    }
+
+    .codicon-output:before {
+      content: '\eb9d';
+    }
+
+    .codicon-run-all:before {
+      content: '\eb9e';
+    }
+
+    .codicon-sync-ignored:before {
+      content: '\eb9f';
+    }
+
+    .codicon-pinned:before {
+      content: '\eba0';
+    }
+
+    .codicon-github-inverted:before {
+      content: '\eba1';
+    }
+
+    .codicon-debug-alt:before {
+      content: '\eb91';
+    }
+
+    .codicon-server-process:before {
+      content: '\eba2';
+    }
+
+    .codicon-server-environment:before {
+      content: '\eba3';
+    }
+
+    .codicon-pass:before {
+      content: '\eba4';
+    }
+
+    .codicon-stop-circle:before {
+      content: '\eba5';
+    }
+
+    .codicon-play-circle:before {
+      content: '\eba6';
+    }
+
+    .codicon-record:before {
+      content: '\eba7';
+    }
+
+    .codicon-debug-alt-small:before {
+      content: '\eba8';
+    }
+
+    .codicon-vm-connect:before {
+      content: '\eba9';
+    }
+
+    .codicon-cloud:before {
+      content: '\ebaa';
+    }
+
+    .codicon-merge:before {
+      content: '\ebab';
+    }
+
+    .codicon-export:before {
+      content: '\ebac';
+    }
+
+    .codicon-graph-left:before {
+      content: '\ebad';
+    }
+
+    .codicon-magnet:before {
+      content: '\ebae';
+    }
+
+    .codicon-notebook:before {
+      content: '\ebaf';
+    }
+
+    .codicon-redo:before {
+      content: '\ebb0';
+    }
+
+    .codicon-check-all:before {
+      content: '\ebb1';
+    }
+
+    .codicon-pinned-dirty:before {
+      content: '\ebb2';
+    }
+
+    .codicon-pass-filled:before {
+      content: '\ebb3';
+    }
+
+    .codicon-circle-large-filled:before {
+      content: '\ebb4';
+    }
+
+    .codicon-circle-large:before {
+      content: '\ebb5';
+    }
+
+    .codicon-circle-large-outline:before {
+      content: '\ebb5';
+    }
+
+    .codicon-combine:before {
+      content: '\ebb6';
+    }
+
+    .codicon-gather:before {
+      content: '\ebb6';
+    }
+
+    .codicon-table:before {
+      content: '\ebb7';
+    }
+
+    .codicon-variable-group:before {
+      content: '\ebb8';
+    }
+
+    .codicon-type-hierarchy:before {
+      content: '\ebb9';
+    }
+
+    .codicon-type-hierarchy-sub:before {
+      content: '\ebba';
+    }
+
+    .codicon-type-hierarchy-super:before {
+      content: '\ebbb';
+    }
+
+    .codicon-git-pull-request-create:before {
+      content: '\ebbc';
+    }
+
+    .codicon-run-above:before {
+      content: '\ebbd';
+    }
+
+    .codicon-run-below:before {
+      content: '\ebbe';
+    }
+
+    .codicon-notebook-template:before {
+      content: '\ebbf';
+    }
+
+    .codicon-debug-rerun:before {
+      content: '\ebc0';
+    }
+
+    .codicon-workspace-trusted:before {
+      content: '\ebc1';
+    }
+
+    .codicon-workspace-untrusted:before {
+      content: '\ebc2';
+    }
+
+    .codicon-workspace-unspecified:before {
+      content: '\ebc3';
+    }
+
+    .codicon-terminal-cmd:before {
+      content: '\ebc4';
+    }
+
+    .codicon-terminal-debian:before {
+      content: '\ebc5';
+    }
+
+    .codicon-terminal-linux:before {
+      content: '\ebc6';
+    }
+
+    .codicon-terminal-powershell:before {
+      content: '\ebc7';
+    }
+
+    .codicon-terminal-tmux:before {
+      content: '\ebc8';
+    }
+
+    .codicon-terminal-ubuntu:before {
+      content: '\ebc9';
+    }
+
+    .codicon-terminal-bash:before {
+      content: '\ebca';
+    }
+
+    .codicon-arrow-swap:before {
+      content: '\ebcb';
+    }
+
+    .codicon-copy:before {
+      content: '\ebcc';
+    }
+
+    .codicon-person-add:before {
+      content: '\ebcd';
+    }
+
+    .codicon-filter-filled:before {
+      content: '\ebce';
+    }
+
+    .codicon-wand:before {
+      content: '\ebcf';
+    }
+
+    .codicon-debug-line-by-line:before {
+      content: '\ebd0';
+    }
+
+    .codicon-inspect:before {
+      content: '\ebd1';
+    }
+
+    .codicon-layers:before {
+      content: '\ebd2';
+    }
+
+    .codicon-layers-dot:before {
+      content: '\ebd3';
+    }
+
+    .codicon-layers-active:before {
+      content: '\ebd4';
+    }
+
+    .codicon-compass:before {
+      content: '\ebd5';
+    }
+
+    .codicon-compass-dot:before {
+      content: '\ebd6';
+    }
+
+    .codicon-compass-active:before {
+      content: '\ebd7';
+    }
+
+    .codicon-azure:before {
+      content: '\ebd8';
+    }
+
+    .codicon-issue-draft:before {
+      content: '\ebd9';
+    }
+
+    .codicon-git-pull-request-closed:before {
+      content: '\ebda';
+    }
+
+    .codicon-git-pull-request-draft:before {
+      content: '\ebdb';
+    }
+
+    .codicon-debug-all:before {
+      content: '\ebdc';
+    }
+
+    .codicon-debug-coverage:before {
+      content: '\ebdd';
+    }
+
+    .codicon-run-errors:before {
+      content: '\ebde';
+    }
+
+    .codicon-folder-library:before {
+      content: '\ebdf';
+    }
+
+    .codicon-debug-continue-small:before {
+      content: '\ebe0';
+    }
+
+    .codicon-beaker-stop:before {
+      content: '\ebe1';
+    }
+
+    .codicon-graph-line:before {
+      content: '\ebe2';
+    }
+
+    .codicon-graph-scatter:before {
+      content: '\ebe3';
+    }
+
+    .codicon-pie-chart:before {
+      content: '\ebe4';
+    }
+
+    .codicon-bracket-dot:before {
+      content: '\ebe5';
+    }
+
+    .codicon-bracket-error:before {
+      content: '\ebe6';
+    }
+
+    .codicon-lock-small:before {
+      content: '\ebe7';
+    }
+
+    .codicon-azure-devops:before {
+      content: '\ebe8';
+    }
+
+    .codicon-verified-filled:before {
+      content: '\ebe9';
+    }
+
+    .codicon-newline:before {
+      content: '\ebea';
+    }
+
+    .codicon-layout:before {
+      content: '\ebeb';
+    }
+
+    .codicon-layout-activitybar-left:before {
+      content: '\ebec';
+    }
+
+    .codicon-layout-activitybar-right:before {
+      content: '\ebed';
+    }
+
+    .codicon-layout-panel-left:before {
+      content: '\ebee';
+    }
+
+    .codicon-layout-panel-center:before {
+      content: '\ebef';
+    }
+
+    .codicon-layout-panel-justify:before {
+      content: '\ebf0';
+    }
+
+    .codicon-layout-panel-right:before {
+      content: '\ebf1';
+    }
+
+    .codicon-layout-panel:before {
+      content: '\ebf2';
+    }
+
+    .codicon-layout-sidebar-left:before {
+      content: '\ebf3';
+    }
+
+    .codicon-layout-sidebar-right:before {
+      content: '\ebf4';
+    }
+
+    .codicon-layout-statusbar:before {
+      content: '\ebf5';
+    }
+
+    .codicon-layout-menubar:before {
+      content: '\ebf6';
+    }
+
+    .codicon-layout-centered:before {
+      content: '\ebf7';
+    }
+
+    .codicon-layout-sidebar-right-off:before {
+      content: '\ec00';
+    }
+
+    .codicon-layout-panel-off:before {
+      content: '\ec01';
+    }
+
+    .codicon-layout-sidebar-left-off:before {
+      content: '\ec02';
+    }
+
+    .codicon-target:before {
+      content: '\ebf8';
+    }
+
+    .codicon-indent:before {
+      content: '\ebf9';
+    }
+
+    .codicon-record-small:before {
+      content: '\ebfa';
+    }
+
+    .codicon-error-small:before {
+      content: '\ebfb';
+    }
+
+    .codicon-arrow-circle-down:before {
+      content: '\ebfc';
+    }
+
+    .codicon-arrow-circle-left:before {
+      content: '\ebfd';
+    }
+
+    .codicon-arrow-circle-right:before {
+      content: '\ebfe';
+    }
+
+    .codicon-arrow-circle-up:before {
+      content: '\ebff';
+    }
+
+    .codicon-heart-filled:before {
+      content: '\ec04';
+    }
+
+    .codicon-map:before {
+      content: '\ec05';
+    }
+
+    .codicon-map-filled:before {
+      content: '\ec06';
+    }
+
+    .codicon-circle-small:before {
+      content: '\ec07';
+    }
+
+    .codicon-bell-slash:before {
+      content: '\ec08';
+    }
+
+    .codicon-bell-slash-dot:before {
+      content: '\ec09';
+    }
+
+    .codicon-comment-unresolved:before {
+      content: '\ec0a';
+    }
+
+    .codicon-git-pull-request-go-to-changes:before {
+      content: '\ec0b';
+    }
+
+    .codicon-git-pull-request-new-changes:before {
+      content: '\ec0c';
+    }
+
+    .codicon-search-fuzzy:before {
+      content: '\ec0d';
+    }
+
+    .codicon-comment-draft:before {
+      content: '\ec0e';
+    }
+
+    .codicon-send:before {
+      content: '\ec0f';
+    }
+
+    .codicon-sparkle:before {
+      content: '\ec10';
+    }
+
+    .codicon-insert:before {
+      content: '\ec11';
+    }
+
+    .codicon-mic:before {
+      content: '\ec12';
+    }
+
+    .codicon-dialog-error:before {
+      content: '\ea87';
+    }
+
+    .codicon-dialog-warning:before {
+      content: '\ea6c';
+    }
+
+    .codicon-dialog-info:before {
+      content: '\ea74';
+    }
+
+    .codicon-dialog-close:before {
+      content: '\ea76';
+    }
+
+    .codicon-tree-item-expanded:before {
+      content: '\eab4';
+    }
+
+    .codicon-tree-filter-on-type-on:before {
+      content: '\eb83';
+    }
+
+    .codicon-tree-filter-on-type-off:before {
+      content: '\eb85';
+    }
+
+    .codicon-tree-filter-clear:before {
+      content: '\ea76';
+    }
+
+    .codicon-tree-item-loading:before {
+      content: '\eb19';
+    }
+
+    .codicon-menu-selection:before {
+      content: '\eab2';
+    }
+
+    .codicon-menu-submenu:before {
+      content: '\eab6';
+    }
+
+    .codicon-menubar-more:before {
+      content: '\ea7c';
+    }
+
+    .codicon-scrollbar-button-left:before {
+      content: '\eb6f';
+    }
+
+    .codicon-scrollbar-button-right:before {
+      content: '\eb70';
+    }
+
+    .codicon-scrollbar-button-up:before {
+      content: '\eb71';
+    }
+
+    .codicon-scrollbar-button-down:before {
+      content: '\eb6e';
+    }
+
+    .codicon-toolbar-more:before {
+      content: '\ea7c';
+    }
+
+    .codicon-quick-input-back:before {
+      content: '\ea9b';
+    }
+
+    .codicon-widget-close:before {
+      content: '\ea76';
+    }
+
+    .codicon-goto-previous-location:before {
+      content: '\eaa1';
+    }
+
+    .codicon-goto-next-location:before {
+      content: '\ea9a';
+    }
+
+    .codicon-diff-review-insert:before {
+      content: '\ea60';
+    }
+
+    .codicon-diff-review-remove:before {
+      content: '\eb3b';
+    }
+
+    .codicon-diff-review-close:before {
+      content: '\ea76';
+    }
+
+    .codicon-parameter-hints-next:before {
+      content: '\eab4';
+    }
+
+    .codicon-parameter-hints-previous:before {
+      content: '\eab7';
+    }
+
+    .codicon-suggest-more-info:before {
+      content: '\eab6';
+    }
+
+    .codicon-inline-suggestion-hints-next:before {
+      content: '\eab6';
+    }
+
+    .codicon-inline-suggestion-hints-previous:before {
+      content: '\eab5';
+    }
+
+    .codicon-diff-insert:before {
+      content: '\ea60';
+    }
+
+    .codicon-diff-remove:before {
+      content: '\eb3b';
+    }
+
+    .codicon-find-selection:before {
+      content: '\eb85';
+    }
+
+    .codicon-find-collapsed:before {
+      content: '\eab6';
+    }
+
+    .codicon-find-expanded:before {
+      content: '\eab4';
+    }
+
+    .codicon-find-replace:before {
+      content: '\eb3d';
+    }
+
+    .codicon-find-replace-all:before {
+      content: '\eb3c';
+    }
+
+    .codicon-find-previous-match:before {
+      content: '\eaa1';
+    }
+
+    .codicon-find-next-match:before {
+      content: '\ea9a';
+    }
+
+    .codicon-folding-expanded:before {
+      content: '\eab4';
+    }
+
+    .codicon-folding-collapsed:before {
+      content: '\eab6';
+    }
+
+    .codicon-folding-manual-collapsed:before {
+      content: '\eab6';
+    }
+
+    .codicon-folding-manual-expanded:before {
+      content: '\eab4';
+    }
+
+    .codicon-marker-navigation-next:before {
+      content: '\ea9a';
+    }
+
+    .codicon-marker-navigation-previous:before {
+      content: '\eaa1';
+    }
+
+    .codicon-extensions-warning-message:before {
+      content: '\ea6c';
+    }
+
+    .monaco-editor .inputarea.ime-input {
+      background-color: rgba(250, 250, 250, 0.06);
+    }
+
+    .monaco-editor .view-overlays .current-line {
+      background-color: rgba(250, 250, 250, 0.06);
+    }
+
+    .monaco-editor .margin-view-overlays .current-line-margin {
+      background-color: rgba(250, 250, 250, 0.06);
+      border: none;
+    }
+
+    .monaco-editor .bracket-indent-guide.lvl-0 {
+      --guide-color: rgba(255, 215, 0, 0.3);
+      --guide-color-active: #ffd700;
+    }
+
+    .monaco-editor .bracket-indent-guide.lvl-1 {
+      --guide-color: rgba(218, 112, 214, 0.3);
+      --guide-color-active: #da70d6;
+    }
+
+    .monaco-editor .bracket-indent-guide.lvl-2 {
+      --guide-color: rgba(23, 159, 255, 0.3);
+      --guide-color-active: #179fff;
+    }
+
+    .monaco-editor .bracket-indent-guide.lvl-3 {
+      --guide-color: rgba(255, 215, 0, 0.3);
+      --guide-color-active: #ffd700;
+    }
+
+    .monaco-editor .bracket-indent-guide.lvl-4 {
+      --guide-color: rgba(218, 112, 214, 0.3);
+      --guide-color-active: #da70d6;
+    }
+
+    .monaco-editor .bracket-indent-guide.lvl-5 {
+      --guide-color: rgba(23, 159, 255, 0.3);
+      --guide-color-active: #179fff;
+    }
+
+    .monaco-editor .bracket-indent-guide.lvl-6 {
+      --guide-color: rgba(255, 215, 0, 0.3);
+      --guide-color-active: #ffd700;
+    }
+
+    .monaco-editor .bracket-indent-guide.lvl-7 {
+      --guide-color: rgba(218, 112, 214, 0.3);
+      --guide-color-active: #da70d6;
+    }
+
+    .monaco-editor .bracket-indent-guide.lvl-8 {
+      --guide-color: rgba(23, 159, 255, 0.3);
+      --guide-color-active: #179fff;
+    }
+
+    .monaco-editor .bracket-indent-guide.lvl-9 {
+      --guide-color: rgba(255, 215, 0, 0.3);
+      --guide-color-active: #ffd700;
+    }
+
+    .monaco-editor .bracket-indent-guide.lvl-10 {
+      --guide-color: rgba(218, 112, 214, 0.3);
+      --guide-color-active: #da70d6;
+    }
+
+    .monaco-editor .bracket-indent-guide.lvl-11 {
+      --guide-color: rgba(23, 159, 255, 0.3);
+      --guide-color-active: #179fff;
+    }
+
+    .monaco-editor .bracket-indent-guide.lvl-12 {
+      --guide-color: rgba(255, 215, 0, 0.3);
+      --guide-color-active: #ffd700;
+    }
+
+    .monaco-editor .bracket-indent-guide.lvl-13 {
+      --guide-color: rgba(218, 112, 214, 0.3);
+      --guide-color-active: #da70d6;
+    }
+
+    .monaco-editor .bracket-indent-guide.lvl-14 {
+      --guide-color: rgba(23, 159, 255, 0.3);
+      --guide-color-active: #179fff;
+    }
+
+    .monaco-editor .bracket-indent-guide.lvl-15 {
+      --guide-color: rgba(255, 215, 0, 0.3);
+      --guide-color-active: #ffd700;
+    }
+
+    .monaco-editor .bracket-indent-guide.lvl-16 {
+      --guide-color: rgba(218, 112, 214, 0.3);
+      --guide-color-active: #da70d6;
+    }
+
+    .monaco-editor .bracket-indent-guide.lvl-17 {
+      --guide-color: rgba(23, 159, 255, 0.3);
+      --guide-color-active: #179fff;
+    }
+
+    .monaco-editor .bracket-indent-guide.lvl-18 {
+      --guide-color: rgba(255, 215, 0, 0.3);
+      --guide-color-active: #ffd700;
+    }
+
+    .monaco-editor .bracket-indent-guide.lvl-19 {
+      --guide-color: rgba(218, 112, 214, 0.3);
+      --guide-color-active: #da70d6;
+    }
+
+    .monaco-editor .bracket-indent-guide.lvl-20 {
+      --guide-color: rgba(23, 159, 255, 0.3);
+      --guide-color-active: #179fff;
+    }
+
+    .monaco-editor .bracket-indent-guide.lvl-21 {
+      --guide-color: rgba(255, 215, 0, 0.3);
+      --guide-color-active: #ffd700;
+    }
+
+    .monaco-editor .bracket-indent-guide.lvl-22 {
+      --guide-color: rgba(218, 112, 214, 0.3);
+      --guide-color-active: #da70d6;
+    }
+
+    .monaco-editor .bracket-indent-guide.lvl-23 {
+      --guide-color: rgba(23, 159, 255, 0.3);
+      --guide-color-active: #179fff;
+    }
+
+    .monaco-editor .bracket-indent-guide.lvl-24 {
+      --guide-color: rgba(255, 215, 0, 0.3);
+      --guide-color-active: #ffd700;
+    }
+
+    .monaco-editor .bracket-indent-guide.lvl-25 {
+      --guide-color: rgba(218, 112, 214, 0.3);
+      --guide-color-active: #da70d6;
+    }
+
+    .monaco-editor .bracket-indent-guide.lvl-26 {
+      --guide-color: rgba(23, 159, 255, 0.3);
+      --guide-color-active: #179fff;
+    }
+
+    .monaco-editor .bracket-indent-guide.lvl-27 {
+      --guide-color: rgba(255, 215, 0, 0.3);
+      --guide-color-active: #ffd700;
+    }
+
+    .monaco-editor .bracket-indent-guide.lvl-28 {
+      --guide-color: rgba(218, 112, 214, 0.3);
+      --guide-color-active: #da70d6;
+    }
+
+    .monaco-editor .bracket-indent-guide.lvl-29 {
+      --guide-color: rgba(23, 159, 255, 0.3);
+      --guide-color-active: #179fff;
+    }
+
+    .monaco-editor .vertical {
+      box-shadow: 1px 0 0 0 var(--guide-color) inset;
+    }
+
+    .monaco-editor .horizontal-top {
+      border-top: 1px solid var(--guide-color);
+    }
+
+    .monaco-editor .horizontal-bottom {
+      border-bottom: 1px solid var(--guide-color);
+    }
+
+    .monaco-editor .vertical.indent-active {
+      box-shadow: 1px 0 0 0 var(--guide-color-active) inset;
+    }
+
+    .monaco-editor .horizontal-top.indent-active {
+      border-top: 1px solid var(--guide-color-active);
+    }
+
+    .monaco-editor .horizontal-bottom.indent-active {
+      border-bottom: 1px solid var(--guide-color-active);
+    }
+
+    .monaco-editor .lines-content .core-guide-indent.lvl-0 {
+      --indent-color: #404040;
+      --indent-color-active: #707070;
+    }
+
+    .monaco-editor .lines-content .core-guide-indent.lvl-1 {
+      --indent-color: #404040;
+      --indent-color-active: #707070;
+    }
+
+    .monaco-editor .lines-content .core-guide-indent.lvl-2 {
+      --indent-color: #404040;
+      --indent-color-active: #707070;
+    }
+
+    .monaco-editor .lines-content .core-guide-indent.lvl-3 {
+      --indent-color: #404040;
+      --indent-color-active: #707070;
+    }
+
+    .monaco-editor .lines-content .core-guide-indent.lvl-4 {
+      --indent-color: #404040;
+      --indent-color-active: #707070;
+    }
+
+    .monaco-editor .lines-content .core-guide-indent.lvl-5 {
+      --indent-color: #404040;
+      --indent-color-active: #707070;
+    }
+
+    .monaco-editor .lines-content .core-guide-indent.lvl-6 {
+      --indent-color: #404040;
+      --indent-color-active: #707070;
+    }
+
+    .monaco-editor .lines-content .core-guide-indent.lvl-7 {
+      --indent-color: #404040;
+      --indent-color-active: #707070;
+    }
+
+    .monaco-editor .lines-content .core-guide-indent.lvl-8 {
+      --indent-color: #404040;
+      --indent-color-active: #707070;
+    }
+
+    .monaco-editor .lines-content .core-guide-indent.lvl-9 {
+      --indent-color: #404040;
+      --indent-color-active: #707070;
+    }
+
+    .monaco-editor .lines-content .core-guide-indent.lvl-10 {
+      --indent-color: #404040;
+      --indent-color-active: #707070;
+    }
+
+    .monaco-editor .lines-content .core-guide-indent.lvl-11 {
+      --indent-color: #404040;
+      --indent-color-active: #707070;
+    }
+
+    .monaco-editor .lines-content .core-guide-indent.lvl-12 {
+      --indent-color: #404040;
+      --indent-color-active: #707070;
+    }
+
+    .monaco-editor .lines-content .core-guide-indent.lvl-13 {
+      --indent-color: #404040;
+      --indent-color-active: #707070;
+    }
+
+    .monaco-editor .lines-content .core-guide-indent.lvl-14 {
+      --indent-color: #404040;
+      --indent-color-active: #707070;
+    }
+
+    .monaco-editor .lines-content .core-guide-indent.lvl-15 {
+      --indent-color: #404040;
+      --indent-color-active: #707070;
+    }
+
+    .monaco-editor .lines-content .core-guide-indent.lvl-16 {
+      --indent-color: #404040;
+      --indent-color-active: #707070;
+    }
+
+    .monaco-editor .lines-content .core-guide-indent.lvl-17 {
+      --indent-color: #404040;
+      --indent-color-active: #707070;
+    }
+
+    .monaco-editor .lines-content .core-guide-indent.lvl-18 {
+      --indent-color: #404040;
+      --indent-color-active: #707070;
+    }
+
+    .monaco-editor .lines-content .core-guide-indent.lvl-19 {
+      --indent-color: #404040;
+      --indent-color-active: #707070;
+    }
+
+    .monaco-editor .lines-content .core-guide-indent.lvl-20 {
+      --indent-color: #404040;
+      --indent-color-active: #707070;
+    }
+
+    .monaco-editor .lines-content .core-guide-indent.lvl-21 {
+      --indent-color: #404040;
+      --indent-color-active: #707070;
+    }
+
+    .monaco-editor .lines-content .core-guide-indent.lvl-22 {
+      --indent-color: #404040;
+      --indent-color-active: #707070;
+    }
+
+    .monaco-editor .lines-content .core-guide-indent.lvl-23 {
+      --indent-color: #404040;
+      --indent-color-active: #707070;
+    }
+
+    .monaco-editor .lines-content .core-guide-indent.lvl-24 {
+      --indent-color: #404040;
+      --indent-color-active: #707070;
+    }
+
+    .monaco-editor .lines-content .core-guide-indent.lvl-25 {
+      --indent-color: #404040;
+      --indent-color-active: #707070;
+    }
+
+    .monaco-editor .lines-content .core-guide-indent.lvl-26 {
+      --indent-color: #404040;
+      --indent-color-active: #707070;
+    }
+
+    .monaco-editor .lines-content .core-guide-indent.lvl-27 {
+      --indent-color: #404040;
+      --indent-color-active: #707070;
+    }
+
+    .monaco-editor .lines-content .core-guide-indent.lvl-28 {
+      --indent-color: #404040;
+      --indent-color-active: #707070;
+    }
+
+    .monaco-editor .lines-content .core-guide-indent.lvl-29 {
+      --indent-color: #404040;
+      --indent-color-active: #707070;
+    }
+
+    .monaco-editor .lines-content .core-guide-indent {
+      box-shadow: 1px 0 0 0 var(--indent-color) inset;
+    }
+
+    .monaco-editor .lines-content .core-guide-indent.indent-active {
+      box-shadow: 1px 0 0 0 var(--indent-color-active) inset;
+    }
+
+    .monaco-editor .line-numbers.dimmed-line-number {
+      color: rgba(133, 133, 133, 0.4);
+    }
+
+    .monaco-editor .cursors-layer .cursor {
+      background-color: #ffffff;
+      border-color: #ffffff;
+      color: #000000;
+    }
+
+    .monaco-editor .unexpected-closing-bracket {
+      color: rgba(255, 18, 18, 0.8);
+    }
+
+    .monaco-editor .bracket-highlighting-0 {
+      color: #ffd700;
+    }
+
+    .monaco-editor .bracket-highlighting-1 {
+      color: #da70d6;
+    }
+
+    .monaco-editor .bracket-highlighting-2 {
+      color: #179fff;
+    }
+
+    .monaco-editor .bracket-highlighting-3 {
+      color: #ffd700;
+    }
+
+    .monaco-editor .bracket-highlighting-4 {
+      color: #da70d6;
+    }
+
+    .monaco-editor .bracket-highlighting-5 {
+      color: #179fff;
+    }
+
+    .monaco-editor .bracket-highlighting-6 {
+      color: #ffd700;
+    }
+
+    .monaco-editor .bracket-highlighting-7 {
+      color: #da70d6;
+    }
+
+    .monaco-editor .bracket-highlighting-8 {
+      color: #179fff;
+    }
+
+    .monaco-editor .bracket-highlighting-9 {
+      color: #ffd700;
+    }
+
+    .monaco-editor .bracket-highlighting-10 {
+      color: #da70d6;
+    }
+
+    .monaco-editor .bracket-highlighting-11 {
+      color: #179fff;
+    }
+
+    .monaco-editor .bracket-highlighting-12 {
+      color: #ffd700;
+    }
+
+    .monaco-editor .bracket-highlighting-13 {
+      color: #da70d6;
+    }
+
+    .monaco-editor .bracket-highlighting-14 {
+      color: #179fff;
+    }
+
+    .monaco-editor .bracket-highlighting-15 {
+      color: #ffd700;
+    }
+
+    .monaco-editor .bracket-highlighting-16 {
+      color: #da70d6;
+    }
+
+    .monaco-editor .bracket-highlighting-17 {
+      color: #179fff;
+    }
+
+    .monaco-editor .bracket-highlighting-18 {
+      color: #ffd700;
+    }
+
+    .monaco-editor .bracket-highlighting-19 {
+      color: #da70d6;
+    }
+
+    .monaco-editor .bracket-highlighting-20 {
+      color: #179fff;
+    }
+
+    .monaco-editor .bracket-highlighting-21 {
+      color: #ffd700;
+    }
+
+    .monaco-editor .bracket-highlighting-22 {
+      color: #da70d6;
+    }
+
+    .monaco-editor .bracket-highlighting-23 {
+      color: #179fff;
+    }
+
+    .monaco-editor .bracket-highlighting-24 {
+      color: #ffd700;
+    }
+
+    .monaco-editor .bracket-highlighting-25 {
+      color: #da70d6;
+    }
+
+    .monaco-editor .bracket-highlighting-26 {
+      color: #179fff;
+    }
+
+    .monaco-editor .bracket-highlighting-27 {
+      color: #ffd700;
+    }
+
+    .monaco-editor .bracket-highlighting-28 {
+      color: #da70d6;
+    }
+
+    .monaco-editor .bracket-highlighting-29 {
+      color: #179fff;
+    }
+
+    .monaco-editor .squiggly-error {
+      background: url("data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%206%203'%20enable-background%3D'new%200%200%206%203'%20height%3D'3'%20width%3D'6'%3E%3Cg%20fill%3D'%23f14c4c'%3E%3Cpolygon%20points%3D'5.5%2C0%202.5%2C3%201.1%2C3%204.1%2C0'%2F%3E%3Cpolygon%20points%3D'4%2C0%206%2C2%206%2C0.6%205.4%2C0'%2F%3E%3Cpolygon%20points%3D'0%2C2%201%2C3%202.4%2C3%200%2C0.6'%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E") repeat-x bottom left;
+    }
+
+    .monaco-editor .squiggly-warning {
+      background: url("data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%206%203'%20enable-background%3D'new%200%200%206%203'%20height%3D'3'%20width%3D'6'%3E%3Cg%20fill%3D'%23cca700'%3E%3Cpolygon%20points%3D'5.5%2C0%202.5%2C3%201.1%2C3%204.1%2C0'%2F%3E%3Cpolygon%20points%3D'4%2C0%206%2C2%206%2C0.6%205.4%2C0'%2F%3E%3Cpolygon%20points%3D'0%2C2%201%2C3%202.4%2C3%200%2C0.6'%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E") repeat-x bottom left;
+    }
+
+    .monaco-editor .squiggly-info {
+      background: url("data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%206%203'%20enable-background%3D'new%200%200%206%203'%20height%3D'3'%20width%3D'6'%3E%3Cg%20fill%3D'%233794ff'%3E%3Cpolygon%20points%3D'5.5%2C0%202.5%2C3%201.1%2C3%204.1%2C0'%2F%3E%3Cpolygon%20points%3D'4%2C0%206%2C2%206%2C0.6%205.4%2C0'%2F%3E%3Cpolygon%20points%3D'0%2C2%201%2C3%202.4%2C3%200%2C0.6'%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E") repeat-x bottom left;
+    }
+
+    .monaco-editor .squiggly-hint {
+      background: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20height%3D%223%22%20width%3D%2212%22%3E%3Cg%20fill%3D%22rgba(238%2C%20238%2C%20238%2C%200.7)%22%3E%3Ccircle%20cx%3D%221%22%20cy%3D%221%22%20r%3D%221%22%2F%3E%3Ccircle%20cx%3D%225%22%20cy%3D%221%22%20r%3D%221%22%2F%3E%3Ccircle%20cx%3D%229%22%20cy%3D%221%22%20r%3D%221%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E") no-repeat bottom left;
+    }
+
+    .monaco-editor.showUnused .squiggly-inline-unnecessary {
+      opacity: 0.667;
+    }
+
+    .monaco-editor .selectionHighlight {
+      background-color: rgba(173, 214, 255, 0.07);
+    }
+
+    .monaco-editor .diagonal-fill {
+      background-image: linear-gradient(-45deg,
+          rgba(204, 204, 204, 0.2) 12.5%,
+          #0000 12.5%, #0000 50%,
+          rgba(204, 204, 204, 0.2) 50%, rgba(204, 204, 204, 0.2) 62.5%,
+          #0000 62.5%, #0000 100%);
+      background-size: 8px 8px;
+    }
+
+    .monaco-editor .findMatch {
+      background-color: rgba(234, 92, 0, 0.33);
+    }
+
+    .monaco-editor .currentFindMatch {
+      background-color: #515c6a;
+    }
+
+    .monaco-editor .findScope {
+      background-color: rgba(58, 61, 65, 0.4);
+    }
+
+    .monaco-editor .find-widget {
+      background-color: #252526;
+    }
+
+    .monaco-editor .find-widget {
+      box-shadow: 0 0 8px 2px rgba(0, 0, 0, 0.36);
+    }
+
+    .monaco-editor .find-widget {
+      color: #cccccc;
+    }
+
+    .monaco-editor .find-widget.no-results .matchesCount {
+      color: #f48771;
+    }
+
+    .monaco-editor .find-widget .monaco-sash {
+      background-color: #454545;
+    }
+
+    .monaco-editor .find-widget .button:not(.disabled):hover,
+    .monaco-editor .find-widget .codicon-find-selection:hover {
+      background-color: rgba(90, 93, 94, 0.31) !important;
+    }
+
+    .monaco-editor .find-widget .monaco-inputbox.synthetic-focus {
+      outline-color: #007fd4;
+    }
+
+    .monaco-editor .monaco-hover .hover-row:not(:first-child):not(:empty) {
+      border-top: 1px solid rgba(69, 69, 69, 0.5);
+    }
+
+    .monaco-editor .monaco-hover hr {
+      border-top: 1px solid rgba(69, 69, 69, 0.5);
+    }
+
+    .monaco-editor .monaco-hover hr {
+      border-bottom: 0px solid rgba(69, 69, 69, 0.5);
+    }
+
+    .monaco-editor,
+    .monaco-diff-editor {
+      --vscode-foreground: #cccccc;
+      --vscode-disabledForeground: rgba(204, 204, 204, 0.5);
+      --vscode-errorForeground: #f48771;
+      --vscode-descriptionForeground: rgba(204, 204, 204, 0.7);
+      --vscode-icon-foreground: #c5c5c5;
+      --vscode-focusBorder: #007fd4;
+      --vscode-textSeparator-foreground: rgba(255, 255, 255, 0.18);
+      --vscode-textLink-foreground: #3794ff;
+      --vscode-textLink-activeForeground: #3794ff;
+      --vscode-textPreformat-foreground: #d7ba7d;
+      --vscode-textBlockQuote-background: rgba(127, 127, 127, 0.1);
+      --vscode-textBlockQuote-border: rgba(0, 122, 204, 0.5);
+      --vscode-textCodeBlock-background: rgba(10, 10, 10, 0.4);
+      --vscode-widget-shadow: rgba(0, 0, 0, 0.36);
+      --vscode-input-background: #3c3c3c;
+      --vscode-input-foreground: #cccccc;
+      --vscode-inputOption-activeBorder: #007acc;
+      --vscode-inputOption-hoverBackground: rgba(90, 93, 94, 0.5);
+      --vscode-inputOption-activeBackground: rgba(0, 127, 212, 0.4);
+      --vscode-inputOption-activeForeground: #ffffff;
+      --vscode-input-placeholderForeground: rgba(204, 204, 204, 0.5);
+      --vscode-inputValidation-infoBackground: #063b49;
+      --vscode-inputValidation-infoBorder: #007acc;
+      --vscode-inputValidation-warningBackground: #352a05;
+      --vscode-inputValidation-warningBorder: #b89500;
+      --vscode-inputValidation-errorBackground: #5a1d1d;
+      --vscode-inputValidation-errorBorder: #be1100;
+      --vscode-dropdown-background: #3c3c3c;
+      --vscode-dropdown-foreground: #f0f0f0;
+      --vscode-dropdown-border: #3c3c3c;
+      --vscode-button-foreground: #ffffff;
+      --vscode-button-separator: rgba(255, 255, 255, 0.4);
+      --vscode-button-background: #0e639c;
+      --vscode-button-hoverBackground: #1177bb;
+      --vscode-button-secondaryForeground: #ffffff;
+      --vscode-button-secondaryBackground: #3a3d41;
+      --vscode-button-secondaryHoverBackground: #45494e;
+      --vscode-badge-background: #4d4d4d;
+      --vscode-badge-foreground: #ffffff;
+      --vscode-scrollbar-shadow: #000000;
+      --vscode-scrollbarSlider-background: rgba(121, 121, 121, 0.4);
+      --vscode-scrollbarSlider-hoverBackground: rgba(100, 100, 100, 0.7);
+      --vscode-scrollbarSlider-activeBackground: rgba(191, 191, 191, 0.4);
+      --vscode-progressBar-background: #0e70c0;
+      --vscode-editorError-foreground: #f14c4c;
+      --vscode-editorWarning-foreground: #cca700;
+      --vscode-editorInfo-foreground: #3794ff;
+      --vscode-editorHint-foreground: rgba(238, 238, 238, 0.7);
+      --vscode-sash-hoverBorder: #007fd4;
+      --vscode-editor-background: #071e22;
+      --vscode-editor-foreground: #fffaca;
+      --vscode-editorStickyScroll-background: #071e22;
+      --vscode-editorStickyScrollHover-background: #2a2d2e;
+      --vscode-editorWidget-background: #252526;
+      --vscode-editorWidget-foreground: #cccccc;
+      --vscode-editorWidget-border: #454545;
+      --vscode-quickInput-background: #252526;
+      --vscode-quickInput-foreground: #cccccc;
+      --vscode-quickInputTitle-background: rgba(255, 255, 255, 0.1);
+      --vscode-pickerGroup-foreground: #3794ff;
+      --vscode-pickerGroup-border: #3f3f46;
+      --vscode-keybindingLabel-background: rgba(128, 128, 128, 0.17);
+      --vscode-keybindingLabel-foreground: #cccccc;
+      --vscode-keybindingLabel-border: rgba(51, 51, 51, 0.6);
+      --vscode-keybindingLabel-bottomBorder: rgba(68, 68, 68, 0.6);
+      --vscode-editor-selectionBackground: rgba(248, 178, 41, 0.25);
+      --vscode-editor-inactiveSelectionBackground: #3a3d41;
+      --vscode-editor-selectionHighlightBackground: rgba(173, 214, 255, 0.15);
+      --vscode-editor-findMatchBackground: #515c6a;
+      --vscode-editor-findMatchHighlightBackground: rgba(234, 92, 0, 0.33);
+      --vscode-editor-findRangeHighlightBackground: rgba(58, 61, 65, 0.4);
+      --vscode-searchEditor-findMatchBackground: rgba(234, 92, 0, 0.22);
+      --vscode-search-resultsInfoForeground: rgba(204, 204, 204, 0.65);
+      --vscode-editor-hoverHighlightBackground: rgba(38, 79, 120, 0.25);
+      --vscode-editorHoverWidget-background: #252526;
+      --vscode-editorHoverWidget-foreground: #cccccc;
+      --vscode-editorHoverWidget-border: #454545;
+      --vscode-editorHoverWidget-statusBarBackground: #2c2c2d;
+      --vscode-editorLink-activeForeground: #4e94ce;
+      --vscode-editorInlayHint-foreground: #969696;
+      --vscode-editorInlayHint-background: rgba(77, 77, 77, 0.1);
+      --vscode-editorInlayHint-typeForeground: #969696;
+      --vscode-editorInlayHint-typeBackground: rgba(77, 77, 77, 0.1);
+      --vscode-editorInlayHint-parameterForeground: #969696;
+      --vscode-editorInlayHint-parameterBackground: rgba(77, 77, 77, 0.1);
+      --vscode-editorLightBulb-foreground: #ffcc00;
+      --vscode-editorLightBulbAutoFix-foreground: #75beff;
+      --vscode-diffEditor-insertedTextBackground: rgba(156, 204, 44, 0.2);
+      --vscode-diffEditor-removedTextBackground: rgba(255, 0, 0, 0.2);
+      --vscode-diffEditor-insertedLineBackground: rgba(155, 185, 85, 0.2);
+      --vscode-diffEditor-removedLineBackground: rgba(255, 0, 0, 0.2);
+      --vscode-diffEditor-diagonalFill: rgba(204, 204, 204, 0.2);
+      --vscode-diffEditor-unchangedRegionBackground: #3e3e3e;
+      --vscode-diffEditor-unchangedRegionForeground: #a3a2a2;
+      --vscode-diffEditor-unchangedCodeBackground: rgba(116, 116, 116, 0.16);
+      --vscode-list-focusOutline: #007fd4;
+      --vscode-list-activeSelectionBackground: #04395e;
+      --vscode-list-activeSelectionForeground: #ffffff;
+      --vscode-list-inactiveSelectionBackground: #37373d;
+      --vscode-list-hoverBackground: #2a2d2e;
+      --vscode-list-dropBackground: #062f4a;
+      --vscode-list-highlightForeground: #2aaaff;
+      --vscode-list-focusHighlightForeground: #2aaaff;
+      --vscode-list-invalidItemForeground: #b89500;
+      --vscode-list-errorForeground: #f88070;
+      --vscode-list-warningForeground: #cca700;
+      --vscode-listFilterWidget-background: #252526;
+      --vscode-listFilterWidget-outline: rgba(0, 0, 0, 0);
+      --vscode-listFilterWidget-noMatchesOutline: #be1100;
+      --vscode-listFilterWidget-shadow: rgba(0, 0, 0, 0.36);
+      --vscode-list-filterMatchBackground: rgba(234, 92, 0, 0.33);
+      --vscode-tree-indentGuidesStroke: #585858;
+      --vscode-tree-inactiveIndentGuidesStroke: rgba(88, 88, 88, 0.4);
+      --vscode-tree-tableColumnsBorder: rgba(204, 204, 204, 0.13);
+      --vscode-tree-tableOddRowsBackground: rgba(204, 204, 204, 0.04);
+      --vscode-list-deemphasizedForeground: #8c8c8c;
+      --vscode-checkbox-background: #3c3c3c;
+      --vscode-checkbox-selectBackground: #252526;
+      --vscode-checkbox-foreground: #f0f0f0;
+      --vscode-checkbox-border: #3c3c3c;
+      --vscode-checkbox-selectBorder: #c5c5c5;
+      --vscode-quickInputList-focusForeground: #ffffff;
+      --vscode-quickInputList-focusBackground: #04395e;
+      --vscode-menu-foreground: #f0f0f0;
+      --vscode-menu-background: #3c3c3c;
+      --vscode-menu-selectionForeground: #ffffff;
+      --vscode-menu-selectionBackground: #04395e;
+      --vscode-menu-separatorBackground: #606060;
+      --vscode-toolbar-hoverBackground: rgba(90, 93, 94, 0.31);
+      --vscode-toolbar-activeBackground: rgba(99, 102, 103, 0.31);
+      --vscode-editor-snippetTabstopHighlightBackground: rgba(124, 124, 124, 0.3);
+      --vscode-editor-snippetFinalTabstopHighlightBorder: #525252;
+      --vscode-breadcrumb-foreground: rgba(204, 204, 204, 0.8);
+      --vscode-breadcrumb-background: #071e22;
+      --vscode-breadcrumb-focusForeground: #e0e0e0;
+      --vscode-breadcrumb-activeSelectionForeground: #e0e0e0;
+      --vscode-breadcrumbPicker-background: #252526;
+      --vscode-merge-currentHeaderBackground: rgba(64, 200, 174, 0.5);
+      --vscode-merge-currentContentBackground: rgba(64, 200, 174, 0.2);
+      --vscode-merge-incomingHeaderBackground: rgba(64, 166, 255, 0.5);
+      --vscode-merge-incomingContentBackground: rgba(64, 166, 255, 0.2);
+      --vscode-merge-commonHeaderBackground: rgba(96, 96, 96, 0.4);
+      --vscode-merge-commonContentBackground: rgba(96, 96, 96, 0.16);
+      --vscode-editorOverviewRuler-currentContentForeground: rgba(64, 200, 174, 0.5);
+      --vscode-editorOverviewRuler-incomingContentForeground: rgba(64, 166, 255, 0.5);
+      --vscode-editorOverviewRuler-commonContentForeground: rgba(96, 96, 96, 0.4);
+      --vscode-editorOverviewRuler-findMatchForeground: rgba(209, 134, 22, 0.49);
+      --vscode-editorOverviewRuler-selectionHighlightForeground: rgba(160, 160, 160, 0.8);
+      --vscode-minimap-findMatchHighlight: #d18616;
+      --vscode-minimap-selectionOccurrenceHighlight: #676767;
+      --vscode-minimap-selectionHighlight: #264f78;
+      --vscode-minimap-errorHighlight: rgba(255, 18, 18, 0.7);
+      --vscode-minimap-warningHighlight: #cca700;
+      --vscode-minimap-foregroundOpacity: #000000;
+      --vscode-minimapSlider-background: rgba(121, 121, 121, 0.2);
+      --vscode-minimapSlider-hoverBackground: rgba(100, 100, 100, 0.35);
+      --vscode-minimapSlider-activeBackground: rgba(191, 191, 191, 0.2);
+      --vscode-problemsErrorIcon-foreground: #f14c4c;
+      --vscode-problemsWarningIcon-foreground: #cca700;
+      --vscode-problemsInfoIcon-foreground: #3794ff;
+      --vscode-charts-foreground: #cccccc;
+      --vscode-charts-lines: rgba(204, 204, 204, 0.5);
+      --vscode-charts-red: #f14c4c;
+      --vscode-charts-blue: #3794ff;
+      --vscode-charts-yellow: #cca700;
+      --vscode-charts-orange: #d18616;
+      --vscode-charts-green: #89d185;
+      --vscode-charts-purple: #b180d7;
+      --vscode-diffEditor-move-border: rgba(139, 139, 139, 0.61);
+      --vscode-diffEditor-moveActive-border: #ffa500;
+      --vscode-symbolIcon-arrayForeground: #cccccc;
+      --vscode-symbolIcon-booleanForeground: #cccccc;
+      --vscode-symbolIcon-classForeground: #ee9d28;
+      --vscode-symbolIcon-colorForeground: #cccccc;
+      --vscode-symbolIcon-constantForeground: #cccccc;
+      --vscode-symbolIcon-constructorForeground: #b180d7;
+      --vscode-symbolIcon-enumeratorForeground: #ee9d28;
+      --vscode-symbolIcon-enumeratorMemberForeground: #75beff;
+      --vscode-symbolIcon-eventForeground: #ee9d28;
+      --vscode-symbolIcon-fieldForeground: #75beff;
+      --vscode-symbolIcon-fileForeground: #cccccc;
+      --vscode-symbolIcon-folderForeground: #cccccc;
+      --vscode-symbolIcon-functionForeground: #b180d7;
+      --vscode-symbolIcon-interfaceForeground: #75beff;
+      --vscode-symbolIcon-keyForeground: #cccccc;
+      --vscode-symbolIcon-keywordForeground: #cccccc;
+      --vscode-symbolIcon-methodForeground: #b180d7;
+      --vscode-symbolIcon-moduleForeground: #cccccc;
+      --vscode-symbolIcon-namespaceForeground: #cccccc;
+      --vscode-symbolIcon-nullForeground: #cccccc;
+      --vscode-symbolIcon-numberForeground: #cccccc;
+      --vscode-symbolIcon-objectForeground: #cccccc;
+      --vscode-symbolIcon-operatorForeground: #cccccc;
+      --vscode-symbolIcon-packageForeground: #cccccc;
+      --vscode-symbolIcon-propertyForeground: #cccccc;
+      --vscode-symbolIcon-referenceForeground: #cccccc;
+      --vscode-symbolIcon-snippetForeground: #cccccc;
+      --vscode-symbolIcon-stringForeground: #cccccc;
+      --vscode-symbolIcon-structForeground: #cccccc;
+      --vscode-symbolIcon-textForeground: #cccccc;
+      --vscode-symbolIcon-typeParameterForeground: #cccccc;
+      --vscode-symbolIcon-unitForeground: #cccccc;
+      --vscode-symbolIcon-variableForeground: #75beff;
+      --vscode-actionBar-toggledBackground: rgba(0, 127, 212, 0.4);
+      --vscode-editor-lineHighlightBackground: rgba(250, 250, 250, 0.06);
+      --vscode-editor-lineHighlightBorder: #282828;
+      --vscode-editor-rangeHighlightBackground: rgba(255, 255, 255, 0.04);
+      --vscode-editor-symbolHighlightBackground: rgba(234, 92, 0, 0.33);
+      --vscode-editorCursor-foreground: #ffffff;
+      --vscode-editorWhitespace-foreground: rgba(250, 250, 250, 0.38);
+      --vscode-editorLineNumber-foreground: #858585;
+      --vscode-editorIndentGuide-background: rgba(250, 250, 250, 0.38);
+      --vscode-editorIndentGuide-activeBackground: rgba(250, 250, 250, 0.38);
+      --vscode-editorIndentGuide-background1: #404040;
+      --vscode-editorIndentGuide-background2: rgba(0, 0, 0, 0);
+      --vscode-editorIndentGuide-background3: rgba(0, 0, 0, 0);
+      --vscode-editorIndentGuide-background4: rgba(0, 0, 0, 0);
+      --vscode-editorIndentGuide-background5: rgba(0, 0, 0, 0);
+      --vscode-editorIndentGuide-background6: rgba(0, 0, 0, 0);
+      --vscode-editorIndentGuide-activeBackground1: #707070;
+      --vscode-editorIndentGuide-activeBackground2: rgba(0, 0, 0, 0);
+      --vscode-editorIndentGuide-activeBackground3: rgba(0, 0, 0, 0);
+      --vscode-editorIndentGuide-activeBackground4: rgba(0, 0, 0, 0);
+      --vscode-editorIndentGuide-activeBackground5: rgba(0, 0, 0, 0);
+      --vscode-editorIndentGuide-activeBackground6: rgba(0, 0, 0, 0);
+      --vscode-editorActiveLineNumber-foreground: #c6c6c6;
+      --vscode-editorLineNumber-activeForeground: #c6c6c6;
+      --vscode-editorRuler-foreground: #5a5a5a;
+      --vscode-editorCodeLens-foreground: #999999;
+      --vscode-editorBracketMatch-background: rgba(0, 100, 0, 0.1);
+      --vscode-editorBracketMatch-border: #888888;
+      --vscode-editorOverviewRuler-border: rgba(127, 127, 127, 0.3);
+      --vscode-editorGutter-background: #071e22;
+      --vscode-editorUnnecessaryCode-opacity: rgba(0, 0, 0, 0.67);
+      --vscode-editorGhostText-foreground: rgba(255, 255, 255, 0.34);
+      --vscode-editorOverviewRuler-rangeHighlightForeground: rgba(0, 122, 204, 0.6);
+      --vscode-editorOverviewRuler-errorForeground: rgba(255, 18, 18, 0.7);
+      --vscode-editorOverviewRuler-warningForeground: #cca700;
+      --vscode-editorOverviewRuler-infoForeground: #3794ff;
+      --vscode-editorBracketHighlight-foreground1: #ffd700;
+      --vscode-editorBracketHighlight-foreground2: #da70d6;
+      --vscode-editorBracketHighlight-foreground3: #179fff;
+      --vscode-editorBracketHighlight-foreground4: rgba(0, 0, 0, 0);
+      --vscode-editorBracketHighlight-foreground5: rgba(0, 0, 0, 0);
+      --vscode-editorBracketHighlight-foreground6: rgba(0, 0, 0, 0);
+      --vscode-editorBracketHighlight-unexpectedBracket-foreground: rgba(255, 18, 18, 0.8);
+      --vscode-editorBracketPairGuide-background1: rgba(0, 0, 0, 0);
+      --vscode-editorBracketPairGuide-background2: rgba(0, 0, 0, 0);
+      --vscode-editorBracketPairGuide-background3: rgba(0, 0, 0, 0);
+      --vscode-editorBracketPairGuide-background4: rgba(0, 0, 0, 0);
+      --vscode-editorBracketPairGuide-background5: rgba(0, 0, 0, 0);
+      --vscode-editorBracketPairGuide-background6: rgba(0, 0, 0, 0);
+      --vscode-editorBracketPairGuide-activeBackground1: rgba(0, 0, 0, 0);
+      --vscode-editorBracketPairGuide-activeBackground2: rgba(0, 0, 0, 0);
+      --vscode-editorBracketPairGuide-activeBackground3: rgba(0, 0, 0, 0);
+      --vscode-editorBracketPairGuide-activeBackground4: rgba(0, 0, 0, 0);
+      --vscode-editorBracketPairGuide-activeBackground5: rgba(0, 0, 0, 0);
+      --vscode-editorBracketPairGuide-activeBackground6: rgba(0, 0, 0, 0);
+      --vscode-editorUnicodeHighlight-border: #bd9b03;
+      --vscode-editorUnicodeHighlight-background: rgba(189, 155, 3, 0.15);
+      --vscode-editorOverviewRuler-bracketMatchForeground: #a0a0a0;
+      --vscode-editor-linkedEditingBackground: rgba(255, 0, 0, 0.3);
+      --vscode-editor-wordHighlightBackground: rgba(87, 87, 87, 0.72);
+      --vscode-editor-wordHighlightStrongBackground: rgba(0, 73, 114, 0.72);
+      --vscode-editor-wordHighlightTextBackground: rgba(87, 87, 87, 0.72);
+      --vscode-editorOverviewRuler-wordHighlightForeground: rgba(160, 160, 160, 0.8);
+      --vscode-editorOverviewRuler-wordHighlightStrongForeground: rgba(192, 160, 192, 0.8);
+      --vscode-editorOverviewRuler-wordHighlightTextForeground: rgba(160, 160, 160, 0.8);
+      --vscode-peekViewTitle-background: #252526;
+      --vscode-peekViewTitleLabel-foreground: #ffffff;
+      --vscode-peekViewTitleDescription-foreground: rgba(204, 204, 204, 0.7);
+      --vscode-peekView-border: #3794ff;
+      --vscode-peekViewResult-background: #252526;
+      --vscode-peekViewResult-lineForeground: #bbbbbb;
+      --vscode-peekViewResult-fileForeground: #ffffff;
+      --vscode-peekViewResult-selectionBackground: rgba(51, 153, 255, 0.2);
+      --vscode-peekViewResult-selectionForeground: #ffffff;
+      --vscode-peekViewEditor-background: #001f33;
+      --vscode-peekViewEditorGutter-background: #001f33;
+      --vscode-peekViewEditorStickyScroll-background: #001f33;
+      --vscode-peekViewResult-matchHighlightBackground: rgba(234, 92, 0, 0.3);
+      --vscode-peekViewEditor-matchHighlightBackground: rgba(255, 143, 0, 0.6);
+      --vscode-editorMarkerNavigationError-background: #f14c4c;
+      --vscode-editorMarkerNavigationError-headerBackground: rgba(241, 76, 76, 0.1);
+      --vscode-editorMarkerNavigationWarning-background: #cca700;
+      --vscode-editorMarkerNavigationWarning-headerBackground: rgba(204, 167, 0, 0.1);
+      --vscode-editorMarkerNavigationInfo-background: #3794ff;
+      --vscode-editorMarkerNavigationInfo-headerBackground: rgba(55, 148, 255, 0.1);
+      --vscode-editorMarkerNavigation-background: #071e22;
+      --vscode-editorHoverWidget-highlightForeground: #2aaaff;
+      --vscode-editorSuggestWidget-background: #252526;
+      --vscode-editorSuggestWidget-border: #454545;
+      --vscode-editorSuggestWidget-foreground: #fffaca;
+      --vscode-editorSuggestWidget-selectedForeground: #ffffff;
+      --vscode-editorSuggestWidget-selectedBackground: #04395e;
+      --vscode-editorSuggestWidget-highlightForeground: #2aaaff;
+      --vscode-editorSuggestWidget-focusHighlightForeground: #2aaaff;
+      --vscode-editorSuggestWidgetStatus-foreground: rgba(255, 250, 202, 0.5);
+      --vscode-editor-foldBackground: rgba(248, 178, 41, 0.07);
+      --vscode-editorGutter-foldingControlForeground: #c5c5c5;
+    }
+
+    .mtk1 {
+      color: #fffaca;
+    }
+
+    .mtk2 {
+      color: #000000;
+    }
+
+    .mtk3 {
+      color: #cc6666;
+    }
+
+    .mtk4 {
+      color: #9cdcfe;
+    }
+
+    .mtk5 {
+      color: #ce9178;
+    }
+
+    .mtk6 {
+      color: #d4d4d4;
+    }
+
+    .mtk7 {
+      color: #b5cea8;
+    }
+
+    .mtk8 {
+      color: #608b4e;
+    }
+
+    .mtk9 {
+      color: #858779;
+    }
+
+    .mtk10 {
+      color: #569cd6;
+    }
+
+    .mtk11 {
+      color: #f2e8cf;
+    }
+
+    .mtk12 {
+      color: #dcdcdc;
+    }
+
+    .mtk13 {
+      color: #808080;
+    }
+
+    .mtk14 {
+      color: #f44747;
+    }
+
+    .mtk15 {
+      color: #6a994e;
+    }
+
+    .mtk16 {
+      color: #c586c0;
+    }
+
+    .mtk17 {
+      color: #d0d0ff;
+    }
+
+    .mtk18 {
+      color: #a79873;
+    }
+
+    .mtk19 {
+      color: #dd6a6f;
+    }
+
+    .mtk20 {
+      color: #5bb498;
+    }
+
+    .mtk21 {
+      color: #909090;
+    }
+
+    .mtk22 {
+      color: #778899;
+    }
+
+    .mtk23 {
+      color: #ff00ff;
+    }
+
+    .mtk24 {
+      color: #b46695;
+    }
+
+    .mtk25 {
+      color: #ffffff;
+    }
+
+    .mtk26 {
+      color: #9b9b9b;
+    }
+
+    .mtk27 {
+      color: #66cc33;
+    }
+
+    .mtk28 {
+      color: #aaaaaa;
+    }
+
+    .mtk29 {
+      color: #cccc33;
+    }
+
+    .mtk30 {
+      color: #ff0000;
+    }
+
+    .mtk31 {
+      color: #4f76ac;
+    }
+
+    .mtk32 {
+      color: #434242;
+    }
+
+    .mtk33 {
+      color: #3dc9b0;
+    }
+
+    .mtk34 {
+      color: #a7c957;
+    }
+
+    .mtk35 {
+      color: #74b0df;
+    }
+
+    .mtk36 {
+      color: #4864aa;
+    }
+
+    .mtki {
+      font-style: italic;
+    }
+
+    .mtkb {
+      font-weight: bold;
+    }
+
+    .mtku {
+      text-decoration: underline;
+      text-underline-position: under;
+    }
+
+    .mtks {
+      text-decoration: line-through;
+    }
+
+    .mtks.mtku {
+      text-decoration: underline line-through;
+      text-underline-position: under;
+    }
+  </style>
+  <script async="async" type="text/javascript"
+    src="https://cdn.jsdelivr.net/npm/monaco-editor@0.43.0/min/vs/basic-languages/typescript/typescript.js"></script>
+  <script async="async" type="text/javascript"
+    src="https://cdn.jsdelivr.net/npm/monaco-editor@0.43.0/min/vs/language/typescript/tsMode.js"></script>
+</head>
+
+<body>
+  <link rel="preload" as="image" href="/logo.webp">
+  <link rel="preload" as="image" href="/codely.webp">
+  <div id="__next">
+    <div class="__className_27d86c __variable_27d86c __variable_a5c4ba">
+      <div class="fixed flex flex-col w-full h-full">
+        <header class="items-center justify-between flex-grow-0 flex-shrink-0 hidden w-full px-6 py-4 sm:flex">
+          <div class="flex items-center gap-x-4"><a title="Go back to home" href="/"><img src="/logo.webp" alt="logo"
+                class="object-contain w-auto h-12"></a>
+            <div class="flex-col items-start justify-center hidden pl-4 md:flex gap-y-1">
+              <h1>
+                <div class="">
+                  <div class="relative" data-headlessui-state=""><button
+                      class="relative w-full py-2 pl-4 pr-3 tracking-wider text-left transition border border-white/40 border-dashed rounded-lg cursor-pointe hover:bg-white/10 focus:outline-none focus-visible:border-white/10 focus-visible:ring-[4px] focus-visible:ring-white/10 focus-visible:ring-offset-2 flex items-center group hover:ring-[4px] hover:ring-white/10"
+                      id="headlessui-listbox-button-:R1n5j6:" type="button" aria-haspopup="listbox"
+                      aria-expanded="false" data-headlessui-state=""><span
+                        class="block text-xs truncate lg:text-base">Challenge #4: 🎄 Decorating the Christmas
+                        tree</span><span
+                        class="absolute inset-y-0 right-0 flex items-center pr-0 pointer-events-none"></span>
+                      <div class="hidden pl-2 ml-4 border-l border-dashed border-white/40 md:block"><svg
+                          class="w-auto h-6 group-data-[active]:rotate-180" height="21" viewBox="0 0 21 21" width="21">
+                          <path d="m8.5.5-4 4-4-4" fill="none" stroke="currentColor" stroke-linecap="round"
+                            stroke-linejoin="round" transform="translate(6 8)"></path>
+                        </svg></div>
+                    </button></div>
+                </div>
+              </h1>
+            </div>
+          </div>
+          <div class="flex flex-row items-center justify-center pl-1 gap-x-8 min-w-[190px]">
+            <div class="flex flex-col items-center justify-center pl-1 gap-x-1"><span
+                class="flex items-center ml-1 text-sm text-xmas-yellow gap-x-4"><span
+                  class="text-center flex justify-center items-center gap-x-2"><span class="hidden lg:block">Your
+                    score:</span><span class="flex gap-x-1"><svg width="24" height="22" viewBox="0 0 24 22" fill="none"
+                      class="w-4 h-4">
+                      <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M16.5135 5.60217L14.6898 1.90674C13.5894 -0.323087 10.4098 -0.323073 9.30935 1.90674L7.48565 5.60217L3.40586 6.19501C0.945298 6.55255 -0.037279 9.57628 1.74308 11.3119L4.69503 14.1898L3.99803 18.2521C3.57757 20.7027 6.14953 22.5717 8.35048 21.415L11.9996 19.4972L15.6487 21.415C17.8497 22.5717 20.4216 20.7027 20.0012 18.2521L19.3042 14.1898L22.2561 11.3119C24.0365 9.57627 23.0539 6.55255 20.5933 6.19501L16.5135 5.60217ZM12.8963 2.79183C12.5295 2.04856 11.4697 2.04856 11.1028 2.79183L9.04648 6.95872C8.90082 7.25388 8.61925 7.45846 8.29353 7.50579L3.69346 8.17422C2.87328 8.2934 2.54575 9.30131 3.1392 9.87986L6.4676 13.1247C6.70326 13.3545 6.81079 13.6855 6.75513 14.0098L5.96923 18.5903C5.82907 19.4072 6.68639 20.0302 7.42004 19.6446L11.5344 17.4823C11.8256 17.3293 12.1736 17.3293 12.4648 17.4823L16.5791 19.6446C17.3128 20.0302 18.1701 19.4072 18.03 18.5903L17.2441 14.0098C17.1884 13.6855 17.2959 13.3545 17.5316 13.1247L20.86 9.87986C21.4534 9.30131 21.1259 8.2934 20.3057 8.17422L15.7057 7.50579C15.3799 7.45846 15.0984 7.25388 14.9527 6.95872L12.8963 2.79183Z"
+                        fill="white"></path>
+                      <path
+                        d="M11.1007 2.79183C11.4675 2.04856 12.5273 2.04856 12.8942 2.79183L14.9505 6.95872C15.0962 7.25388 15.3777 7.45846 15.7035 7.50579L20.3035 8.17422C21.1237 8.2934 21.4513 9.30131 20.8578 9.87986L17.5294 13.1247C17.2937 13.3545 17.1862 13.6855 17.2419 14.0098L18.0278 18.5903C18.1679 19.4072 17.3106 20.0302 16.577 19.6446L12.4626 17.4823C12.1714 17.3293 11.8234 17.3293 11.5322 17.4823L7.41786 19.6446C6.68421 20.0302 5.82689 19.4072 5.96704 18.5903L6.75295 14.0098C6.8086 13.6855 6.70108 13.3545 6.46541 13.1247L3.13702 9.87986C2.54356 9.30131 2.87109 8.2934 3.69128 8.17422L8.29135 7.50579C8.61707 7.45846 8.89864 7.25388 9.04429 6.95872L11.1007 2.79183Z"
+                        fill="#FFCC00" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                      </path>
+                    </svg><svg width="24" height="22" viewBox="0 0 24 22" fill="none" class="w-4 h-4">
+                      <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M16.5135 5.60217L14.6898 1.90674C13.5894 -0.323087 10.4098 -0.323073 9.30935 1.90674L7.48565 5.60217L3.40586 6.19501C0.945298 6.55255 -0.037279 9.57628 1.74308 11.3119L4.69503 14.1898L3.99803 18.2521C3.57757 20.7027 6.14953 22.5717 8.35048 21.415L11.9996 19.4972L15.6487 21.415C17.8497 22.5717 20.4216 20.7027 20.0012 18.2521L19.3042 14.1898L22.2561 11.3119C24.0365 9.57627 23.0539 6.55255 20.5933 6.19501L16.5135 5.60217ZM12.8963 2.79183C12.5295 2.04856 11.4697 2.04856 11.1028 2.79183L9.04648 6.95872C8.90082 7.25388 8.61925 7.45846 8.29353 7.50579L3.69346 8.17422C2.87328 8.2934 2.54575 9.30131 3.1392 9.87986L6.4676 13.1247C6.70326 13.3545 6.81079 13.6855 6.75513 14.0098L5.96923 18.5903C5.82907 19.4072 6.68639 20.0302 7.42004 19.6446L11.5344 17.4823C11.8256 17.3293 12.1736 17.3293 12.4648 17.4823L16.5791 19.6446C17.3128 20.0302 18.1701 19.4072 18.03 18.5903L17.2441 14.0098C17.1884 13.6855 17.2959 13.3545 17.5316 13.1247L20.86 9.87986C21.4534 9.30131 21.1259 8.2934 20.3057 8.17422L15.7057 7.50579C15.3799 7.45846 15.0984 7.25388 14.9527 6.95872L12.8963 2.79183Z"
+                        fill="white"></path>
+                      <path
+                        d="M11.1007 2.79183C11.4675 2.04856 12.5273 2.04856 12.8942 2.79183L14.9505 6.95872C15.0962 7.25388 15.3777 7.45846 15.7035 7.50579L20.3035 8.17422C21.1237 8.2934 21.4513 9.30131 20.8578 9.87986L17.5294 13.1247C17.2937 13.3545 17.1862 13.6855 17.2419 14.0098L18.0278 18.5903C18.1679 19.4072 17.3106 20.0302 16.577 19.6446L12.4626 17.4823C12.1714 17.3293 11.8234 17.3293 11.5322 17.4823L7.41786 19.6446C6.68421 20.0302 5.82689 19.4072 5.96704 18.5903L6.75295 14.0098C6.8086 13.6855 6.70108 13.3545 6.46541 13.1247L3.13702 9.87986C2.54356 9.30131 2.87109 8.2934 3.69128 8.17422L8.29135 7.50579C8.61707 7.45846 8.89864 7.25388 9.04429 6.95872L11.1007 2.79183Z"
+                        fill="#FFCC00" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                      </path>
+                    </svg><svg width="24" height="22" viewBox="0 0 24 22" fill="none" class="w-4 h-4">
+                      <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M16.5135 5.60217L14.6898 1.90674C13.5894 -0.323087 10.4098 -0.323073 9.30935 1.90674L7.48565 5.60217L3.40586 6.19501C0.945298 6.55255 -0.037279 9.57628 1.74308 11.3119L4.69503 14.1898L3.99803 18.2521C3.57757 20.7027 6.14953 22.5717 8.35048 21.415L11.9996 19.4972L15.6487 21.415C17.8497 22.5717 20.4216 20.7027 20.0012 18.2521L19.3042 14.1898L22.2561 11.3119C24.0365 9.57627 23.0539 6.55255 20.5933 6.19501L16.5135 5.60217ZM12.8963 2.79183C12.5295 2.04856 11.4697 2.04856 11.1028 2.79183L9.04648 6.95872C8.90082 7.25388 8.61925 7.45846 8.29353 7.50579L3.69346 8.17422C2.87328 8.2934 2.54575 9.30131 3.1392 9.87986L6.4676 13.1247C6.70326 13.3545 6.81079 13.6855 6.75513 14.0098L5.96923 18.5903C5.82907 19.4072 6.68639 20.0302 7.42004 19.6446L11.5344 17.4823C11.8256 17.3293 12.1736 17.3293 12.4648 17.4823L16.5791 19.6446C17.3128 20.0302 18.1701 19.4072 18.03 18.5903L17.2441 14.0098C17.1884 13.6855 17.2959 13.3545 17.5316 13.1247L20.86 9.87986C21.4534 9.30131 21.1259 8.2934 20.3057 8.17422L15.7057 7.50579C15.3799 7.45846 15.0984 7.25388 14.9527 6.95872L12.8963 2.79183Z"
+                        fill="white"></path>
+                      <path
+                        d="M11.1007 2.79183C11.4675 2.04856 12.5273 2.04856 12.8942 2.79183L14.9505 6.95872C15.0962 7.25388 15.3777 7.45846 15.7035 7.50579L20.3035 8.17422C21.1237 8.2934 21.4513 9.30131 20.8578 9.87986L17.5294 13.1247C17.2937 13.3545 17.1862 13.6855 17.2419 14.0098L18.0278 18.5903C18.1679 19.4072 17.3106 20.0302 16.577 19.6446L12.4626 17.4823C12.1714 17.3293 11.8234 17.3293 11.5322 17.4823L7.41786 19.6446C6.68421 20.0302 5.82689 19.4072 5.96704 18.5903L6.75295 14.0098C6.8086 13.6855 6.70108 13.3545 6.46541 13.1247L3.13702 9.87986C2.54356 9.30131 2.87109 8.2934 3.69128 8.17422L8.29135 7.50579C8.61707 7.45846 8.89864 7.25388 9.04429 6.95872L11.1007 2.79183Z"
+                        fill="#FFCC00" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                      </path>
+                    </svg><svg width="24" height="22" viewBox="0 0 24 22" fill="none" class="w-4 h-4">
+                      <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M16.5135 5.60217L14.6898 1.90674C13.5894 -0.323087 10.4098 -0.323073 9.30935 1.90674L7.48565 5.60217L3.40586 6.19501C0.945298 6.55255 -0.037279 9.57628 1.74308 11.3119L4.69503 14.1898L3.99803 18.2521C3.57757 20.7027 6.14953 22.5717 8.35048 21.415L11.9996 19.4972L15.6487 21.415C17.8497 22.5717 20.4216 20.7027 20.0012 18.2521L19.3042 14.1898L22.2561 11.3119C24.0365 9.57627 23.0539 6.55255 20.5933 6.19501L16.5135 5.60217ZM12.8963 2.79183C12.5295 2.04856 11.4697 2.04856 11.1028 2.79183L9.04648 6.95872C8.90082 7.25388 8.61925 7.45846 8.29353 7.50579L3.69346 8.17422C2.87328 8.2934 2.54575 9.30131 3.1392 9.87986L6.4676 13.1247C6.70326 13.3545 6.81079 13.6855 6.75513 14.0098L5.96923 18.5903C5.82907 19.4072 6.68639 20.0302 7.42004 19.6446L11.5344 17.4823C11.8256 17.3293 12.1736 17.3293 12.4648 17.4823L16.5791 19.6446C17.3128 20.0302 18.1701 19.4072 18.03 18.5903L17.2441 14.0098C17.1884 13.6855 17.2959 13.3545 17.5316 13.1247L20.86 9.87986C21.4534 9.30131 21.1259 8.2934 20.3057 8.17422L15.7057 7.50579C15.3799 7.45846 15.0984 7.25388 14.9527 6.95872L12.8963 2.79183Z"
+                        fill="white"></path>
+                      <path
+                        d="M11.1007 2.79183C11.4675 2.04856 12.5273 2.04856 12.8942 2.79183L14.9505 6.95872C15.0962 7.25388 15.3777 7.45846 15.7035 7.50579L20.3035 8.17422C21.1237 8.2934 21.4513 9.30131 20.8578 9.87986L17.5294 13.1247C17.2937 13.3545 17.1862 13.6855 17.2419 14.0098L18.0278 18.5903C18.1679 19.4072 17.3106 20.0302 16.577 19.6446L12.4626 17.4823C12.1714 17.3293 11.8234 17.3293 11.5322 17.4823L7.41786 19.6446C6.68421 20.0302 5.82689 19.4072 5.96704 18.5903L6.75295 14.0098C6.8086 13.6855 6.70108 13.3545 6.46541 13.1247L3.13702 9.87986C2.54356 9.30131 2.87109 8.2934 3.69128 8.17422L8.29135 7.50579C8.61707 7.45846 8.89864 7.25388 9.04429 6.95872L11.1007 2.79183Z"
+                        fill="#FFCC00" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                      </path>
+                    </svg><svg width="24" height="22" viewBox="0 0 24 22" fill="none" class="w-4 h-4">
+                      <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M16.5135 5.60217L14.6898 1.90674C13.5894 -0.323087 10.4098 -0.323073 9.30935 1.90674L7.48565 5.60217L3.40586 6.19501C0.945298 6.55255 -0.037279 9.57628 1.74308 11.3119L4.69503 14.1898L3.99803 18.2521C3.57757 20.7027 6.14953 22.5717 8.35048 21.415L11.9996 19.4972L15.6487 21.415C17.8497 22.5717 20.4216 20.7027 20.0012 18.2521L19.3042 14.1898L22.2561 11.3119C24.0365 9.57627 23.0539 6.55255 20.5933 6.19501L16.5135 5.60217ZM12.8963 2.79183C12.5295 2.04856 11.4697 2.04856 11.1028 2.79183L9.04648 6.95872C8.90082 7.25388 8.61925 7.45846 8.29353 7.50579L3.69346 8.17422C2.87328 8.2934 2.54575 9.30131 3.1392 9.87986L6.4676 13.1247C6.70326 13.3545 6.81079 13.6855 6.75513 14.0098L5.96923 18.5903C5.82907 19.4072 6.68639 20.0302 7.42004 19.6446L11.5344 17.4823C11.8256 17.3293 12.1736 17.3293 12.4648 17.4823L16.5791 19.6446C17.3128 20.0302 18.1701 19.4072 18.03 18.5903L17.2441 14.0098C17.1884 13.6855 17.2959 13.3545 17.5316 13.1247L20.86 9.87986C21.4534 9.30131 21.1259 8.2934 20.3057 8.17422L15.7057 7.50579C15.3799 7.45846 15.0984 7.25388 14.9527 6.95872L12.8963 2.79183Z"
+                        fill="white"></path>
+                      <path
+                        d="M11.1007 2.79183C11.4675 2.04856 12.5273 2.04856 12.8942 2.79183L14.9505 6.95872C15.0962 7.25388 15.3777 7.45846 15.7035 7.50579L20.3035 8.17422C21.1237 8.2934 21.4513 9.30131 20.8578 9.87986L17.5294 13.1247C17.2937 13.3545 17.1862 13.6855 17.2419 14.0098L18.0278 18.5903C18.1679 19.4072 17.3106 20.0302 16.577 19.6446L12.4626 17.4823C12.1714 17.3293 11.8234 17.3293 11.5322 17.4823L7.41786 19.6446C6.68421 20.0302 5.82689 19.4072 5.96704 18.5903L6.75295 14.0098C6.8086 13.6855 6.70108 13.3545 6.46541 13.1247L3.13702 9.87986C2.54356 9.30131 2.87109 8.2934 3.69128 8.17422L8.29135 7.50579C8.61707 7.45846 8.89864 7.25388 9.04429 6.95872L11.1007 2.79183Z"
+                        fill="#FFCC00" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                      </path>
+                    </svg></span></span></span><span
+                class="block w-full text-[10px] sm:text-xs text-center text-white/80"><span
+                  class="text-center">Completed by 4018 users</span></span></div>
+            <div class="flex justify-center gap-x-2"><a href="/en/challenges/2024/5"
+                class="z-10 inline-flex items-center justify-center px-4 py-2 font-medium text-white transition border border-dashed rounded-lg border-white/40 hover:ring-[4px] hover:ring-white/10 hover:bg-white/10  gap-x-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-white h-10"><span
+                  class="hidden xl:inline-block">Go to the next challenge</span> <svg width="24" height="14"
+                  viewBox="0 0 24 14" fill="none" class="w-4 h-auto">
+                  <g clip-path="url(#clip0_115_613)">
+                    <path d="M17.25 3.25L21 7M21 7L17.25 10.75M21 7H3" stroke="white" stroke-width="5"
+                      stroke-linecap="round" stroke-linejoin="round"></path>
+                    <path d="M17.25 3.25L21 7M21 7L17.25 10.75M21 7H3" stroke="#1C3328" stroke-width="1.5"
+                      stroke-linecap="round" stroke-linejoin="round"></path>
+                  </g>
+                  <defs>
+                    <clipPath id="clip0_115_613">
+                      <rect width="24" height="14" fill="white"></rect>
+                    </clipPath>
+                  </defs>
+                </svg></a></div>
+          </div>
+        </header>
+        <div
+          class="relative flex flex-col items-stretch flex-grow w-full h-full p-2 overflow-hidden md:pt-0 md:flex-row">
+          <div id="editor"
+            class="relative ml-0 sm:pl-0 rounded-lg overflow-hidden bg-[#091e22] lg:min-w-[700px] shadow-[0_0_4px_0_rgba(255,255,255,0.25)]"
+            style="width: calc(60% - 5px);">
+            <div class="absolute z-10 hidden top-2 sm:block right-4">
+              <div id="headlessui-radiogroup-:Rmj6:" role="radiogroup" aria-labelledby="headlessui-label-:Rqmj6:">
+                <div class="sr-only" id="headlessui-label-:Rqmj6:" data-headlessui-state="">Choose a language</div>
+                <div class="flex mt-2 space-x-4"><span data-selected="false" class="
+              opacity-50
+                relative flex cursor-pointer transition items-center justify-center shadow-md focus:outline-none"
+                    id="headlessui-radio-:R3amj6:" role="radio" aria-checked="false" tabindex="-1"
+                    data-headlessui-state="">
+                    <div class="relative hover:scale-[1.15] transition "><span class="text-xs font-semibold"
+                        title="javascript"><svg width="38" height="38" viewBox="0 0 38 38" fill="none"
+                          class="w-auto h-6">
+                          <path
+                            d="M29 1.5H9C4.85786 1.5 1.5 4.85786 1.5 9V29C1.5 33.1421 4.85786 36.5 9 36.5H29C33.1421 36.5 36.5 33.1421 36.5 29V9C36.5 4.85786 33.1421 1.5 29 1.5Z"
+                            fill="#F0DB4F" stroke="white" stroke-width="3"></path>
+                          <path
+                            d="M32.381 27.3679C32.1468 25.9079 31.1947 24.682 28.3749 23.5383C27.3954 23.0881 26.3034 22.7657 25.9779 22.0235C25.8624 21.5915 25.8471 21.3482 25.9202 21.0866C26.13 20.2379 27.143 19.9733 27.946 20.2166C28.4631 20.39 28.9529 20.7885 29.2479 21.4242C30.6289 20.53 30.6259 20.536 31.5901 19.9216C31.2373 19.3741 31.0487 19.1216 30.8175 18.8874C29.9871 17.9596 28.8555 17.482 27.0456 17.5185C26.7323 17.5581 26.416 17.6006 26.1027 17.6402C25.1993 17.8684 24.3384 18.3429 23.8335 18.9786C22.3186 20.6973 22.7506 23.7056 24.5939 24.9436C26.4099 26.3064 29.0776 26.6166 29.4182 27.8912C29.7498 29.4516 28.2715 29.9565 26.8023 29.7771C25.7194 29.552 25.1171 29.0014 24.4662 28.0007C23.2677 28.6942 23.2677 28.6942 22.0358 29.403C22.3278 30.0417 22.635 30.3307 23.1247 30.8843C25.4426 33.2357 31.2433 33.1201 32.2837 29.5611C32.3262 29.4394 32.6061 28.6242 32.381 27.3679ZM20.3962 17.7071H17.403C17.403 20.2927 17.3909 22.86 17.3909 25.4455C17.3909 27.0911 17.4761 28.5999 17.2084 29.0622C16.7704 29.9717 15.6358 29.8592 15.1187 29.6827C14.5924 29.4242 14.3247 29.0561 14.0145 28.536C13.9293 28.387 13.8654 28.2714 13.8441 28.2622C13.032 28.7581 12.2228 29.2569 11.4106 29.7527C11.8152 30.5832 12.4114 31.3041 13.1749 31.7725C14.3156 32.4569 15.8487 32.6668 17.4517 32.2987C18.4951 31.9945 19.3954 31.3649 19.8669 30.4067C20.5483 29.1505 20.4023 27.6295 20.3962 25.9474C20.4114 23.2037 20.3962 20.46 20.3962 17.7071Z"
+                            fill="#323330"></path>
+                        </svg></span></div>
+                  </span><span data-selected="false" class="
+              scale-110
+                relative flex cursor-pointer transition items-center justify-center shadow-md focus:outline-none"
+                    id="headlessui-radio-:R5amj6:" role="radio" aria-checked="true" tabindex="0"
+                    data-headlessui-state="checked" data-checked="">
+                    <div class="relative hover:scale-[1.15] transition pointer-events-none"><span
+                        class="text-xs font-semibold" title="typescript"><svg width="38" height="38" viewBox="0 0 38 38"
+                          fill="none" class="w-auto h-6">
+                          <rect x="1.5" y="1.5" width="35" height="35" rx="7.5" stroke="white" stroke-width="3"></rect>
+                          <g clip-path="url(#clip0_431_761)">
+                            <path
+                              d="M5.5 3H32.5C33.8808 3 35 4.11925 35 5.5V32.5C35 33.8808 33.8808 35 32.5 35H5.5C4.11925 35 3 33.8808 3 32.5V5.5C3 4.11925 4.11925 3 5.5 3Z"
+                              fill="#3178C6"></path>
+                            <path
+                              d="M5.5 3H32.5C33.8808 3 35 4.11925 35 5.5V32.5C35 33.8808 33.8808 35 32.5 35H5.5C4.11925 35 3 33.8808 3 32.5V5.5C3 4.11925 4.11925 3 5.5 3Z"
+                              stroke="white"></path>
+                            <path
+                              d="M21.8148 28.0594V31.5119C22.3763 31.7996 23.0404 32.0154 23.807 32.1593C24.5736 32.3031 25.3816 32.375 26.2311 32.375C27.0589 32.375 27.8454 32.2959 28.5904 32.1376C29.3354 31.9794 29.9888 31.7186 30.5501 31.3555C31.1116 30.9922 31.5561 30.5175 31.8838 29.9312C32.2113 29.3451 32.375 28.6205 32.375 27.7574C32.375 27.1316 32.2814 26.5831 32.0942 26.112C31.9092 25.6441 31.634 25.217 31.2844 24.8551C30.9317 24.4883 30.5088 24.1592 30.0158 23.8679C29.5226 23.5766 28.9665 23.3015 28.3474 23.0426C27.8939 22.8555 27.4873 22.674 27.1273 22.4977C26.7674 22.3215 26.4614 22.1418 26.2095 21.9583C25.9575 21.7749 25.7631 21.5806 25.6264 21.3756C25.4896 21.1706 25.4212 20.9388 25.4212 20.6798C25.4212 20.4424 25.4824 20.2285 25.6047 20.0379C25.7271 19.8472 25.9 19.6836 26.1231 19.547C26.3463 19.4103 26.6198 19.3042 26.9438 19.2286C27.2676 19.1531 27.6276 19.1154 28.0235 19.1154C28.3115 19.1154 28.6156 19.137 28.9359 19.1801C29.2562 19.2232 29.5784 19.2897 29.9024 19.3797C30.2253 19.4693 30.5411 19.5829 30.8471 19.7196C31.1438 19.8511 31.4276 20.01 31.6947 20.1943V16.9684C31.1692 16.767 30.5951 16.6178 29.9725 16.5206C29.3499 16.4235 28.6354 16.375 27.8291 16.375C27.0085 16.375 26.2311 16.4631 25.4969 16.6394C24.7626 16.8155 24.1165 17.0906 23.5586 17.4646C23.0007 17.8388 22.5599 18.3152 22.2359 18.8942C21.912 19.4732 21.75 20.1655 21.75 20.9711C21.75 21.9996 22.0469 22.8771 22.6409 23.6036C23.2347 24.33 24.1362 24.945 25.3456 25.4485C25.7921 25.6303 26.2349 25.821 26.6737 26.0204C27.0841 26.2074 27.4386 26.4015 27.7374 26.6029C28.0361 26.8042 28.2719 27.0236 28.4446 27.261C28.6174 27.4984 28.7038 27.7681 28.7038 28.0702C28.7052 28.2877 28.6493 28.5017 28.5417 28.6906C28.4339 28.8811 28.27 29.0466 28.0505 29.1869C27.831 29.3271 27.5574 29.4367 27.2299 29.5159C26.9024 29.595 26.519 29.6346 26.0799 29.6346C25.3313 29.6346 24.5899 29.5034 23.8556 29.2407C23.1213 28.9782 22.441 28.5845 21.8148 28.0594ZM16.0603 19.4678H20.5V16.625H8.125V19.4678H12.5431V32.125H16.0603V19.4678Z"
+                              fill="white"></path>
+                          </g>
+                          <defs>
+                            <clipPath id="clip0_431_761">
+                              <rect x="3" y="3" width="32" height="32" rx="6" fill="white"></rect>
+                            </clipPath>
+                          </defs>
+                        </svg></span></div>
+                  </span><span data-selected="false" class="
+              opacity-50
+                relative flex cursor-pointer transition items-center justify-center shadow-md focus:outline-none"
+                    id="headlessui-radio-:R7amj6:" role="radio" aria-checked="false" tabindex="-1"
+                    data-headlessui-state="">
+                    <div class="relative hover:scale-[1.15] transition "><span class="text-xs font-semibold"
+                        title="python"><svg width="40" height="40" viewBox="0 0 40 40" fill="none" class="w-auto h-6">
+                          <path
+                            d="M15.6089 8.454C15.6092 8.454 15.6096 8.454 15.61 8.454C15.7768 8.454 15.928 8.38614 16.0376 8.27659C16.1465 8.16767 16.2142 8.01752 16.215 7.85187M15.6089 8.454L16.215 7.85187M15.6089 8.454C15.5288 8.45385 15.4504 8.43783 15.3779 8.4077C15.3054 8.37759 15.2388 8.33337 15.1822 8.2768C15.1256 8.22023 15.0814 8.1536 15.0513 8.08112C15.0212 8.00859 15.0051 7.93019 15.005 7.85014C15.005 7.84976 15.005 7.84938 15.005 7.849C15.005 7.68855 15.0687 7.53466 15.1822 7.4212C15.295 7.30842 15.4477 7.24476 15.6071 7.244C15.6076 7.244 15.6081 7.244 15.6085 7.244C15.609 7.244 15.6095 7.244 15.61 7.244C15.6889 7.24426 15.767 7.2599 15.8399 7.29004C15.9137 7.32055 15.9807 7.36532 16.0372 7.42179C16.0937 7.47826 16.1385 7.54531 16.169 7.61911C16.1991 7.69203 16.2147 7.77012 16.215 7.849M15.6089 8.454L16.215 7.8504M16.215 7.85187C16.215 7.85138 16.215 7.85089 16.215 7.8504M16.215 7.85187V7.849M16.215 7.8504L16.215 7.849M16.215 7.8504C16.215 7.84993 16.215 7.84947 16.215 7.849M10.2625 7.33003C10.2603 7.43699 10.2632 7.53066 10.2682 7.60898L10.2755 10.268H9.27496C9.27016 10.2677 9.26528 10.2674 9.2603 10.2671C9.18518 10.2625 9.08925 10.2588 8.9754 10.2587C8.7486 10.2585 8.44508 10.2727 8.08949 10.3259C7.38094 10.4317 6.43129 10.6974 5.47933 11.3402C3.46437 12.7007 2 15.3399 2 19.876C2 24.3272 3.24062 26.9722 4.98273 28.4344C5.82811 29.144 6.69252 29.4854 7.36657 29.6453C7.70182 29.7248 7.99124 29.7598 8.21209 29.7742C8.32286 29.7814 8.41752 29.7835 8.49345 29.7832C8.52292 29.7831 8.54966 29.7827 8.5735 29.782H11.245H13.245V27.782V23.978V23.9458L13.2445 23.9304C13.2445 23.9302 13.2445 23.93 13.2445 23.9298C13.2445 23.9202 13.2447 23.8976 13.2461 23.8638C13.2489 23.794 13.2564 23.6813 13.2757 23.541C13.3156 23.2501 13.3984 22.8964 13.5542 22.569C13.7055 22.2513 13.9068 21.9947 14.1804 21.8114C14.4437 21.6349 14.8998 21.441 15.71 21.441H23.3929H23.398L23.4097 21.4411C23.4288 21.4411 23.4522 21.4409 23.4796 21.4405C23.5345 21.4396 23.6058 21.4374 23.6914 21.4328C23.862 21.4236 24.0929 21.4043 24.365 21.3642C24.8992 21.2854 25.6447 21.1184 26.4163 20.7519C27.1954 20.3817 28.0432 19.7867 28.6922 18.8406C29.3509 17.8804 29.718 16.6841 29.718 15.266V8.34587C29.7237 8.27345 29.7283 8.18688 29.7295 8.08789C29.7321 7.86412 29.7173 7.57114 29.6567 7.23163C29.5339 6.54448 29.2231 5.67359 28.5126 4.83269C27.0716 3.12736 24.4056 2 19.885 2C15.6096 2 13.0612 2.91487 11.6222 4.34091C10.8912 5.06531 10.5297 5.84555 10.3711 6.50501C10.2937 6.82694 10.2671 7.10899 10.2625 7.33003Z"
+                            fill="white" stroke="white" stroke-width="4"></path>
+                          <path
+                            d="M24.387 31.3791C24.387 31.3791 24.3869 31.3791 24.3869 31.3791C24.3076 31.3793 24.2296 31.3951 24.1571 31.4251C24.1204 31.4403 24.0851 31.4591 24.0518 31.4814C23.9855 31.5257 23.929 31.5825 23.8851 31.6481C23.863 31.6811 23.8441 31.7163 23.8288 31.7534C23.7983 31.827 23.7828 31.9056 23.7828 31.9846C23.7828 31.9848 23.7828 31.985 23.7828 31.9852C23.7828 32.0247 23.7867 32.0643 23.7944 32.1034C23.8022 32.1425 23.8138 32.1806 23.8289 32.2171C23.8593 32.2902 23.9037 32.357 23.9603 32.4136C24.0168 32.4701 24.0836 32.5146 24.1568 32.5449C24.1933 32.56 24.2313 32.5716 24.2704 32.5794C24.3096 32.5872 24.3491 32.5911 24.3886 32.5911C24.3888 32.5911 24.389 32.5911 24.3892 32.5911C24.4682 32.591 24.5468 32.5755 24.6205 32.545C24.6575 32.5297 24.6927 32.5108 24.7257 32.4888C24.7914 32.4448 24.8481 32.3883 24.8925 32.322C24.9147 32.2887 24.9336 32.2534 24.9487 32.2168C24.9787 32.1442 24.9945 32.0662 24.9948 31.9869C24.9948 31.9866 24.9948 31.9862 24.9948 31.9859L24.387 31.3791ZM24.387 31.3791C24.3872 31.3791 24.3874 31.3791 24.3876 31.3791M24.387 31.3791H24.3876M24.3876 31.3791C24.3878 31.3791 24.3881 31.3791 24.3883 31.3791M24.3876 31.3791L24.3883 31.3791M24.3883 31.3791C24.4283 31.3791 24.4681 31.3831 24.5071 31.3909M24.3883 31.3791L24.5071 31.3909M24.5071 31.3909C24.5455 31.3986 24.5832 31.41 24.6197 31.4251M24.5071 31.3909L24.6197 31.4251M24.6197 31.4251C24.6935 31.4556 24.7605 31.5004 24.817 31.5568M24.6197 31.4251L24.817 31.5568M24.817 31.5568C24.8734 31.6133 24.9182 31.6804 24.9487 31.7542M24.817 31.5568L24.9487 31.7542M24.9487 31.7542C24.9638 31.7906 24.9752 31.8283 24.9829 31.8668M24.9487 31.7542L24.9829 31.8668M24.9829 31.8668C24.9908 31.9058 24.9947 31.9455 24.9948 31.9855L24.9829 31.8668ZM29.7315 32.2241L29.7243 29.5651H30.7238C30.7286 29.5654 30.7335 29.5657 30.7385 29.566C30.8136 29.5706 30.9095 29.5743 31.0234 29.5744C31.2502 29.5746 31.5537 29.5603 31.9093 29.5072C32.6179 29.4014 33.5676 29.1358 34.5197 28.4932C36.535 27.1329 37.9998 24.4939 37.9998 19.9581C37.9998 15.5065 36.7592 12.8613 35.017 11.3992C34.1715 10.6897 33.307 10.3483 32.6329 10.1886C32.2976 10.1091 32.0081 10.0741 31.7873 10.0598C31.6765 10.0526 31.5818 10.0505 31.5059 10.0508C31.4765 10.0509 31.4499 10.0514 31.4261 10.0521H28.7548H26.7548V12.0521V15.8551V15.8872L26.7553 15.9033C26.7553 15.9129 26.755 15.9355 26.7537 15.9692C26.7509 16.039 26.7434 16.1517 26.7241 16.2921C26.6842 16.583 26.6013 16.9367 26.4455 17.264C26.2943 17.5817 26.0929 17.8384 25.8193 18.0217C25.5561 18.1981 25.1 18.3921 24.2898 18.3921H16.6069L16.5901 18.392C16.571 18.392 16.5476 18.3921 16.5202 18.3926C16.4653 18.3935 16.3939 18.3956 16.3083 18.4002C16.1378 18.4095 15.9069 18.4287 15.6348 18.4689C15.1006 18.5477 14.3551 18.7146 13.5835 19.0812C12.8044 19.4514 11.9565 20.0464 11.3075 20.9925C10.6488 21.9527 10.2818 23.1489 10.2818 24.5671V31.4872C10.276 31.5596 10.2715 31.6462 10.2703 31.7452C10.2677 31.9689 10.2824 32.2619 10.3431 32.6014C10.4659 33.2886 10.7767 34.1595 11.4872 35.0004C12.9281 36.7057 15.5942 37.8331 20.1148 37.8331C24.3902 37.8331 26.9386 36.9182 28.3776 35.4922C29.1086 34.7678 29.4701 33.9875 29.6286 33.328C29.706 33.0061 29.7327 32.7241 29.7373 32.503C29.7395 32.3961 29.7366 32.3024 29.7315 32.2241ZM27.4537 33.4431C27.6497 33.0922 27.7135 32.7795 27.7316 32.5721C27.7469 32.4852 27.7587 32.3977 27.7672 32.31L27.4537 33.4431Z"
+                            fill="white" stroke="white" stroke-width="4"></path>
+                          <g clip-path="url(#clip0_431_748)">
+                            <path
+                              d="M19.885 4C11.761 4 12.268 7.523 12.268 7.523L12.278 11.173H20.03V12.268H9.197C9.197 12.268 4 11.678 4 19.876C4 28.072 8.537 27.782 8.537 27.782H11.245V23.978C11.245 23.978 11.099 19.441 15.71 19.441H23.398C23.398 19.441 27.718 19.511 27.718 15.266V8.247C27.718 8.247 28.374 4 19.885 4ZM15.61 6.454C15.98 6.454 16.3348 6.60097 16.5964 6.86259C16.858 7.1242 17.005 7.47902 17.005 7.849C17.005 8.21898 16.858 8.5738 16.5964 8.83541C16.3348 9.09703 15.98 9.244 15.61 9.244C15.4267 9.24426 15.2452 9.20836 15.0758 9.13835C14.9065 9.06834 14.7526 8.96559 14.623 8.836C14.4934 8.70641 14.3907 8.55252 14.3207 8.38315C14.2506 8.21379 14.2147 8.03227 14.215 7.849C14.215 7.078 14.839 6.454 15.61 6.454Z"
+                              fill="url(#paint0_linear_431_748)"></path>
+                            <path
+                              d="M20.1148 35.8331C28.2388 35.8331 27.7318 32.3101 27.7318 32.3101L27.7218 28.6601H19.9698V27.5651H30.8018C30.8018 27.5651 35.9998 28.1551 35.9998 19.9581C35.9998 11.7611 31.4628 12.0521 31.4628 12.0521H28.7548V15.8551C28.7548 15.8551 28.9008 20.3921 24.2898 20.3921H16.6018C16.6018 20.3921 12.2818 20.3221 12.2818 24.5671V31.5861C12.2818 31.5861 11.6258 35.8331 20.1148 35.8331ZM24.3898 33.3791C24.2065 33.3793 24.025 33.3434 23.8556 33.2734C23.6863 33.2034 23.5324 33.1007 23.4028 32.9711C23.2732 32.8415 23.1704 32.6876 23.1004 32.5182C23.0304 32.3488 22.9945 32.1673 22.9948 31.9841C22.995 31.7084 23.0769 31.4391 23.2301 31.21C23.3834 30.9809 23.6011 30.8024 23.8558 30.697C24.1105 30.5916 24.3907 30.5641 24.661 30.6179C24.9313 30.6717 25.1796 30.8045 25.3745 30.9994C25.5694 31.1942 25.7021 31.4425 25.7559 31.7129C25.8098 31.9832 25.7822 32.2634 25.6769 32.5181C25.5715 32.7727 25.393 32.9905 25.1639 33.1437C24.9348 33.297 24.6654 33.3789 24.3898 33.3791Z"
+                              fill="url(#paint1_linear_431_748)"></path>
+                          </g>
+                          <defs>
+                            <linearGradient id="paint0_linear_431_748" x1="7.075" y1="6.782" x2="22.898" y2="22.658"
+                              gradientUnits="userSpaceOnUse">
+                              <stop stop-color="#387EB8"></stop>
+                              <stop offset="1" stop-color="#366994"></stop>
+                            </linearGradient>
+                            <linearGradient id="paint1_linear_431_748" x1="16.8088" y1="16.8821" x2="33.8028"
+                              y2="33.1631" gradientUnits="userSpaceOnUse">
+                              <stop stop-color="#FFE052"></stop>
+                              <stop offset="1" stop-color="#FFC331"></stop>
+                            </linearGradient>
+                            <clipPath id="clip0_431_748">
+                              <rect width="32" height="32" fill="white" transform="translate(4 4)"></rect>
+                            </clipPath>
+                          </defs>
+                        </svg></span><span
+                        class="absolute px-1 text-[8px] text-white left-1/2 -translate-x-1/2 translate-y-full rounded-md bottom-[2px] bg-brand-green-light select-none"
+                        title="python"><span class="text-[6px]">β</span><span>eta</span></span></div>
+                  </span></div>
+              </div>
+            </div>
+            <section style="display:flex;position:relative;text-align:initial;width:100%;height:100%">
+              <div
+                style="width: 100%; --vscode-editorCodeLens-lineHeight: 21px; --vscode-editorCodeLens-fontSize: 16px; --vscode-editorCodeLens-fontFeatureSettings: &quot;liga&quot; off, &quot;calt&quot; off; --code-editorInlayHintsFontFamily: 'Droid Sans Mono', 'monospace', monospace;"
+                data-keybinding-context="1" data-mode-id="typescript">
+                <div class="monaco-editor no-user-select  showUnused showDeprecated vs-dark" role="code"
+                  style="width: 1208px; height: 1304px;" data-uri="inmemory://model/1">
+                  <div data-mprt="3" class="overflow-guard" style="width: 1208px; height: 1304px;">
+                    <div class="margin"
+                      style="position: absolute; transform: translate3d(0px, 0px, 0px); contain: strict; top: 0px; height: 2064px; width: 80px;"
+                      role="presentation" aria-hidden="true">
+                      <div class="glyph-margin" style="left: 0px; width: 0px; height: 2064px;"></div>
+                      <div class="margin-view-zones" style="position: absolute;" role="presentation" aria-hidden="true">
+                      </div>
+                      <div class="margin-view-overlays"
+                        style="position: absolute; font-family: &quot;Droid Sans Mono&quot;, &quot;monospace&quot;, monospace; font-weight: normal; font-size: 18px; font-feature-settings: &quot;liga&quot; 0, &quot;calt&quot; 0; font-variation-settings: normal; line-height: 24px; letter-spacing: 0px; width: 80px; height: 1392px;"
+                        role="presentation" aria-hidden="true">
+                        <div style="position:absolute;top:16px;width:100%;height:24px;">
+                          <div class="cldr codicon codicon-folding-expanded" style="left:54px;width:26px;"></div>
+                          <div class="line-numbers lh-even" style="left:0px;width:54px;">1</div>
+                        </div>
+                        <div style="position:absolute;top:40px;width:100%;height:24px;">
+                          <div class="line-numbers lh-even" style="left:0px;width:54px;">2</div>
+                        </div>
+                        <div style="position:absolute;top:64px;width:100%;height:24px;">
+                          <div class="line-numbers lh-even" style="left:0px;width:54px;">3</div>
+                        </div>
+                        <div style="position:absolute;top:88px;width:100%;height:24px;">
+                          <div class="current-line current-line-margin-both" style="width:80px; height:24px;"></div>
+                          <div class="line-numbers lh-even active-line-number" style="left:0px;width:54px;">4</div>
+                        </div>
+                      </div>
+                      <div class="glyph-margin-widgets" style="position: absolute; top: 0px;"></div>
+                    </div>
+                    <div class="monaco-scrollable-element editor-scrollable vs-dark" role="presentation"
+                      style="position: absolute; overflow: hidden; left: 80px; height: 1304px; width: 1128px;"
+                      data-mprt="5">
+                      <div class="lines-content monaco-editor-background"
+                        style="position: absolute; overflow: hidden; width: 1000000px; height: 1000000px; transform: translate3d(0px, 0px, 0px); contain: strict; top: 0px; left: 0px;">
+                        <div class="view-overlays"
+                          style="position: absolute; font-family: &quot;Droid Sans Mono&quot;, &quot;monospace&quot;, monospace; font-weight: normal; font-size: 18px; font-feature-settings: &quot;liga&quot; 0, &quot;calt&quot; 0; font-variation-settings: normal; line-height: 24px; letter-spacing: 0px; height: 0px; width: 1128px;"
+                          role="presentation" aria-hidden="true">
+                          <div style="position:absolute;top:16px;width:100%;height:24px;">
+                            <div class="cdr squiggly-unnecessary" style="left:260px;width:65px;height:24px;"></div>
+                            <div class="cdr squiggly-unnecessary" style="left:433px;width:87px;height:24px;"></div>
+                          </div>
+                          <div style="position:absolute;top:40px;width:100%;height:24px;">
+                            <div class="core-guide core-guide-indent lvl-0 indent-active vertical"
+                              style="left:0px;height:24px;width:10.83203125px"></div>
+                          </div>
+                          <div style="position:absolute;top:64px;width:100%;height:24px;">
+                            <div class="core-guide core-guide-indent lvl-0 indent-active vertical"
+                              style="left:0px;height:24px;width:10.83203125px"></div>
+                          </div>
+                          <div style="position:absolute;top:88px;width:100%;height:24px;">
+                            <div class="current-line" style="width:1128px; height:24px;"></div>
+                          </div>
+                        </div>
+                        <div role="presentation" aria-hidden="true" class="view-rulers"></div>
+                        <div class="view-zones" style="position: absolute;" role="presentation" aria-hidden="true">
+                        </div>
+                        <div class="view-lines monaco-mouse-cursor-text"
+                          style="position: absolute; font-family: &quot;Droid Sans Mono&quot;, &quot;monospace&quot;, monospace; font-weight: normal; font-size: 18px; font-feature-settings: &quot;liga&quot; 0, &quot;calt&quot; 0; font-variation-settings: normal; line-height: 24px; letter-spacing: 0px; width: 1128px; height: 1392px;"
+                          role="presentation" aria-hidden="true" data-mprt="7">
+                          <div style="top:16px;height:24px;" class="view-line"><span><span
+                                class="mtk15">function</span><span class="mtk1">&nbsp;createXmasTree</span><span
+                                class="mtk12 bracket-highlighting-0">(</span><span
+                                class="mtk1 squiggly-inline-unnecessary">height</span><span class="mtk12">:</span><span
+                                class="mtk1">&nbsp;</span><span class="mtk15">number</span><span
+                                class="mtk12">,</span><span class="mtk1">&nbsp;</span><span
+                                class="mtk1 squiggly-inline-unnecessary">ornament</span><span
+                                class="mtk12">:</span><span class="mtk1">&nbsp;</span><span
+                                class="mtk15">string</span><span class="mtk12 bracket-highlighting-0">)</span><span
+                                class="mtk12">:</span><span class="mtk1">&nbsp;</span><span
+                                class="mtk15">string</span><span class="mtk1">&nbsp;</span><span
+                                class="mtk12 bracket-highlighting-0">{</span></span></div>
+                          <div style="top:40px;height:24px;" class="view-line"><span><span
+                                class="mtk1">&nbsp;&nbsp;</span><span
+                                class="mtk9">/*&nbsp;Code&nbsp;here&nbsp;*/</span></span></div>
+                          <div style="top:64px;height:24px;" class="view-line"><span><span
+                                class="mtk1">&nbsp;&nbsp;</span><span class="mtk15">return</span><span
+                                class="mtk1">&nbsp;</span><span class="mtk27">''</span></span></div>
+                          <div style="top:88px;height:24px;" class="view-line"><span><span
+                                class="mtk12 bracket-highlighting-0">}</span></span></div>
+                        </div>
+                        <div data-mprt="1" class="contentWidgets" style="position: absolute; top: 0px;">
+                          <div class="lightBulbWidget codicon codicon-light-bulb"
+                            style="position: absolute; display: none; visibility: hidden; max-width: 1128px;"
+                            widgetid="LightBulbWidget" title="Show Code Actions (Ctrl+.)"></div>
+                        </div>
+                        <div role="presentation" aria-hidden="true"
+                          class="cursors-layer cursor-line-style cursor-solid">
+                          <div class="cursor monaco-mouse-cursor-text "
+                            style="height: 24px; top: 88px; left: 10px; font-family: &quot;Droid Sans Mono&quot;, &quot;monospace&quot;, monospace; font-weight: normal; font-size: 18px; font-feature-settings: &quot;liga&quot; 0, &quot;calt&quot; 0; font-variation-settings: normal; line-height: 24px; letter-spacing: 0px; display: block; visibility: hidden; padding-left: 1px; width: 2px;">
+                          </div>
+                        </div>
+                      </div>
+                      <div role="presentation" aria-hidden="true" class="invisible scrollbar horizontal"
+                        style="position: absolute; width: 1114px; height: 12px; left: 0px; bottom: 0px;">
+                        <div class="slider"
+                          style="position: absolute; top: 0px; left: 0px; height: 12px; transform: translate3d(0px, 0px, 0px); contain: strict; width: 1114px;">
+                        </div>
+                      </div><canvas class="decorationsOverviewRuler"
+                        style="position: absolute; transform: translate3d(0px, 0px, 0px); contain: strict; top: 0px; right: 0px; width: 14px; height: 1304px; display: block;"
+                        aria-hidden="true" width="14" height="1304"></canvas>
+                      <div role="presentation" aria-hidden="true" class="invisible scrollbar vertical fade"
+                        style="position: absolute; width: 14px; height: 1304px; right: 0px; top: 0px;">
+                        <div class="slider"
+                          style="position: absolute; top: 0px; left: 0px; width: 14px; transform: translate3d(0px, 0px, 0px); contain: strict; height: 1221px;">
+                        </div>
+                      </div>
+                    </div>
+                    <div role="presentation" aria-hidden="true" style="width: 1208px;"></div><textarea data-mprt="6"
+                      class="inputarea monaco-mouse-cursor-text" wrap="on"
+                      style="tab-size: 43.3281px; font-family: &quot;Droid Sans Mono&quot;, &quot;monospace&quot;, monospace; font-weight: normal; font-size: 18px; font-feature-settings: &quot;liga&quot; 0, &quot;calt&quot; 0; font-variation-settings: normal; line-height: 24px; letter-spacing: 0px; top: 88px; left: 80px; width: 1105px; height: 0px;"
+                      autocorrect="off" autocapitalize="none" autocomplete="off" spellcheck="false"
+                      aria-label="Editor content;Press Alt+F1 for Accessibility Options." aria-required="false"
+                      tabindex="0" role="textbox" aria-roledescription="editor" aria-multiline="true"
+                      aria-autocomplete="both"></textarea>
+                    <div style="position: absolute; top: 0px; left: 0px; width: 0px; height: 0px;"
+                      class="monaco-editor-background textAreaCover line-numbers"></div>
+                    <div data-mprt="4" class="overlayWidgets" style="width: 1208px;"></div>
+                    <div data-mprt="8" class="minimap slider-mouseover"
+                      style="position: absolute; left: 0px; width: 0px; height: 1304px;" role="presentation"
+                      aria-hidden="true">
+                      <div class="minimap-shadow-hidden" style="height: 1304px;"></div><canvas
+                        style="position: absolute; left: 0px; width: 0px; height: 1304px;" width="0"
+                        height="1304"></canvas><canvas
+                        style="position: absolute; left: 0px; width: 0px; height: 1304px;"
+                        class="minimap-decorations-layer" width="0" height="1304"></canvas>
+                      <div
+                        style="position: absolute; transform: translate3d(0px, 0px, 0px); contain: strict; width: 0px;"
+                        class="minimap-slider">
+                        <div style="position: absolute; width: 0px; height: 0px;" class="minimap-slider-horizontal">
+                        </div>
+                      </div>
+                    </div>
+                    <div role="presentation" aria-hidden="true" class="blockDecorations-container"></div>
+                  </div>
+                  <div data-mprt="2" class="overflowingContentWidgets">
+                    <div
+                      style="position: fixed; height: 32px; width: 150px; z-index: 50; display: none; visibility: hidden; max-width: 2039px;"
+                      widgetid="editor.contrib.resizableContentHoverWidget">
+                      <div class="monaco-sash vertical" style="left: 148px;"></div>
+                      <div class="monaco-sash vertical" style="left: -2px;"></div>
+                      <div class="monaco-sash orthogonal-edge-north horizontal" style="top: -2px;">
+                        <div class="orthogonal-drag-handle start"></div>
+                        <div class="orthogonal-drag-handle end"></div>
+                      </div>
+                      <div class="monaco-sash orthogonal-edge-south horizontal" style="top: 30px;">
+                        <div class="orthogonal-drag-handle start"></div>
+                        <div class="orthogonal-drag-handle end"></div>
+                      </div>
+                      <div class="monaco-hover hidden" tabindex="0" role="tooltip"
+                        style="max-width: 797.28px; max-height: 326px; --vscode-hover-maxWidth: 797.2800000000001px;">
+                        <div class="monaco-scrollable-element " role="presentation"
+                          style="position: relative; overflow: hidden;">
+                          <div class="monaco-hover-content"
+                            style="overflow: hidden; font-size: 18px; line-height: 1.33333; max-width: 797.28px; max-height: 326px;">
+                          </div>
+                          <div role="presentation" aria-hidden="true" class="invisible scrollbar horizontal"
+                            style="position: absolute;">
+                            <div class="slider"
+                              style="position: absolute; top: 0px; left: 0px; height: 10px; transform: translate3d(0px, 0px, 0px); contain: strict;">
+                            </div>
+                          </div>
+                          <div role="presentation" aria-hidden="true" class="invisible scrollbar vertical"
+                            style="position: absolute;">
+                            <div class="slider"
+                              style="position: absolute; top: 0px; left: 0px; width: 10px; transform: translate3d(0px, 0px, 0px); contain: strict;">
+                            </div>
+                          </div>
+                          <div class="shadow"></div>
+                          <div class="shadow"></div>
+                          <div class="shadow"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+            <footer class="absolute bottom-0 left-0 right-0 flex flex-col md:gap-4 md:left-12 md:bottom-4 md:right-12">
+              <button
+                class=" w-[calc(100%_-_2rem)] mx-auto disabled:bg-gray-500 disabled:pointer-events-none cursor-pointer tracking-wider shadow-black/20 shadow-xl flex transition-all items-center justify-center px-4 py-3 md:w-full mt-4 gap-x-2 rounded-lg ring-[4px] ring-brand-green-light/80 hover:bg-brand-green-light bg-brand-green-light/80 hover:ring-brand-green-light text-lg border hover:scale-105 border-white/50 border-dashed  backdrop-blur-lg ">Submit
+                solution<span
+                  class="hidden md:flex animate-fade text-[10px] text-white gap-x-1 items-center ml-4 opacity-70"><kbd
+                    class="px-2 font-mono text-lg border border-gray-200 rounded opacity-70"><span
+                      class="flex justify-center text-base">Ctrl</span></kbd>
+                  <div class="font-mono text-xl opacity-50">+</div><kbd
+                    class="px-2 font-mono text-lg border border-gray-200 rounded opacity-70"><span
+                      class="flex justify-center text-xl">⏎</span></kbd>
+                </span></button>
+              <div class="relative m-4 md:m-0"><button
+                  class="absolute z-20 p-1 transition rounded ring-2 ring-brand-green-light/10 top-2 left-2 bg-brand-green-light/10 text-brand-green-light hover:bg-brand-green-light/40"><svg
+                    height="21" viewBox="0 0 21 21" width="21">
+                    <g fill="none" fill-rule="evenodd" stroke="currentColor" stroke-linecap="round"
+                      stroke-linejoin="round">
+                      <path d="m7.5 7.5 6 6"></path>
+                      <path d="m13.5 7.5-6 6"></path>
+                    </g>
+                  </svg></button><a href="https://midu.link/codely"
+                  class="group border rounded-lg ring-4 ring-black/40 border-dashed border-white/20 relative flex flex-col items-center justify-center gap-1 px-8 py-2 overflow-hidden leading-relaxed text-center transition-all shadow-2xl bg-black/80 xl:py-4 xl:flex-row group hover:text-white hover:shadow-sm xl:gap-8 lg:text-left z-10 backdrop-blur-lg before:w-full before:absolute before:h-1/2 before:bg-brand-green-light/80 before:left-0 before:top-0 before:rounded-[100%] before:-translate-y-1/2 before:-z-10 before:blur-3xl hover:border-white/40 hover:bg-brand-green-light/20 bg-black/20 transition-all relative"
+                  target="_blank" rel="noopener noreferrer"><span
+                    class="absolute text-xs font-bold tracking-wider text-brand-green-light right-4 top-4">SPONSOR</span>
+                  <div class="w-24 h-auto max-w-full md:w-48"><img src="/codely.webp" alt="Logo de CodelyTV" width="216"
+                      height="59"></div>
+                  <div class="flex-1 m-auto text-gray-200 max-w-prose">
+                    <h3
+                      class="hidden text-base xl:text-xl tracking-wide text-center xl:mb-2 md:block xl:text-left text-pretty max-w-[32ch] ">
+                      Level up your professional career!</h3>
+                    <p class="hidden p-0 pr-8 text-sm xl:block text-balance font-mono max-w-[58ch]">SOLID Principles,
+                      Clean Architecture and TDD also apply to the frontend. At Codely you have courses with all those
+                      concepts. € 5 discount on your first month!</p>
+                  </div>
+                  <div
+                    class="hidden md:block w-20 h-20 opacity-40 absolute -bottom-8 -right-4 z-10 bg-[url(&quot;/pointer.png&quot;)] bg-contain bg-no-repeat group-hover:scale-150 group-hover:-bottom-8 group-hover:-rotate-2 group-hover:opacity-90 transition-all">
+                  </div>
+                </a></div>
+            </footer>
+          </div>
+          <div class="gutter gutter-horizontal" style="width: 10px;"></div>
+          <div id="challenge"
+            class="@container rounded-lg h-full min-w-full overflow-auto md:min-w-0 bg-black/50 shadow-[0_0_4px_0_rgba(255,255,255,0.25)] border border-black/20"
+            style="width: calc(40% - 5px);">
+            <div class="p-4">
+              <div
+                class="flex flex-row flex-wrap items-center justify-between w-full gap-0 pb-4 mb-4 border-dashed border-white/10 gap-x-4 gap-y-4">
+                <div
+                  class="flex w-max flex-wrap items-center text-sm rounded-lg  bg-brand-green-light/20 ring-[4px] border border-white/30 border-dashed ring-brand-green-light/20 p-1">
+                  <button
+                    class="flex items-center justify-center gap-x-2 rounded-md border-dashed px-6 py-2 w-full sm:w-auto bg-brand-green-light hover:bg-brand-green-light pointer-events-none"><svg
+                      width="24" height="24" viewBox="0 0 24 24" fill="none" class="w-auto h-5">
+                      <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M12 2.5C12.2761 2.5 12.5 2.72386 12.5 3V4.5H19C19.1326 4.5 19.2598 4.55268 19.3536 4.64645L21.3536 6.64645C21.5488 6.84171 21.5488 7.15829 21.3536 7.35355L19.3536 9.35355C19.2598 9.44732 19.1326 9.5 19 9.5H12.5V12.5H14C14.2761 12.5 14.5 12.7239 14.5 13V17C14.5 17.2761 14.2761 17.5 14 17.5H12.5V20.5H14C14.2761 20.5 14.5 20.7239 14.5 21C14.5 21.2761 14.2761 21.5 14 21.5H10C9.72386 21.5 9.5 21.2761 9.5 21C9.5 20.7239 9.72386 20.5 10 20.5H11.5V17.5H6C5.86739 17.5 5.74021 17.4473 5.64645 17.3536L3.64645 15.3536C3.45118 15.1583 3.45118 14.8417 3.64645 14.6464L5.64645 12.6464C5.74021 12.5527 5.86739 12.5 6 12.5H11.5V9.5H8C7.72386 9.5 7.5 9.27614 7.5 9V5C7.5 4.72386 7.72386 4.5 8 4.5H11.5V3C11.5 2.72386 11.7239 2.5 12 2.5Z"
+                        fill="white" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                      </path>
+                      <path d="M12 21V17M12 13V9M12 5V3M10 21H14M8 5V9H19L21 7L19 5H8ZM14 13V17H6L4 15L6 13H14Z"
+                        stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                    </svg>Instructions</button><button data-tooltip-id=":Riqj6:" disabled=""
+                    class="flex items-center justify-center gap-x-2 rounded-md border-dashed px-6 py-2 w-full sm:w-auto disabled:hover:bg-white/5 disabled:opacity-60 hover:bg-white/5 text-white/50"><svg
+                      width="24" height="24" viewBox="0 0 24 24" fill="none" disabled="" class="w-auto h-5">
+                      <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M9.23223 3.23223C9.70107 2.76339 10.337 2.5 11 2.5H13C13.663 2.5 14.2989 2.76339 14.7678 3.23223C15.117 3.58142 15.3522 4.02328 15.4495 4.5H17C17.663 4.5 18.2989 4.76339 18.7678 5.23223C19.2366 5.70107 19.5 6.33696 19.5 7V19C19.5 19.663 19.2366 20.2989 18.7678 20.7678C18.2989 21.2366 17.663 21.5 17 21.5H7C6.33696 21.5 5.70107 21.2366 5.23223 20.7678C4.76339 20.2989 4.5 19.663 4.5 19V7C4.5 6.33696 4.76339 5.70107 5.23223 5.23223C5.70107 4.76339 6.33696 4.5 7 4.5H8.5505C8.64782 4.02328 8.88304 3.58142 9.23223 3.23223Z"
+                        fill="white" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                      </path>
+                      <path
+                        d="M9 5H7C6.46957 5 5.96086 5.21071 5.58579 5.58579C5.21071 5.96086 5 6.46957 5 7V19C5 19.5304 5.21071 20.0391 5.58579 20.4142C5.96086 20.7893 6.46957 21 7 21H17C17.5304 21 18.0391 20.7893 18.4142 20.4142C18.7893 20.0391 19 19.5304 19 19V7C19 6.46957 18.7893 5.96086 18.4142 5.58579C18.0391 5.21071 17.5304 5 17 5H15M9 5C9 4.46957 9.21071 3.96086 9.58579 3.58579C9.96086 3.21071 10.4696 3 11 3H13C13.5304 3 14.0391 3.21071 14.4142 3.58579C14.7893 3.96086 15 4.46957 15 5M9 5C9 5.53043 9.21071 6.03914 9.58579 6.41421C9.96086 6.78929 10.4696 7 11 7H13C13.5304 7 14.0391 6.78929 14.4142 6.41421C14.7893 6.03914 15 5.53043 15 5M9 17V12M12 17V16M15 17V14"
+                        stroke="#808080" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                    </svg>Results</button>
+                </div><span
+                  class="relative py-0.5 w-fit text-center bg-white text-[#1C3328] rounded-full uppercase inline-flex justify-center gap-x-2 items-center ml-3 px-2.5 mt-0 text-sm"><span
+                    class="rounded-full bg-yellow-400 w-2 h-2 inline-block"></span>Medium</span>
+              </div>
+              <div id="challenge-description"
+                class="hidden @xxs:block text-base font-mono text-white/80 [&amp;&gt;ul&gt;li]:list-disc [&amp;&gt;ul&gt;li]:list-inside [&amp;&gt;ul&gt;li]:text-yellow-100 [&amp;&gt;ul]:mb-4">
+                <p><strong>It's time to put up the Christmas tree at home!</strong> 🎄 But this year we want it to be
+                  special. We're going to create a function that receives the height of the tree (a positive integer
+                  between 1 and 100) and a special character to decorate it.</p>
+                <p>The function should return a string that represents the Christmas tree, constructed as follows:</p>
+                <ul>
+                  <li>The tree is made up of triangles of special characters.</li>
+                  <li>The spaces on the sides of the tree are represented with underscores _.</li>
+                  <li>All trees have a trunk of two lines, represented by the # character.</li>
+                  <li>The tree should always have the same length on each side.</li>
+                  <li>You must ensure the tree has the correct shape using line breaks \n for each line.</li>
+                </ul>
+                <p>Examples:</p>
+                <pre><code class="javascript language-javascript">const tree = createXmasTree(5, '*')
+console.log(tree)
+/*
+____*____
+___***___
+__*****__
+_*******_
+*********
+____#____
+____#____
+*/
+
+const tree2 = createXmasTree(3, '+')
+console.log(tree2)
+/*
+__+__
+_+++_
++++++
+__#__
+__#__
+*/
+
+const tree3 = createXmasTree(6, '@')
+console.log(tree3)
+/*
+_____@_____
+____@@@____
+___@@@@@___
+__@@@@@@@__
+_@@@@@@@@@_
+@@@@@@@@@@@
+_____#_____
+_____#_____
+*/
+</code></pre>
+                <p>Make sure to use line breaks \n at the end of each line, <strong>except for the last one.</strong>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div></div>
+    </div>
+  </div>
+  <script id="__NEXT_DATA__"
+    type="application/json">{"props":{"pageProps":{"challengeId":3,"challenges":[{"level":"easy","title":"🎁 First gift repeated!"},{"level":"easy","title":"🖼️ Framing names"},{"level":"easy","title":"🏗️ Organizing the inventory"},{"level":"medium","title":"🎄 Decorating the Christmas tree"},{"level":"easy","title":"👞 Shoe pairing"},{"level":"medium","title":"📦 Is the gift inside the box?"},{"level":"medium","title":"👹 The Grinch's attack"},{"level":"easy","title":"🦌 The reno race"},{"level":"medium","title":"🚂 The magic train"},{"level":"medium","title":"👩‍💻 The elfish assembler"},{"level":"easy","title":"🏴‍☠️ Filenames encoded"},{"level":"easy","title":"💵 How much does the tree cost?"},{"level":"hard","title":"🤖 Is the robot back?"},{"level":"easy","title":"🦌 Weaving the reno"},{"level":"easy","title":"✏️ Drawing tables"},{"level":"easy","title":"❄️ Cleaning the snow path"},{"level":"medium","title":"💣 Grinch's bombs"},{"level":"hard","title":"📇 Santa's Magic Agenda"},{"level":"hard","title":"📦 Stack magical boxes to deliver gifts"},{"level":"easy","title":"🎁 Find missing and duplicate gifts"},{"level":"easy","title":"🎄 Calculate the height of the Christmas tree"},{"level":"medium","title":"🎁 Generate gift combinations"},{"level":"easy","title":"🔢 Find the missing numbers"},{"level":"medium","title":"🪞 Check if trees are magical mirrors"},{"level":"medium","title":"🪄 Execute the magical language"},{"level":"easy","title":"🎯 Calculate the completed percentage"}],"completedChallenges":{"1":"5","2":"5","3":"5","4":"5","5":"2","6":"1","7":"3","8":"2","9":"1","10":"1","11":"1","12":"5","13":"1","14":"1","15":"1","16":"3","17":"3","18":"1","19":"1","20":"5","21":"5","22":"4","23":"2","24":"1","25":"1"},"defaultCode":{"javascript":"/**\n * @param {number} height - Height of the tree\n * @param {string} ornament - Symbol to draw\n * @returns {string} Drawn tree\n */\nfunction createXmasTree(height, ornament) {\n  /* Code here */\n  return ''\n}","typescript":"function createXmasTree(height: number, ornament: string): string {\n  /* Code here */\n  return ''\n}","python":"def create_xmas_tree(height, ornament):\n  # Code here\n  return ''\n"},"description":"\u003cp\u003e\u003cstrong\u003eIt's time to put up the Christmas tree at home!\u003c/strong\u003e 🎄 But this year we want it to be special. We're going to create a function that receives the height of the tree (a positive integer between 1 and 100) and a special character to decorate it.\u003c/p\u003e\n\u003cp\u003eThe function should return a string that represents the Christmas tree, constructed as follows:\u003c/p\u003e\n\u003cul\u003e\n\u003cli\u003eThe tree is made up of triangles of special characters.\u003c/li\u003e\n\u003cli\u003eThe spaces on the sides of the tree are represented with underscores _.\u003c/li\u003e\n\u003cli\u003eAll trees have a trunk of two lines, represented by the # character.\u003c/li\u003e\n\u003cli\u003eThe tree should always have the same length on each side.\u003c/li\u003e\n\u003cli\u003eYou must ensure the tree has the correct shape using line breaks \\n for each line.\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eExamples:\u003c/p\u003e\n\u003cpre\u003e\u003ccode class=\"javascript language-javascript\"\u003econst tree = createXmasTree(5, '*')\nconsole.log(tree)\n/*\n____*____\n___***___\n__*****__\n_*******_\n*********\n____#____\n____#____\n*/\n\nconst tree2 = createXmasTree(3, '+')\nconsole.log(tree2)\n/*\n__+__\n_+++_\n+++++\n__#__\n__#__\n*/\n\nconst tree3 = createXmasTree(6, '@')\nconsole.log(tree3)\n/*\n_____@_____\n____@@@____\n___@@@@@___\n__@@@@@@@__\n_@@@@@@@@@_\n@@@@@@@@@@@\n_____#_____\n_____#_____\n*/\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003eMake sure to use line breaks \\n at the end of each line, \u003cstrong\u003eexcept for the last one.\u003c/strong\u003e\u003c/p\u003e","hasInitialCode":["def create_xmas_tree(height, ornament):\n    EMPTY_CHARACTER = \"_\"\n    TRUNK_CHARACTER = \"#\"\n    max_width = (height * 2) - 1\n    tree = \"\"\n\n    def add_trunk(tree: str, max_tree_width: int) -\u003e str:\n        partial_empty_characters = (max_width - 1) / 2\n        empty_characters = EMPTY_CHARACTER * int(partial_empty_characters)\n        trunk = (\n            empty_characters\n            + TRUNK_CHARACTER\n            + empty_characters\n            + \"\\n\"  # Add newline for the first trunk row\n            + empty_characters\n            + TRUNK_CHARACTER\n            + empty_characters\n        )\n\n        return tree + trunk\n\n    for i in range(1, height + 1):\n        asterisk_width = (i * 2) - 1\n        asterisk_characters = ornament * asterisk_width\n        partial_empty_characters = (max_width - asterisk_width) / 2\n        empty_characters = EMPTY_CHARACTER * int(partial_empty_characters)\n\n        tree += empty_characters + asterisk_characters + empty_characters + \"\\n\"\n    \n    tree = add_trunk(tree, max_width)\n\n    return tree"],"initialCompletedBy":"4018","initialLanguage":"python","initialStars":5,"isMacOs":false,"level":"medium","nextChallengeId":5,"savedCode":{"javascript":null,"typescript":null,"python":"def create_xmas_tree(height, ornament):\n    EMPTY_CHARACTER = \"_\"\n    TRUNK_CHARACTER = \"#\"\n    max_width = (height * 2) - 1\n    tree = \"\"\n\n    def add_trunk(tree: str, max_tree_width: int) -\u003e str:\n        partial_empty_characters = (max_width - 1) / 2\n        empty_characters = EMPTY_CHARACTER * int(partial_empty_characters)\n        trunk = (\n            empty_characters\n            + TRUNK_CHARACTER\n            + empty_characters\n            + \"\\n\"  # Add newline for the first trunk row\n            + empty_characters\n            + TRUNK_CHARACTER\n            + empty_characters\n        )\n\n        return tree + trunk\n\n    for i in range(1, height + 1):\n        asterisk_width = (i * 2) - 1\n        asterisk_characters = ornament * asterisk_width\n        partial_empty_characters = (max_width - asterisk_width) / 2\n        empty_characters = EMPTY_CHARACTER * int(partial_empty_characters)\n\n        tree += empty_characters + asterisk_characters + empty_characters + \"\\n\"\n    \n    tree = add_trunk(tree, max_width)\n\n    return tree"},"title":"🎄 Decorating the Christmas tree","twitchTier":null,"twitchUserId":null,"userIdBySearchParams":null,"challengeIdFromSearchParams":"4","localeFromServer":"en"},"__N_SSP":true},"page":"/challenges/2024/[id]","query":{"id":"4"},"buildId":"-prHNHI1LNrTIm4n5YtBw","isFallback":false,"isExperimentalCompile":false,"gssp":true,"locale":"en","locales":["en","es","pt"],"defaultLocale":"en","scriptLoader":[]}</script>
+  <script>(function () { function c() { var b = a.contentDocument || a.contentWindow.document; if (b) { var d = b.createElement('script'); d.innerHTML = "window.__CF$cv$params={r:'99c6e81d5b6fcbe2',t:'MTc2Mjc5MTkzNQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);"; b.getElementsByTagName('head')[0].appendChild(d) } } if (document.body) { var a = document.createElement('iframe'); a.height = 1; a.width = 1; a.style.position = 'absolute'; a.style.top = 0; a.style.left = 0; a.style.border = 'none'; a.style.visibility = 'hidden'; document.body.appendChild(a); if ('loading' !== document.readyState) c(); else if (window.addEventListener) document.addEventListener('DOMContentLoaded', c); else { var e = document.onreadystatechange || function () { }; document.onreadystatechange = function (b) { e(b); 'loading' !== document.readyState && (document.onreadystatechange = e, c()) } } } })();</script>
+  <iframe height="1" width="1"
+    style="position: absolute; top: 0px; left: 0px; border: medium; visibility: hidden;"></iframe>
+  <script src="https://cdn.jsdelivr.net/npm/monaco-editor@0.43.0/min/vs/loader.js"></script><next-route-announcer>
+    <p aria-live="assertive" id="__next-route-announcer__" role="alert"
+      style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; top: 0px; width: 1px; white-space: nowrap; overflow-wrap: normal;">
+    </p>
+  </next-route-announcer>
+  <div class="monaco-aria-container">
+    <div class="monaco-alert" role="alert" aria-atomic="true"></div>
+    <div class="monaco-alert" role="alert" aria-atomic="true"></div>
+    <div class="monaco-status" aria-live="polite" aria-atomic="true"></div>
+    <div class="monaco-status" aria-live="polite" aria-atomic="true"></div>
+  </div>
+</body>
+
+</html>

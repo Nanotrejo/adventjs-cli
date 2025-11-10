@@ -6,9 +6,9 @@
   "author": "",
   "main": "index.ts",
   "scripts": {
-    "start": "tsc && npm run copy:html && node dist/index.js",
-    "dev": "DEV=true tsc && npm run copy:html && node dist/index.js",
-    "copy:html": "node scripts/copy-files.js",
+    "start": "tsc && npm run copy:files && node dist/index.js",
+    "dev": "DEV=true tsc && DEV=true npm run copy:files && DEV=true node dist/index.js",
+    "copy:files": "node scripts/copy-files.js",
     "lint": "eslint . --ext .ts",
     "lint:fix": "eslint . --ext .ts --fix",
     "format": "prettier --write .",

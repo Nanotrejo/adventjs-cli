@@ -26,7 +26,7 @@ copyRecursive(templatesSrcDir, templatesDestDir);
 console.log('✓ Templates files copied successfully');
 
 // Copy HTML files only in DEV mode
-const isDev = process.env.NODE_ENV === 'development' || process.argv.includes('--dev');
+const isDev = process.env.DEV === 'true' || process.argv.includes('--dev');
 if (isDev) {
   const htmlSrcDir = path.join(__dirname, '../src/html');
   const htmlDestDir = path.join(__dirname, '../dist/html');

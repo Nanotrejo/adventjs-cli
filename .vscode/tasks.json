@@ -38,7 +38,7 @@
       }
     },
     {
-      "label": "copy:html",
+      "label": "copy:files",
       "type": "shell",
       "command": "node",
       "args": ["${workspaceFolder}/scripts/copy-files.js"],

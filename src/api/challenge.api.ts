@@ -5,6 +5,11 @@ import { resolve } from 'path';
 export { fetchChallenge, fetchChallengeDev };
 
 const CHALLENGE_URL_TEMPLATE = 'https://adventjs.dev/challenges';
+
+// * Change this to load different local HTML files for development
+// * Must remove dist folder and run build script after changing
+const TEST_HTML_FILE = '2024-4-full.html';
+
 const chalk = getChalkLogger();
 
 const fetchChallenge = async (day: number, year): Promise<Response | null> => {
@@ -21,7 +26,7 @@ const fetchChallenge = async (day: number, year): Promise<Response | null> => {
 };
 
 const fetchChallengeDev = async (): Promise<Response | null> => {
-  const htmlFileName = '2024-14-challenge.html';
+  const htmlFileName = TEST_HTML_FILE;
   const htmlFilePath = resolve(__dirname, '../html', htmlFileName);
 
   try {
