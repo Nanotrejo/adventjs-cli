@@ -95,6 +95,8 @@ const handleInit = async (): Promise<void> => {
   await _generateProject(generateProject, year);
   await _generateGitProject(generateGitProject, year);
 
+  _generateTsConfig(year);
+
   _generateConfigFiles(configFiles, year);
 
   await _installDependencies(dependencies, year);
@@ -202,8 +204,14 @@ const _generateConfigFiles = (shouldGenerate: boolean, year: string): void => {
   }
 };
 
+const _generateTsConfig = (year: string): void => {
+  copyFromTemplates(year, CONFIG_FILE.TSCONFIG);
+  console.log(chalk.blue('Generating tsconfig.json file...'));
+};
+
 const _generateVscodeConfig = (year: string): void => {
   copyFromTemplates(year, CONFIG_FILE.VSCODE);
+  console.log(chalk.blue('Generating VSCode configuration...'));
 };
 
 const _generateReadme = (year: string): void => {
