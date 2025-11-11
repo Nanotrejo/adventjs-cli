@@ -5,8 +5,9 @@ import {
   TestsAnswer,
   ConfigFilesAnswer,
   YearAnswer,
+  GenerateProjectAnswer,
 } from '../schema/answer.schema';
-import { exec } from 'child_process';
+import { spawn } from 'child_process';
 import { DEV_DEPENDENCIES } from '../schema/dependencies.schema';
 import {
   CONFIG_FILE,
@@ -32,6 +33,7 @@ const handleInit = async (): Promise<void> => {
   let tests = true;
   let configFiles = true;
   let dependencies = true;
+  let generateProject = true;
 
   if (!dev) {
     const yearAnswer = await inquirer.prompt<YearAnswer>({
@@ -66,13 +68,86 @@ const handleInit = async (): Promise<void> => {
       default: true,
     });
     dependencies = dependenciesAnswer.dependencies;
+
+    const generateProjectAnswer = await inquirer.prompt<GenerateProjectAnswer>({
+      type: 'confirm',
+      name: 'generateProject',
+      message: 'Do you want to generate the AdventJS project now?',
+      default: true,
+    });
+    generateProject = generateProjectAnswer.generateProject;
   }
 
   createRootFolder(year);
 
   generateConfig(year, tests, configFiles, dependencies);
 
-  if (configFiles) {
+  await _generateProject(generateProject, year);
+
+  _generateConfigFiles(configFiles, year);
+
+  await _installDependencies(dependencies, year);
+
+  console.log(chalk.bold.green('🎉 Your AdventJS project is ready! Happy coding!'));
+  console.log(chalk.bold.green('🚀 To get started, cd ' + getRootFolderName(year)));
+};
+
+const _installDependencies = (shouldInstall: boolean, year: string): Promise<void> => {
+  return new Promise((resolve, reject) => {
+    if (!shouldInstall) {
+      resolve();
+      return;
+    }
+    console.log(chalk.blue('Installing dependencies... (this may take a few moments)'));
+
+    const child = spawn('npm', ['install', '--save-dev', ...DEV_DEPENDENCIES], {
+      cwd: getRootFolderName(year),
+      stdio: 'inherit',
+    });
+
+    child.on('close', (code: number) => {
+      if (code !== 0) {
+        console.error(
+          chalk.red(`❌ Error installing dependencies: process exited with code ${code}`),
+        );
+        reject(new Error(`npm install failed with code ${code}`));
+        return;
+      }
+      console.log(chalk.green('✅ Dependencies installed successfully'));
+      resolve();
+    });
+
+    child.on('error', (error: Error) => {
+      console.error(chalk.red(`❌ Error installing dependencies: ${error.message}`));
+      reject(error);
+    });
+  });
+};
+
+const _generateProject = (shouldGenerate: boolean, year: string): Promise<void> => {
+  return new Promise((resolve, reject) => {
+    if (!shouldGenerate) {
+      resolve();
+      return;
+    }
+    console.log(chalk.blue('Generating AdventJS project...'));
+    try {
+      copyFromTemplatesWithReplacement(year, CONFIG_FILE.PACKAGE_JSON);
+      console.log(chalk.green('✅ AdventJS project generated successfully'));
+      resolve();
+    } catch (error) {
+      console.error(
+        chalk.red(
+          `❌ Error generating project: ${error instanceof Error ? error.message : 'Unknown error'}`,
+        ),
+      );
+      reject(error);
+    }
+  });
+};
+
+const _generateConfigFiles = (shouldGenerate: boolean, year: string): void => {
+  if (shouldGenerate) {
     _generateGitignore(year);
     _generateEslintConfig(year);
     _generatePrettierConfig(year);
@@ -83,32 +158,6 @@ const handleInit = async (): Promise<void> => {
 
     console.log(chalk.green('✅ Configuration files generated'));
   }
-
-  _installDependencies(dependencies);
-  console.log(chalk.bold.green('🎉 Your AdventJS project is ready! Happy coding!'));
-  console.log(chalk.bold.green('🚀 To get started, cd ' + getRootFolderName(year)));
-};
-
-const _installDependencies = (shouldInstall: boolean): void => {
-  if (!shouldInstall) {
-    return;
-  }
-  console.log(chalk.blue('Installing dependencies... (this may take a few moments)'));
-
-  exec(
-    `npm install --save-dev ${DEV_DEPENDENCIES.join(' ')}`,
-    (error: Error | null, stdout: string, stderr: string): void => {
-      if (error) {
-        console.error(chalk.red(`❌ Error installing dependencies: ${error.message}`));
-        return;
-      }
-      if (stderr) {
-        console.error(chalk.yellow(`stderr: ${stderr}`));
-        return;
-      }
-      console.log(chalk.green('✅ Dependencies installed successfully'));
-    },
-  );
 };
 
 const _generateVscodeConfig = (year: string): void => {
