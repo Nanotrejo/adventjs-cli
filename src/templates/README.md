@@ -27,11 +27,11 @@ npx tsc x.ts && node x.js
 #### Run tests
 
 ```console
-npx jest
+npm run test
 ```
 
 #### Style
 
 ```console
-npx prettier . --write
+npm run format
 ```
