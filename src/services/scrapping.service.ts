@@ -1,45 +1,63 @@
-import { load } from 'cheerio';
 import { getChalkLogger } from './chalk.service';
-import { FunctionData } from '../schema/scrapping.schema';
+import { launchBrowser, createPage, waitForElement, getElementContent } from './puppeteer.service';
+import { FunctionData, ChallengeData } from '../schema/scrapping.schema';
 
-export { getDescription, getFunctionData };
+export { getChallengeData };
 
 const ID_DESCRIPTION = 'challenge-description';
 const CLASS_FUNCTION_BLOCK = '.view-lines';
 const chalk = getChalkLogger();
 
-const getDescription = (html: string, day: number): string | null => {
-  const $ = load(html);
+const getChallengeData = async (url: string, day: number): Promise<ChallengeData | null> => {
+  try {
+    const browser = await launchBrowser();
+    const page = await createPage(browser, url);
 
-  const challengeDescription = $(`#${ID_DESCRIPTION}`).html();
-  if (!challengeDescription) {
+    await waitForElement(page, `#${ID_DESCRIPTION}`);
+    await waitForElement(page, CLASS_FUNCTION_BLOCK);
+
+    const challengeDescription = await getElementContent(page, `#${ID_DESCRIPTION}`);
+    const functionBLockHTML = await getElementContent(page, CLASS_FUNCTION_BLOCK);
+
+    await browser.close();
+
+    if (!challengeDescription) {
+      console.error(
+        chalk.red(
+          `❌ Could not find the challenge description for day ${day}. The structure of the page may have changed.`,
+        ),
+      );
+      return null;
+    }
+
+    if (!functionBLockHTML) {
+      console.error(
+        chalk.red(
+          `❌ Could not find the challenge function for day ${day}. The structure of the page may have changed.`,
+        ),
+      );
+      return null;
+    }
+
+    // Parse function data
+    const functionData = _parseFunctionData(functionBLockHTML);
+    if (!functionData) {
+      console.error(chalk.red(`❌ Could not parse the function data for day ${day}.`));
+      return null;
+    }
+
+    return {
+      description: challengeDescription,
+      functionData,
+    };
+  } catch (error) {
     console.error(
       chalk.red(
-        `❌ Could not find the challenge description for day ${day}. The structure of the page may have changed.`,
+        `❌ Error fetching challenge data for day ${day}: ${error instanceof Error ? error.message : 'Unknown error'}`,
       ),
     );
     return null;
   }
-
-  return challengeDescription;
-};
-
-const getFunctionData = (html: string): FunctionData | null => {
-  const $ = load(html);
-
-  const viewLinesDiv = $(CLASS_FUNCTION_BLOCK).first();
-
-  if (viewLinesDiv.length === 0) {
-    return null;
-  }
-
-  const viewLinesHTML = viewLinesDiv.html();
-
-  if (!viewLinesHTML) {
-    return null;
-  }
-
-  return _parseFunctionData(viewLinesHTML);
 };
 
 const _parseFunctionData = (htmlCode: string): FunctionData | null => {

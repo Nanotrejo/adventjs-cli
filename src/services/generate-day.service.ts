@@ -1,15 +1,14 @@
 import { parseConfig } from './config.service';
 import { getChalkLogger } from './chalk.service';
 import { addDayHeader, htmlToMarkdown } from './markdown.service';
-import { isDev } from './dev.service';
-import { fetchChallenge, fetchChallengeDev } from '../api/challenge.api';
 import { createFile, createFolderUnderRoot, SavePath } from './file.service';
 import { formatDayNumber } from './parsing.service';
 import { FunctionData } from '../schema/scrapping.schema';
-import { getDescription, getFunctionData } from './scrapping.service';
+import { getChallengeData } from './scrapping.service';
 
 export { handleGenerateDay };
 
+const CHALLENGE_URL_TEMPLATE = 'https://adventjs.dev/challenges';
 const chalk = getChalkLogger();
 
 const handleGenerateDay = async (day: string): Promise<void> => {
@@ -25,33 +24,20 @@ const handleGenerateDay = async (day: string): Promise<void> => {
     return;
   }
 
-  const response = isDev()
-    ? await fetchChallengeDev()
-    : await fetchChallenge(dayNumber, config.year);
+  const url = `${CHALLENGE_URL_TEMPLATE}/${config.year}/${dayNumber}`;
 
-  if (!response) {
+  console.log(chalk.cyan(`🌐 Fetching challenge from ${url}...`));
+
+  const challengeData = await getChallengeData(url, dayNumber);
+  if (!challengeData) {
+    console.error(chalk.red(`❌ Could not fetch the challenge data for day ${dayNumber}.`));
     return;
   }
 
-  const html = await response.text();
-
-  const challengeFunctionData = getFunctionData(html);
-  if (!challengeFunctionData) {
-    console.error(chalk.red(`❌ Could not parse the challenge function for day ${dayNumber}.`));
-    return;
-  }
-
-  const challengeDescription = getDescription(html, dayNumber);
-  if (!challengeDescription) {
-    console.error(chalk.red(`❌ Could not parse the challenge description for day ${dayNumber}.`));
-
-    return;
-  }
-
-  const markdown = htmlToMarkdown(challengeDescription);
+  const markdown = htmlToMarkdown(challengeData.description);
   const markdownWithHeader = addDayHeader(markdown, dayNumber);
 
-  _saveDayFiles(config.year, dayNumber, markdownWithHeader, challengeFunctionData);
+  _saveDayFiles(config.year, dayNumber, markdownWithHeader, challengeData.functionData);
 
   console.log(
     chalk.green(`✅ Challenge ${dayNumber} for year ${config.year} generated successfully.`),
@@ -83,6 +69,4 @@ const _saveDayFiles = (
   const tsTestFileName = `${dayFormatted}.spec.ts`;
   const testFileContent = `import { ${functionData.functionName} } from './${dayFormatted}';\n\ndescribe('Challenge Day ${day}', () => {\n  it('should ...', () => {\n    // TODO: Add test cases\n  });\n});\n`;
   createFile(year, SavePath.DAY, tsTestFileName, testFileContent, dayFormatted);
-
-  // TODO: Save test file and main ts file.
 };

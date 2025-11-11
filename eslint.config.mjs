@@ -12,6 +12,7 @@ export default [
       '*.config.js',
       'jest.config.js',
       'src/templates/**',
+      'adventjs-*/**',
     ],
   },
   js.configs.recommended,
