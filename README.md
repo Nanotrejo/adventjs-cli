@@ -53,6 +53,13 @@ npm run start
 npm publish
 ```
 
+### Publish package using pipelines
+
+1. Change `package.json` and `APP_VERSION` version number.
+2. Push changes
+3. Create tag with version v.x.x
+4. Push tags
+
 #### Debug package content
 
 ```bash
