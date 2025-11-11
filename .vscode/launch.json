@@ -26,21 +26,30 @@
       "outFiles": ["${workspaceFolder}/dist/**/*.js"]
     },
     {
-      "name": "Debug: g <day>",
+      "name": "Debug: g <day> ts",
       "type": "node",
       "request": "launch",
       "program": "${workspaceFolder}/dist/index.js",
       "preLaunchTask": "tsc: build index.ts",
-      "args": ["g", "1"],
+      "args": ["g", "1", "ts"],
       "outFiles": ["${workspaceFolder}/dist/**/*.js"]
     },
     {
-      "name": "Debug: g <day> DEV",
+      "name": "Debug: g <day> <py>",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceFolder}/dist/index.js",
+      "preLaunchTask": "tsc: build index.ts",
+      "args": ["g", "1", "py"],
+      "outFiles": ["${workspaceFolder}/dist/**/*.js"]
+    },
+    {
+      "name": "Debug: g <day> <ts> DEV",
       "type": "node",
       "request": "launch",
       "program": "${workspaceFolder}/dist/index.js",
       "preLaunchTask": "tsc: build index.ts (DEV)",
-      "args": ["g", "1"],
+      "args": ["g", "1","ts"],
       "env": {
         "DEV": "true"
       },

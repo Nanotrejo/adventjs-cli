@@ -21,10 +21,17 @@ const InitCommand: Command = {
 };
 
 const GenerateDayCommand: Command = {
-  command: 'g <day>',
+  command: 'g <day> <language>',
   description: 'Generate boilerplate for a specific day',
-  function: async (day: string): Promise<void> => {
-    await handleGenerateDay(day, CLI_CONTEXT.language);
+  function: async (day: string, language: Language): Promise<void> => {
+    const validLanguages = Object.values(Language);
+    if (!validLanguages.includes(language)) {
+      console.error(
+        `❌ Invalid language '${language}'. Please choose one of the following: ${validLanguages.join(', ')}.`,
+      );
+      process.exit(1);
+    }
+    await handleGenerateDay(day, language);
   },
 };
 
