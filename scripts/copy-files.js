@@ -25,11 +25,11 @@ const templatesDestDir = path.join(__dirname, '../dist/templates');
 copyRecursive(templatesSrcDir, templatesDestDir);
 console.log('✓ Templates files copied successfully');
 
-// Copy HTML files only in DEV mode
+// Copy Example files only in DEV mode
 const isDev = process.env.DEV === 'true' || process.argv.includes('--dev');
 if (isDev) {
-  const htmlSrcDir = path.join(__dirname, '../src/html');
-  const htmlDestDir = path.join(__dirname, '../dist/html');
-  copyRecursive(htmlSrcDir, htmlDestDir, true);
-  console.log('[DEV] ✓ HTML files copied successfully');
+  const examplesSrcDir = path.join(__dirname, '../src/examples');
+  const examplesDestDir = path.join(__dirname, '../dist/examples');
+  copyRecursive(examplesSrcDir, examplesDestDir, true);
+  console.log('[DEV] ✓ Example files copied successfully');
 }

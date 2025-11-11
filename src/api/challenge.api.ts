@@ -55,7 +55,7 @@ const fetchChallenge = async (day: number, year): Promise<Response | null> => {
 
 const fetchChallengeDev = async (): Promise<Response | null> => {
   const htmlFileName = TEST_HTML_FILE;
-  const htmlFilePath = resolve(__dirname, '../html', htmlFileName);
+  const htmlFilePath = resolve(__dirname, '../examples', htmlFileName);
 
   try {
     const html = readFileSync(htmlFilePath, 'utf8');

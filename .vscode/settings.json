@@ -9,7 +9,7 @@
     "dist": true,
     "node_modules": true
   },
-  "cSpell.userWords": ["adventjs", "cli", "nvmrc"],
+  "cSpell.userWords": ["adventjs", "cli", "nvmrc", "puppeteer"],
   "[jsonc]": {
     "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
   },

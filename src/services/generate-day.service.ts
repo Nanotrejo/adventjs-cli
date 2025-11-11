@@ -4,7 +4,7 @@ import { addDayHeader, htmlToMarkdown } from './markdown.service';
 import { createFile, createFolderUnderRoot, SavePath } from './file.service';
 import { formatDayNumber } from './parsing.service';
 import { FunctionData } from '../schema/scrapping.schema';
-import { getChallengeData } from './scrapping.service';
+import { getChallengeDataFromJson } from './scrapping.service';
 
 export { handleGenerateDay };
 
@@ -28,7 +28,7 @@ const handleGenerateDay = async (day: string): Promise<void> => {
 
   console.log(chalk.cyan(`🌐 Fetching challenge from ${url}...`));
 
-  const challengeData = await getChallengeData(url, dayNumber);
+  const challengeData = await getChallengeDataFromJson(url, dayNumber);
   if (!challengeData) {
     console.error(chalk.red(`❌ Could not fetch the challenge data for day ${dayNumber}.`));
     return;

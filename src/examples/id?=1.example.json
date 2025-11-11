@@ -1,0 +1,137 @@
+{
+    "pageProps": {
+        "challengeId": 0,
+        "challenges": [
+            {
+                "level": "easy",
+                "title": "🎁 First gift repeated!"
+            },
+            {
+                "level": "easy",
+                "title": "🖼️ Framing names"
+            },
+            {
+                "level": "easy",
+                "title": "🏗️ Organizing the inventory"
+            },
+            {
+                "level": "medium",
+                "title": "🎄 Decorating the Christmas tree"
+            },
+            {
+                "level": "easy",
+                "title": "👞 Shoe pairing"
+            },
+            {
+                "level": "medium",
+                "title": "📦 Is the gift inside the box?"
+            },
+            {
+                "level": "medium",
+                "title": "👹 The Grinch's attack"
+            },
+            {
+                "level": "easy",
+                "title": "🦌 The reno race"
+            },
+            {
+                "level": "medium",
+                "title": "🚂 The magic train"
+            },
+            {
+                "level": "medium",
+                "title": "👩‍💻 The elfish assembler"
+            },
+            {
+                "level": "easy",
+                "title": "🏴‍☠️ Filenames encoded"
+            },
+            {
+                "level": "easy",
+                "title": "💵 How much does the tree cost?"
+            },
+            {
+                "level": "hard",
+                "title": "🤖 Is the robot back?"
+            },
+            {
+                "level": "easy",
+                "title": "🦌 Weaving the reno"
+            },
+            {
+                "level": "easy",
+                "title": "✏️ Drawing tables"
+            },
+            {
+                "level": "easy",
+                "title": "❄️ Cleaning the snow path"
+            },
+            {
+                "level": "medium",
+                "title": "💣 Grinch's bombs"
+            },
+            {
+                "level": "hard",
+                "title": "📇 Santa's Magic Agenda"
+            },
+            {
+                "level": "hard",
+                "title": "📦 Stack magical boxes to deliver gifts"
+            },
+            {
+                "level": "easy",
+                "title": "🎁 Find missing and duplicate gifts"
+            },
+            {
+                "level": "easy",
+                "title": "🎄 Calculate the height of the Christmas tree"
+            },
+            {
+                "level": "medium",
+                "title": "🎁 Generate gift combinations"
+            },
+            {
+                "level": "easy",
+                "title": "🔢 Find the missing numbers"
+            },
+            {
+                "level": "medium",
+                "title": "🪞 Check if trees are magical mirrors"
+            },
+            {
+                "level": "medium",
+                "title": "🪄 Execute the magical language"
+            },
+            {
+                "level": "easy",
+                "title": "🎯 Calculate the completed percentage"
+            }
+        ],
+        "completedChallenges": {},
+        "defaultCode": {
+            "javascript": "/**\n * @param {number[]} gifts - The array of gifts to prepare\n * @returns {number[]} An array with the prepared gifts\n */\nfunction prepareGifts(gifts) {\n  // Code here\n  return []\n}\n",
+            "python": "def prepare_gifts(gifts):\n  # Code here\n  return []\n",
+            "typescript": "function prepareGifts(gifts: number[]): number[] {\n  // Code here\n  return []\n}"
+        },
+        "description": "<p><strong>Santa Claus 🎅</strong> has received a list of magical numbers representing gifts 🎁, but some of them are duplicated and must be removed to avoid confusion. Additionally, <strong>the gifts must be sorted in ascending order before being delivered to the elves.</strong></p>\n<p>Your task is to write a function that receives a list of integers (which may include duplicates) and returns a new list without duplicates, sorted in ascending order.</p>\n<pre><code class=\"javascript language-javascript\">const gifts1 = [3, 1, 2, 3, 4, 2, 5]\nconst preparedGifts1 = prepareGifts(gifts1)\nconsole.log(preparedGifts1) // [1, 2, 3, 4, 5]\n\nconst gifts2 = [6, 5, 5, 5, 5]\nconst preparedGifts2 = prepareGifts(gifts2)\nconsole.log(preparedGifts2) // [5, 6]\n\nconst gifts3 = []\nconst preparedGifts3 = prepareGifts(gifts3)\nconsole.log(preparedGifts3) // []\n// There are no gifts, the list remains empty\n</code></pre>",
+        "hasInitialCode": [],
+        "initialCompletedBy": "10528",
+        "initialLanguage": null,
+        "initialStars": 0,
+        "isMacOs": false,
+        "level": "easy",
+        "nextChallengeId": 2,
+        "savedCode": {
+            "javascript": null,
+            "typescript": null,
+            "python": null
+        },
+        "title": "🎁 First gift repeated!",
+        "twitchTier": null,
+        "twitchUserId": null,
+        "userIdBySearchParams": "1",
+        "challengeIdFromSearchParams": "1",
+        "localeFromServer": "en"
+    },
+    "__N_SSP": true
+}
