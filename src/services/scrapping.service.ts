@@ -1,87 +1,115 @@
 import { getChalkLogger } from './chalk.service';
-import { launchBrowser, createPage, waitForElement, getElementContent } from './puppeteer.service';
+import { launchBrowser, createPage, getChallengeDataFromPage } from './puppeteer.service';
 import { FunctionData, ChallengeData } from '../schema/scrapping.schema';
 
-export { getChallengeData };
+export { getChallengeDataFromJson };
 
-const ID_DESCRIPTION = 'challenge-description';
-const CLASS_FUNCTION_BLOCK = '.view-lines';
 const chalk = getChalkLogger();
 
-const getChallengeData = async (url: string, day: number): Promise<ChallengeData | null> => {
+const getChallengeDataFromJson = async (
+  url: string,
+  day: number,
+): Promise<ChallengeData | null> => {
   try {
     const browser = await launchBrowser();
     const page = await createPage(browser, url);
 
-    await waitForElement(page, `#${ID_DESCRIPTION}`);
-    await waitForElement(page, CLASS_FUNCTION_BLOCK);
-
-    const challengeDescription = await getElementContent(page, `#${ID_DESCRIPTION}`);
-    const functionBLockHTML = await getElementContent(page, CLASS_FUNCTION_BLOCK);
+    // Extract JSON data that was already loaded with the page
+    const jsonData = await getChallengeDataFromPage(page);
 
     await browser.close();
 
-    if (!challengeDescription) {
+    if (!jsonData || !jsonData.props || !jsonData.props.pageProps) {
+      console.error(chalk.red(`❌ Could not find JSON data in page for day ${day}.`));
+      return null;
+    }
+
+    const pageProps = jsonData.props.pageProps;
+    const description = pageProps.description;
+    const typescriptCode = pageProps.defaultCode?.typescript;
+
+    if (!description || !typescriptCode) {
       console.error(
-        chalk.red(
-          `❌ Could not find the challenge description for day ${day}. The structure of the page may have changed.`,
-        ),
+        chalk.red(`❌ Missing description or TypeScript code in page data for day ${day}.`),
       );
       return null;
     }
 
-    if (!functionBLockHTML) {
-      console.error(
-        chalk.red(
-          `❌ Could not find the challenge function for day ${day}. The structure of the page may have changed.`,
-        ),
-      );
-      return null;
-    }
-
-    // Parse function data
-    const functionData = _parseFunctionData(functionBLockHTML);
+    // Parse function data from TypeScript code
+    const functionData = _parseFunctionData(typescriptCode);
     if (!functionData) {
       console.error(chalk.red(`❌ Could not parse the function data for day ${day}.`));
       return null;
     }
 
+    chalk.green(`✓ Challenge data extracted from page JSON for day ${day}`);
+
     return {
-      description: challengeDescription,
+      description,
       functionData,
     };
   } catch (error) {
     console.error(
       chalk.red(
-        `❌ Error fetching challenge data for day ${day}: ${error instanceof Error ? error.message : 'Unknown error'}`,
+        `❌ Error fetching challenge data from JSON for day ${day}: ${error instanceof Error ? error.message : 'Unknown error'}`,
       ),
     );
     return null;
   }
 };
 
-const _parseFunctionData = (htmlCode: string): FunctionData | null => {
-  let cleaned = htmlCode.replace(/<div[^>]*>/g, '');
-  cleaned = cleaned.replace(/<\/div>/g, '');
-  cleaned = cleaned.replace(/<span[^>]*>/g, '');
-  cleaned = cleaned.replace(/<\/span>/g, '');
+const _parseFunctionData = (codeText: string): FunctionData | null => {
+  // First, split by \n to preserve line breaks from JSON
+  let lines = codeText
+    .split('\n')
+    .map((line) => line.trim())
+    .filter((line) => line.length > 0);
 
-  cleaned = cleaned.replace(/&nbsp;/g, ' ');
-  cleaned = cleaned.replace(/&lt;/g, '<');
-  cleaned = cleaned.replace(/&gt;/g, '>');
-  cleaned = cleaned.replace(/&amp;/g, '&');
+  // Decode any HTML entities
+  lines = lines.map((line) => {
+    let decoded = line;
+    decoded = decoded.replace(/&nbsp;/g, ' ');
+    decoded = decoded.replace(/&lt;/g, '<');
+    decoded = decoded.replace(/&gt;/g, '>');
+    decoded = decoded.replace(/&amp;/g, '&');
+    decoded = decoded.replace(/&quot;/g, '"');
+    // eslint-disable-next-line quotes
+    decoded = decoded.replace(/&#39;/g, "'");
+    return decoded;
+  });
 
-  cleaned = cleaned.replace(/<!--[\s\S]*?-->/g, '');
+  // Join back with newlines to preserve structure
+  let cleaned = lines.join('\n').trim();
 
-  cleaned = cleaned.replace(/\s+/g, ' ').trim();
+  // Find export statement if exists and remove it (export will be added separately)
+  const exportMatch = cleaned.match(/export\s*{\s*(\w+)\s*}/);
+  let functionName = '';
 
-  const functionNameMatch = cleaned.match(/(?:function|const)\s+(\w+)\s*(?:\(|=)/);
+  if (exportMatch && exportMatch[1]) {
+    functionName = exportMatch[1];
+    // Remove export from the code
+    cleaned = cleaned.replace(/export\s*{\s*(\w+)\s*}\s*;?\n?/g, '');
+  }
 
-  if (!functionNameMatch || !functionNameMatch[1]) {
+  // If no export found, try to find function name from declaration
+  if (!functionName) {
+    const functionNameMatch = cleaned.match(
+      /(?:type\s+\w+.*?\n)?(?:function|const)\s+(\w+)\s*(?:\(|=)/,
+    );
+    if (functionNameMatch && functionNameMatch[1]) {
+      functionName = functionNameMatch[1];
+    }
+  }
+
+  if (!functionName) {
     return null;
   }
 
-  const functionName = functionNameMatch[1];
+  // Clean up any remaining multiple blank lines
+  cleaned = cleaned.replace(/\n\s*\n\s*\n/g, '\n\n');
+
+  // Final trim
+  cleaned = cleaned.trim();
 
   return {
     functionName,

@@ -1,0 +1,16 @@
+{
+  "name": "adventjs-{{year}}",
+  "version": "1.0.0",
+  "description": "AdventJS {{year}} Challenges",
+  "scripts": {
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "format": "prettier --write .",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "dev": "npx tsc 01/01.ts && node 01/01.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

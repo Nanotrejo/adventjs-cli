@@ -49,3 +49,6 @@ adventjs-cli.json
 # Generated challenge files
 01/**
 adventjs-*/**
+
+# Test client
+test-client/**

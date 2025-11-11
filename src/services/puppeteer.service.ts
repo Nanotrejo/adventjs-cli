@@ -1,7 +1,7 @@
 import puppeteer, { Browser, Page } from 'puppeteer';
 import { getChalkLogger } from './chalk.service';
 
-export { launchBrowser, getPuppeteerConfig, createPage, waitForElement, getElementContent };
+export { launchBrowser, getPuppeteerConfig, createPage, getChallengeDataFromPage };
 
 const chalk = getChalkLogger();
 
@@ -13,10 +13,6 @@ const PUPPETEER_CONFIG = {
 const NAVIGATION_CONFIG = {
   waitUntil: 'networkidle2' as const,
   timeout: 30000,
-};
-
-const SELECTOR_WAIT_CONFIG = {
-  timeout: 5000,
 };
 
 const getPuppeteerConfig = (): typeof PUPPETEER_CONFIG => PUPPETEER_CONFIG;
@@ -41,26 +37,39 @@ const createPage = async (browser: Browser, url: string): Promise<Page> => {
   return page;
 };
 
-const waitForElement = async (page: Page, selector: string): Promise<boolean> => {
-  try {
-    await page.waitForSelector(selector, SELECTOR_WAIT_CONFIG);
-    return true;
-  } catch {
-    console.warn(
-      chalk.yellow(`⚠️  Element not found: "${selector}", but continuing with page content...`),
-    );
-    return false;
-  }
-};
+interface ChallengeDataStructure {
+  props: {
+    pageProps: {
+      description: string;
+      defaultCode: {
+        typescript: string;
+      };
+      [key: string]: unknown;
+    };
+  };
+}
 
-const getElementContent = async (page: Page, selector: string): Promise<string | null> => {
+const getChallengeDataFromPage = async (page: Page): Promise<ChallengeDataStructure | null> => {
   try {
-    const content = await page.$eval(selector, (el) => el.innerHTML);
-    return content;
+    const jsonData = await page.evaluate(() => {
+      // Look for Next.js data in __NEXT_DATA__
+      const nextDataScript = document.getElementById('__NEXT_DATA__');
+      if (nextDataScript && nextDataScript.textContent) {
+        try {
+          const data = JSON.parse(nextDataScript.textContent);
+          return data;
+        } catch {
+          return null;
+        }
+      }
+      return null;
+    });
+
+    return jsonData as ChallengeDataStructure | null;
   } catch (error) {
-    console.error(
-      chalk.red(
-        `❌ Error getting element content: ${error instanceof Error ? error.message : 'Unknown error'}`,
+    console.warn(
+      chalk.yellow(
+        `⚠️  Could not extract Next.js data from page: ${error instanceof Error ? error.message : 'Unknown error'}`,
       ),
     );
     return null;

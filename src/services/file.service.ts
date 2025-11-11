@@ -50,6 +50,7 @@ enum CONFIG_FILE {
   TSCONFIG = 'tsconfig.json',
   GITHUB = '.github',
   README = 'README.md',
+  PACKAGE_JSON = 'package.json',
 }
 
 const createFile = (

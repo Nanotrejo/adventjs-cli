@@ -21,16 +21,16 @@
   },
   "dependencies": {
     "chalk": "^4.1.2",
-    "cheerio": "^1.1.2",
     "commander": "^14.0.2",
     "dotenv": "^17.2.3",
-    "inquirer": "^12.11.0"
+    "inquirer": "^12.11.0",
+    "puppeteer": "^24.29.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",
-    "@types/cheerio": "^0.22.35",
     "@types/jest": "^30.0.0",
     "@types/node": "^24.10.0",
+    "@types/puppeteer": "^5.4.7",
     "@typescript-eslint/eslint-plugin": "^8.46.3",
     "@typescript-eslint/parser": "^8.46.3",
     "eslint": "^9.39.1",
