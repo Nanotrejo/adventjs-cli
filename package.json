@@ -1,9 +1,14 @@
 {
   "name": "adventjs-cli",
-  "version": "1.0.0",
-  "description": "",
-  "license": "ISC",
-  "author": "",
+  "version": "0.1.0",
+  "description": " Spin up your AdventJS challenges by @midudev in seconds! 🎄⚡ ",
+  "author": {
+    "name": "Antonio Martinez Fernandez",
+    "email": "antoniomartinezfernandez17@gmail.com",
+    "url": "https://github.com/AntonioMrtz/adventjs-cli"
+  },
+  "homepage": "https://github.com/AntonioMrtz/adventjs-cli",
+  "license": "Attribution-NonCommercial-ShareAlike 4.0 International",
   "main": "dist/index.js",
   "bin": {
     "adventjs": "./dist/index.js"
