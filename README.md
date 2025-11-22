@@ -2,10 +2,19 @@
 
 AdventJS CLI Generator – Spin up your [AdventJS challenges](https://adventjs.dev/) in seconds! 🎄⚡
 
-- 📝 Generates TypeScript starter files + tests
-- 📖 Adds challenge description in Markdown format
-- ⚙️ Handles project init, dependencies, and config automatically
-- 📅 Ready for 2024, 2025, and beyond
++ 📝 Instantly generates the boilerplate for each daily AdventJS challenge
+  - 🗂️ TypeScript function template (ready for your solution)
+  - 📄 Problem description in markdown
+  - 🧪 Associated test file to validate your code
++ ⚙️ Out-of-the-box support for
+  - 🐞 Debugging
+  - 🧪 Testing with Jest
+  - 🛠️ TypeScript config
+  - 🧹 Linting (ESLint)
+  - 🎨 Formatting (Prettier)
+  - 🤖 GitHub Actions for CI
+  - 🖥️ VSCode integration
++ 📅 Ready for 2024 challenges
 
 Focus on solving the challenges, not setting them up! 🚀
 
