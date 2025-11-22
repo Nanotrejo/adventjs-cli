@@ -1,12 +1,12 @@
 # 🎄 AdventJS-CLI
 
-AdventJS CLI Generator – Spin up your [AdventJS challenges](https://adventjs.dev/) in seconds! 🎄⚡
+AdventJS CLI Generator – Spin up your [AdventJS challenges](https://adventjs.dev/) in seconds! 🎄⚡. Available in [npm](https://www.npmjs.com/package/adventjs-cli).
 
-+ 📝 Instantly generates the boilerplate for each daily AdventJS challenge
+- 📝 Instantly generates the boilerplate for each daily AdventJS challenge
   - 🗂️ TypeScript function template (ready for your solution)
   - 📄 Problem description in markdown
   - 🧪 Associated test file to validate your code
-+ ⚙️ Out-of-the-box support for
+- ⚙️ Out-of-the-box support for
   - 🐞 Debugging
   - 🧪 Testing with Jest
   - 🛠️ TypeScript config
@@ -14,7 +14,7 @@ AdventJS CLI Generator – Spin up your [AdventJS challenges](https://adventjs.d
   - 🎨 Formatting (Prettier)
   - 🤖 GitHub Actions for CI
   - 🖥️ VSCode integration
-+ 📅 Ready for 2024 challenges
+- 📅 Ready for 2024 challenges
 
 Focus on solving the challenges, not setting them up! 🚀
 
