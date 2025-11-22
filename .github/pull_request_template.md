@@ -1,3 +1,5 @@
+- [ ] I have run tests locally and all pass
+
 ## Description
 
 <!-- Describe the proposed changes in this pull request concisely and clearly. -->
