@@ -1,6 +1,6 @@
 # 🎄 AdventJS-CLI
 
-AdventJS CLI Generator – Spin up your AdventJS challenges in seconds! 🎄⚡
+AdventJS CLI Generator – Spin up your [AdventJS challenges](https://adventjs.dev/) in seconds! 🎄⚡
 
 - 📝 Generates TypeScript starter files + tests
 - 📖 Adds challenge description in Markdown format
